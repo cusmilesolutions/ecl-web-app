@@ -10,7 +10,23 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg">
         <header>ECL ADMIN</header>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li className="nav-item">
+              <Link to="/orders" className="nav-link">
+                Orders
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/payments" className="nav-link">
+                Payments
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/accounts" className="nav-link">
+                Accounts
+              </Link>
+            </li>
+          </ul>
           <div>
             {state.isAuth ? (
               <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">

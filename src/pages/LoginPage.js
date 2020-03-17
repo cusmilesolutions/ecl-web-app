@@ -12,14 +12,7 @@ const LoginPage = () => {
     setadmin({ ...admin, [e.target.name]: value });
   };
   const submitHandler = e => {};
-  return (
-    <div>
-      <Navbar />
-      <div>
-        <Login changeHandler={changeHandler} submitHandler={submitHandler} />
-      </div>
-    </div>
-  );
+  return <Login changeHandler={changeHandler} submitHandler={submitHandler} />;
 };
 
 export default LoginPage;

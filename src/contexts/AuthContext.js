@@ -5,11 +5,12 @@ export const AuthContext = createContext();
 const AuthContextProvider = props => {
   const [admin, setadmin] = useState({ email: '', password: '' });
   const [state, setstate] = useState({
-    isAuth: false,
+    isAuth: true,
     token: null,
     userId: null
   });
 
+  // built in authentication using jwt
   const logout = () => {
     setstate({ isAuth: false, token: null });
     localStorage.removeItem('token');

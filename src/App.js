@@ -5,6 +5,11 @@ import Dashboard from './pages/Dashboard';
 import AuthContextProvider from './contexts/AuthContext';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import Navbar from './components/Navbar';
+import Orders from './pages/Orders';
+import Accounts from './pages/Accounts';
+import RiderList from './pages/Rider/RiderList';
+import CustomerList from './pages/Customer/CustomerList';
 
 function App() {
   let routes = (
@@ -12,12 +17,24 @@ function App() {
       <Route path="/" exact render={props => <Dashboard />} />
       <Route path="/login" exact render={props => <LoginPage />} />
       <Route path="/register" exact render={props => <RegisterPage />} />
+      <Route path="/orders" exact render={props => <Orders />} />
+      <Route path="/payments" exact render={props => <RegisterPage />} />
+      <Route path="/accounts" exact render={props => <Accounts />} />
+      <Route path="/accounts/riders" exact render={props => <RiderList />} />
+      <Route
+        path="/accounts/customers"
+        exact
+        render={props => <CustomerList />}
+      />
       <Redirect to="/" />
     </Switch>
   );
   return (
     <AuthContextProvider>
-      <div className="App">{routes}</div>
+      <div className="App">
+        <Navbar />
+        {routes}
+      </div>
     </AuthContextProvider>
   );
 }
