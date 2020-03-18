@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: #ddd; */
 }
 
 h5 {
@@ -84,7 +85,37 @@ input:focus {
 }
 
 .card_div {
-  background-color: rgba(255, 83, 21, 0.034);
+  background-color: rgba(13, 94, 216, 0.089);
+}
+
+.customer_card_div {
+  /* background-color: rgba(13, 94, 216, 0.089); */
+  color: #494949;
+}
+
+.customer_card_div p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.customer_card_div span {
+  font-weight: normal;
+}
+
+.mini_btn {
+  height: 25px;
+  width: 100%;
+  background-color: #0069d9;
+  color: #fff;
+  border: none;
+  font-size: 12px;
+}
+
+.mini_btn:hover {
+  background-color: #fff;
+  color: #0069d9;
+  border: 1px solid #0069d9;
 }
 
 .acc_data_ul {
@@ -93,13 +124,8 @@ input:focus {
 
 .acc_data {
   list-style: none;
-  margin: 5px 0;
   padding: 5px;
-  border-left: 3px solid rgb(255, 84, 21);
-  border-top-right-radius: 40px;
-  border-bottom-right-radius: 40px;
-  color: rgb(255, 84, 21);
-  background-color: rgba(255, 83, 21, 0.096);
+  color: #494949;
   font-size: 14px;
 }
 
@@ -108,4 +134,9 @@ input:focus {
   height: 60px;
   width: 60px;
   border-radius: 30px;
+}
+
+.summary_card_inner {
+  background-color: rgba(220, 20, 60, 0.849);
+  color: #fff;
 }

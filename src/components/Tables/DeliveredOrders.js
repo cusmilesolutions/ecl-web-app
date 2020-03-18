@@ -1,9 +1,10 @@
 import React from 'react';
+import SearchPrint from '../SearchPrint';
 
 const DeliveredOrders = () => {
   return (
     <div>
-      <p>DeliveredOrders</p>
+      <SearchPrint />
     </div>
   );
 };

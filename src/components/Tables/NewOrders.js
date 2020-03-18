@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SearchPrint from '../SearchPrint';
 
 const customStyles = {
   content: {
@@ -52,7 +53,7 @@ const NewOrders = () => {
     setviewOrder(true);
   };
   return (
-    <div className="container-fluid mt-2">
+    <div className="mt-2">
       <Modal
         isOpen={viewOrder}
         style={customStyles}
@@ -84,15 +85,7 @@ const NewOrders = () => {
           </div>
         </div>
       </Modal>
-      <div className="d-flex align-items-center">
-        <div className="border d-flex align-items-center border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
-          <FontAwesomeIcon icon={faSearch} />
-          <input placeholder="Search by order code or phone number" />
-        </div>
-        <div>
-          <button className="btn-primary btn">Export to excel</button>
-        </div>
-      </div>
+      <SearchPrint />
       <table className="table">
         <thead>
           <tr>

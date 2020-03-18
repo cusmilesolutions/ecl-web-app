@@ -11,6 +11,7 @@ import NewOrders from '../components/Tables/NewOrders';
 import DeliveredOrders from '../components/Tables/DeliveredOrders';
 import CancelledOrders from '../components/Tables/CancelledOrders';
 import OrdersOnDelivery from '../components/Tables/OrdersOnDelivery';
+import Updates from '../components/Updates';
 
 const Orders = () => {
   const [activity, setactivity] = useState({ title: 'View new orders' });
@@ -37,12 +38,12 @@ const Orders = () => {
   return (
     <div>
       <div className="container">
-        <div className="mt-3 w-auto">
+        <div className="mt-1 w-auto">
           <div className="d-flex justify-content-center">
             <div
               id="new_orders"
               onClick={displayComponent}
-              className="border border-2 p-1 pl-2 pr-2 selector bg-blue border-primary m-2 rounded-pill shadow-sm"
+              className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
             >
               <FontAwesomeIcon id="new_orders" icon={faBoxOpen} />
               <span id="new_orders" className="ml-2 mr-2">
@@ -53,7 +54,7 @@ const Orders = () => {
             <div
               id="on_delivery"
               onClick={displayComponent}
-              className="border border-2 p-1 pl-2 pr-2 selector bg-blue border-primary m-2 rounded-pill shadow-sm"
+              className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
             >
               <FontAwesomeIcon id="on_delivery" icon={faShippingFast} />
               <span id="on_delivery" className="ml-2 mr-2">
@@ -64,7 +65,7 @@ const Orders = () => {
             <div
               id="delivered"
               onClick={displayComponent}
-              className="border border-2 p-1 pl-2 pr-2 selector bg-blue border-primary m-2 rounded-pill shadow-sm"
+              className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
             >
               <FontAwesomeIcon id="delivered" icon={faClipboardCheck} />
               <span id="delivered" className="ml-2 mr-2">
@@ -73,12 +74,12 @@ const Orders = () => {
               <span>256</span>
             </div>
             <div
-              id="cancelled_order"
+              id="cancelled_orders"
               onClick={displayComponent}
-              className="border border-2 p-1 pl-2 pr-2 selector bg-blue border-primary m-2 rounded-pill shadow-sm"
+              className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
             >
-              <FontAwesomeIcon id="cancelled_order" icon={faBan} />
-              <span id="cancelled_order" className="ml-2 mr-2">
+              <FontAwesomeIcon id="cancelled_orders" icon={faBan} />
+              <span id="cancelled_orders" className="ml-2 mr-2">
                 Cancelled Orders
               </span>
               <span>10</span>
@@ -86,10 +87,9 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="m-3">
+      <div className="row col-md-12">
+        <div className="col-md-10">
           <h6>{activity.title}</h6>
-          <hr />
           <div>
             {activity.title === 'View new orders' ? (
               <NewOrders />
@@ -104,6 +104,7 @@ const Orders = () => {
             )}
           </div>
         </div>
+        <Updates />
       </div>
     </div>
   );

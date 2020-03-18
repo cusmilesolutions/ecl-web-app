@@ -2,7 +2,7 @@ import React from 'react';
 
 const Rider = ({ rider }) => {
   return (
-    <div className="shadow p-3 mx-auto w-25 card_div">
+    <div className="shadow p-3 mx-auto w-25">
       <div className="row col-md-12">
         <div className="col-md-3">
           <div className="avatar">
@@ -24,6 +24,11 @@ const Rider = ({ rider }) => {
           <li className="acc_data">Date joined: {rider.dateJoined}</li>
           <li className="acc_data">Total revenue: GHc{rider.totalRevenue}</li>
         </ul>
+      </div>
+      <div>
+        <button className="shadow-sm btn btn-block btn-primary">
+          View Rider
+        </button>
       </div>
     </div>
   );

@@ -6,7 +6,7 @@ const Accounts = () => {
     <div>
       <div className="container row col-md-12">
         <div className="col-md-6">
-          <div className="shadow w-75 mx-auto mt-5 p-3">
+          <div className="w-100 mx-auto mt-5 p-3">
             <h5>Riders</h5>
             <hr />
             <div>
@@ -19,12 +19,12 @@ const Accounts = () => {
             </div>
 
             <Link to="accounts/riders">
-              <button className="btn btn-block view_btn">View riders</button>
+              <button className="btn btn-block btn-primary">View riders</button>
             </Link>
           </div>
         </div>
         <div className="col-md-6">
-          <div className="shadow w-75 mx-auto mt-5 p-3">
+          <div className="w-100 mx-auto mt-5 p-3">
             <h5>Customers</h5>
             <hr />
             <div>
@@ -36,7 +36,9 @@ const Accounts = () => {
               </ul>
             </div>
             <Link to="accounts/customers">
-              <button className="btn btn-block view_btn">View customers</button>
+              <button className="btn btn-block btn-primary">
+                View customers
+              </button>
             </Link>
           </div>
         </div>

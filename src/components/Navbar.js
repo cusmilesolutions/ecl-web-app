@@ -2,6 +2,14 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../index.css';
 import { AuthContext } from '../contexts/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBell,
+  faEnvelope,
+  faUser,
+  faCreditCard,
+  faUsers
+} from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const { state, logout } = useContext(AuthContext);
@@ -13,17 +21,20 @@ const Navbar = () => {
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <Link to="/orders" className="nav-link">
-                Orders
+                <FontAwesomeIcon icon={faBell} />
+                <span className="ml-2">Orders</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/payments" className="nav-link">
-                Payments
+                <FontAwesomeIcon icon={faCreditCard} />
+                <span className="ml-2">Payments</span>
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/accounts" className="nav-link">
-                Accounts
+                <FontAwesomeIcon icon={faUsers} />
+                <span className="ml-2">Accounts</span>
               </Link>
             </li>
           </ul>
@@ -31,8 +42,18 @@ const Navbar = () => {
             {state.isAuth ? (
               <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    <FontAwesomeIcon icon={faBell} />
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link to="/" onClick={logout} className="nav-link">
-                    Logout
+                    <FontAwesomeIcon icon={faUser} />
                   </Link>
                 </li>
               </ul>

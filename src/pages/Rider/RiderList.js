@@ -35,8 +35,8 @@ const RiderList = () => {
     }
   ];
   return (
-    <div>
-      <div className="m-3 row col-md-12">
+    <div className="container-fluid">
+      <div className="row mt-2 mb-2 col-md-12">
         <div className="col-md-9">
           <h5>Number of Riders: {riders.length}</h5>
         </div>

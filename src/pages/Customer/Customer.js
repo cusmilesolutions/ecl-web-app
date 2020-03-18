@@ -1,42 +1,33 @@
 import React from 'react';
 
-const Customer = () => {
+const Customer = ({ customer }) => {
   return (
-    <div>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Order No.</th>
-            <th scope="col">Customer</th>
-            <th scope="col">Item type</th>
-            <th scope="col">Item name</th>
-            <th scope="col">Item count</th>
-            <th scope="col">Price(GHC)</th>
-            <th scope="col">Starting point</th>
-            <th scope="col">Delivery point</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders.map(order => (
-            <tr key={order._id}>
-              <td>{order.orderNo}</td>
-              <td>{order.customer.phone}</td>
-              <td>{order.type}</td>
-              <td>{order.itemName}</td>
-              <td>{order.itemCount}</td>
-              <td>{order.price}</td>
-              <td>{order.startPt}</td>
-              <td>{order.deliveryPt}</td>
-              <td>
-                <button onClick={openViewOrder} className="btn btn-primary">
-                  View
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="shadow-sm shadow p-2 m-2 w-20 customer_card_div">
+      <div className="row col-md-12">
+        <div className="col-md-2">
+          <div className="rounded-circle"></div>
+        </div>
+        <div className="col-md-10">
+          <h6>{customer.name}</h6>
+        </div>
+      </div>
+      <div>
+        <p>
+          Phone: <span>{customer.phone}</span>
+        </p>
+        <p>
+          Address: <span>{customer.address}</span>
+        </p>
+        <p>
+          Orders: <span>{customer.numOfOrders}</span>
+        </p>
+        <p>
+          Joined: <span>{customer.dateJoined}</span>
+        </p>
+      </div>
+      <div>
+        <button className="mini_btn shadow-sm rounded">View orders</button>
+      </div>
     </div>
   );
 };
