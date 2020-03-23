@@ -8,13 +8,10 @@ body {
   /* background-color: #ddd; */
 }
 
+h1,
 h5 {
   color: rgb(187, 50, 0);
 }
-
-/* a {
-  text-decoration: none;
-} */
 
 .view_btn {
   background-color: rgb(255, 84, 21);
@@ -130,10 +127,7 @@ input:focus {
 }
 
 .avatar {
-  border: 1px solid gray;
-  height: 60px;
-  width: 60px;
-  border-radius: 30px;
+  color: rgb(187, 50, 0);
 }
 
 .summary_card_inner {

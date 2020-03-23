@@ -8,7 +8,8 @@ import {
   faEnvelope,
   faUser,
   faCreditCard,
-  faUsers
+  faUsers,
+  faShippingFast
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
@@ -21,7 +22,7 @@ const Navbar = () => {
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <Link to="/orders" className="nav-link">
-                <FontAwesomeIcon icon={faBell} />
+                <FontAwesomeIcon icon={faShippingFast} />
                 <span className="ml-2">Orders</span>
               </Link>
             </li>

@@ -67,7 +67,7 @@ const CustomerList = () => {
       </div>
       <div className="m-2">
         <SearchPrint />
-        <table className="table">
+        <table className="table table-sm table-hover">
           <thead>
             <tr>
               <th scope="col">Full name</th>
@@ -87,7 +87,7 @@ const CustomerList = () => {
                 <td>{customer.numOfOrders}</td>
                 <td>{customer.dateJoined}</td>
                 <td>
-                  <button className="btn btn-primary">View</button>
+                  <button className="btn btn-primary btn-sm">View</button>
                 </td>
               </tr>
             ))}

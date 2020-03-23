@@ -10,6 +10,7 @@ import Orders from './pages/Orders';
 import Accounts from './pages/Accounts';
 import RiderList from './pages/Rider/RiderList';
 import CustomerList from './pages/Customer/CustomerList';
+import OrdersContextProvider from './contexts/OrdersContext';
 
 function App() {
   let routes = (
@@ -31,10 +32,12 @@ function App() {
   );
   return (
     <AuthContextProvider>
-      <div className="App">
-        <Navbar />
-        {routes}
-      </div>
+      <OrdersContextProvider>
+        <div className="App">
+          <Navbar />
+          {routes}
+        </div>
+      </OrdersContextProvider>
     </AuthContextProvider>
   );
 }

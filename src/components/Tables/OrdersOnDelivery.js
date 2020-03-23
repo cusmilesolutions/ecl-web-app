@@ -1,38 +1,12 @@
 import React from 'react';
 import SearchPrint from '../SearchPrint';
 
-const OrdersOnDelivery = () => {
-  const ordersOnDelivery = [
-    {
-      orderNo: '1234',
-      pickUp: '12:33pm',
-      startPt: 'Kasoa',
-      destination: 'Accra',
-      price: 125,
-      rider: '012'
-    },
-    {
-      orderNo: '1235',
-      pickUp: '1:53pm',
-      startPt: 'Kasoa',
-      destination: 'Accra',
-      price: 125,
-      rider: '032'
-    },
-    {
-      orderNo: '1236',
-      pickUp: '8:13am',
-      startPt: 'Kasoa',
-      destination: 'Accra',
-      price: 125,
-      rider: '014'
-    }
-  ];
+const OrdersOnDelivery = ({ ordersOnDelivery }) => {
   return (
     <div>
       <SearchPrint />
       <div>
-        <table className="table">
+        <table className="table table-sm table-hover">
           <thead>
             <tr>
               <th scope="col">Order No.</th>
@@ -54,7 +28,7 @@ const OrdersOnDelivery = () => {
                 <td>{order.price}</td>
                 <td>{order.rider}</td>
                 <td>
-                  <button className="btn btn-primary">View</button>
+                  <button className="btn btn-primary btn-sm">View</button>
                 </td>
               </tr>
             ))}

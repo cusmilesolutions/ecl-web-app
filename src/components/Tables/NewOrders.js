@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SearchPrint from '../SearchPrint';
 
 const customStyles = {
@@ -16,37 +14,7 @@ const customStyles = {
   }
 };
 
-const NewOrders = () => {
-  const orders = [
-    {
-      _id: 'adfkajdfkjkaj',
-      orderNo: 12345,
-      customer: {
-        name: 'Isaac',
-        phone: '0541579060'
-      },
-      type: 'documents',
-      itemName: 'American visa',
-      itemCount: 2,
-      price: 310,
-      startPt: 'House 2, Adabraka',
-      deliveryPt: 'TF Hostel, Legon'
-    },
-    {
-      _id: 'adfkawdfkjkaj',
-      orderNo: 12346,
-      customer: {
-        name: 'Emma',
-        phone: '0541579060'
-      },
-      type: 'food',
-      itemName: 'American visa',
-      itemCount: 2,
-      price: 310,
-      startPt: 'House 3, Adabraka',
-      deliveryPt: 'TF Hostel, Legon'
-    }
-  ];
+const NewOrders = ({ orders }) => {
   const [viewOrder, setviewOrder] = useState(false);
   const closeViewOrder = () => setviewOrder(false);
   const openViewOrder = () => {
@@ -86,7 +54,7 @@ const NewOrders = () => {
         </div>
       </Modal>
       <SearchPrint />
-      <table className="table">
+      <table className="table table-sm table-hover">
         <thead>
           <tr>
             <th scope="col">Order No.</th>
@@ -112,7 +80,10 @@ const NewOrders = () => {
               <td>{order.startPt}</td>
               <td>{order.deliveryPt}</td>
               <td>
-                <button onClick={openViewOrder} className="btn btn-primary">
+                <button
+                  onClick={openViewOrder}
+                  className="btn btn-primary btn-sm"
+                >
                   View
                 </button>
               </td>

@@ -1,15 +1,17 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Rider = ({ rider }) => {
   return (
     <div className="shadow p-3 mx-auto w-25">
       <div className="row col-md-12">
         <div className="col-md-3">
-          <div className="avatar">
-            <img src="" alt="Rider" />
+          <div className="avatar d-flex justify-content-center align-items-center">
+            <FontAwesomeIcon icon={faUser} size="3x" />
           </div>
         </div>
-        <div className="col-md-9 d-flex justify-content-center align-items-center">
+        <div className="col-md-9 d-flex align-items-center">
           <h5>
             {rider.fname} {rider.lname}
           </h5>

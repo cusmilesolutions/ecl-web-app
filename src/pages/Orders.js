@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBoxOpen,
   faShippingFast,
   faClipboardCheck,
-  faBan,
-  faSearch
+  faBan
 } from '@fortawesome/free-solid-svg-icons';
 import NewOrders from '../components/Tables/NewOrders';
 import DeliveredOrders from '../components/Tables/DeliveredOrders';
 import CancelledOrders from '../components/Tables/CancelledOrders';
 import OrdersOnDelivery from '../components/Tables/OrdersOnDelivery';
 import Updates from '../components/Updates';
+import { OrdersContext } from '../contexts/OrdersContext';
 
 const Orders = () => {
+  const {
+    newOrders,
+    cancelledOrders,
+    ordersOnDelivery,
+    deliveredOrders,
+    totalNewOrders,
+    totalDeliveredOrders,
+    totalOrdersOnDelivery,
+    totalCancelledOrders
+  } = useContext(OrdersContext);
+
   const [activity, setactivity] = useState({ title: 'View new orders' });
   const displayComponent = e => {
     let comp = e.target.id;
@@ -32,7 +43,7 @@ const Orders = () => {
         break;
 
       default:
-        return <NewOrders />;
+        return <NewOrders orders={newOrders} />;
     }
   };
   return (
@@ -49,7 +60,7 @@ const Orders = () => {
               <span id="new_orders" className="ml-2 mr-2">
                 New Orders
               </span>
-              <span>2</span>
+              <span>{totalNewOrders}</span>
             </div>
             <div
               id="on_delivery"
@@ -60,7 +71,7 @@ const Orders = () => {
               <span id="on_delivery" className="ml-2 mr-2">
                 Orders on delivery
               </span>
-              <span>5</span>
+              <span>{totalOrdersOnDelivery}</span>
             </div>
             <div
               id="delivered"
@@ -71,7 +82,7 @@ const Orders = () => {
               <span id="delivered" className="ml-2 mr-2">
                 Delivered Orders
               </span>
-              <span>256</span>
+              <span>{totalDeliveredOrders}</span>
             </div>
             <div
               id="cancelled_orders"
@@ -82,7 +93,7 @@ const Orders = () => {
               <span id="cancelled_orders" className="ml-2 mr-2">
                 Cancelled Orders
               </span>
-              <span>10</span>
+              <span>{totalCancelledOrders}</span>
             </div>
           </div>
         </div>
@@ -92,15 +103,15 @@ const Orders = () => {
           <h6>{activity.title}</h6>
           <div>
             {activity.title === 'View new orders' ? (
-              <NewOrders />
+              <NewOrders orders={newOrders} />
             ) : activity.title === 'Orders on delivery' ? (
-              <OrdersOnDelivery />
+              <OrdersOnDelivery ordersOnDelivery={ordersOnDelivery} />
             ) : activity.title === 'Delivered Orders' ? (
-              <DeliveredOrders />
+              <DeliveredOrders deliveredOrders={deliveredOrders} />
             ) : activity.title === 'Cancelled Orders' ? (
-              <CancelledOrders />
+              <CancelledOrders cancelledOrders={cancelledOrders} />
             ) : (
-              <NewOrders />
+              <NewOrders orders={newOrders} />
             )}
           </div>
         </div>

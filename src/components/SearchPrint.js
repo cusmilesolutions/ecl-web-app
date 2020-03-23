@@ -14,13 +14,13 @@ const SearchPrint = () => {
         />
       </div>
       <div>
-        <button className="btn-primary m-2 btn">Export to excel</button>
+        <button className="btn-primary m-2 btn btn-sm">Export to excel</button>
       </div>
       <div>
-        <button className="btn-primary m-2 btn">Print PDF</button>
+        <button className="btn-primary m-2 btn btn-sm">Print PDF</button>
       </div>
       <div>
-        <button className="btn-primary m-2 btn">Email</button>
+        <button className="btn-primary m-2 btn btn-sm">Email</button>
       </div>
     </div>
   );
