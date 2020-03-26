@@ -11,6 +11,7 @@ import Accounts from './pages/Accounts';
 import RiderList from './pages/Rider/RiderList';
 import CustomerList from './pages/Customer/CustomerList';
 import OrdersContextProvider from './contexts/OrdersContext';
+import PaymentPage from './pages/payment';
 
 function App() {
   let routes = (
@@ -19,7 +20,7 @@ function App() {
       <Route path="/login" exact render={props => <LoginPage />} />
       <Route path="/register" exact render={props => <RegisterPage />} />
       <Route path="/orders" exact render={props => <Orders />} />
-      <Route path="/payments" exact render={props => <RegisterPage />} />
+      <Route path="/payments" exact render={props => <PaymentPage />} />
       <Route path="/accounts" exact render={props => <Accounts />} />
       <Route path="/accounts/riders" exact render={props => <RiderList />} />
       <Route
