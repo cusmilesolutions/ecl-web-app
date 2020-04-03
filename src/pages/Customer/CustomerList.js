@@ -1,5 +1,7 @@
 import React from 'react';
 import SearchPrint from '../../components/SearchPrint';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 const CustomerList = () => {
   const customers = [
@@ -60,6 +62,7 @@ const CustomerList = () => {
       dateJoined: '12/03/2019'
     }
   ];
+
   return (
     <div>
       <div className="m-2">
@@ -86,8 +89,13 @@ const CustomerList = () => {
                 <td>{customer.address}</td>
                 <td>{customer.numOfOrders}</td>
                 <td>{customer.dateJoined}</td>
-                <td>
-                  <button className="btn btn-primary btn-sm">View</button>
+                <td className="row container">
+                  <button className="btn rounded-circle btn-primary btn-sm">
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                  </button>
+                  <button className="btn rounded-circle btn-danger btn-sm ml-2">
+                    <FontAwesomeIcon icon={faTrashAlt} />
+                  </button>
                 </td>
               </tr>
             ))}

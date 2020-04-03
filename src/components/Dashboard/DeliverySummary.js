@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCubes,
@@ -6,14 +6,22 @@ import {
   faBan,
   faShippingFast
 } from '@fortawesome/free-solid-svg-icons';
+import { OrdersContext } from '../../contexts/OrdersContext';
+
 const DeliverySummary = () => {
+  const {
+    totalDeliveredOrders,
+    totalOrdersOnDelivery,
+    totalCancelledOrders,
+    totalOrders
+  } = useContext(OrdersContext);
   return (
     <div className="shadow p-3 m-2 row">
       <div className="col m-2 shadow-sm rounded summary_card_inner p-3  ">
         <div className="row col-md-12">
           <div className="col-md-9">
             <p>TOTAL ORDERS</p>
-            <h4>3409</h4>
+            <h4>{totalOrders}</h4>
           </div>
           <div className="col-md-3">
             <FontAwesomeIcon size="5x" icon={faCubes} />
@@ -24,7 +32,7 @@ const DeliverySummary = () => {
         <div className="row col-md-12">
           <div className="col-md-9">
             <p>ORDERS COMPLETED</p>
-            <h4>3290</h4>
+            <h4>{totalDeliveredOrders}</h4>
           </div>
           <div className="col-md-3">
             <FontAwesomeIcon size="5x" icon={faTruckLoading} />
@@ -36,7 +44,7 @@ const DeliverySummary = () => {
         <div className="row col-md-12">
           <div className="col-md-9">
             <p>CANCELLED ORDERS</p>
-            <h4>342</h4>
+            <h4>{totalCancelledOrders}</h4>
           </div>
           <div className="col-md-3">
             <FontAwesomeIcon size="5x" icon={faBan} />
@@ -47,7 +55,7 @@ const DeliverySummary = () => {
         <div className="row col-md-12">
           <div className="col-md-9">
             <p>ON DELIVERY</p>
-            <h4>19</h4>
+            <h4>{totalOrdersOnDelivery}</h4>
           </div>
           <div className="col-md-3">
             <FontAwesomeIcon size="5x" icon={faShippingFast} />

@@ -1,11 +1,10 @@
-import React, {useState, useContext} from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Rider from './Rider';
 
 const customStyles = {
   content: {
-    top: '40%',
+    top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -49,7 +48,6 @@ const RiderList = () => {
     }
   ];
 
-  const { state } = useContext(AuthContext);
   const [account, setaccount] = useState({
     riderId: '',
     fname: '',
@@ -74,104 +72,127 @@ const RiderList = () => {
   return (
     <div className="container-fluid">
       <div>
-      <Modal
-isOpen={newRider}
-style={customStyles}
-onRequestClose={closeNewRider}
->
-<div className="shadow w-75 mx-auto mt-5 bg-white p-5">
-        <div>
-          <div className="form_header">
+        <Modal
+          isOpen={newRider}
+          style={customStyles}
+          onRequestClose={closeNewRider}
+        >
+          <div>
             <div>
-              <h4>Add a Rider Account</h4>
+              <div className="form_header">
+                <div>
+                  <h4>Add a Rider Account</h4>
+                </div>
+                <hr />
+              </div>
+              <form onSubmit={submitHandler}>
+                <div className="row col-md-12">
+                  <div className="form-group col-md-6">
+                    <label>First name</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="fname"
+                      onChange={changeHandler}
+                      value={account.fname}
+                      autoFocus
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>Last name</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="lname"
+                      onChange={changeHandler}
+                      value={account.lname}
+                    />
+                  </div>
+                </div>
+                <div className="row col-md-12">
+                  <div className="form-group col-md-6">
+                    <label>Employee ID</label>
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="riderId"
+                      onChange={changeHandler}
+                      value={account.riderId}
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>PIN</label>
+                    <input
+                      className="form-control"
+                      type="password"
+                      name="pin"
+                      onChange={changeHandler}
+                      value={account.pin}
+                    />
+                  </div>
+                </div>
+                <div className="row col-md-12">
+                  <div className="form-group col-md-6">
+                    <label>Address</label>
+                    <input
+                      className="form-control"
+                      type="address"
+                      name="address"
+                      onChange={changeHandler}
+                      value={account.address}
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>Phone</label>
+                    <input
+                      className="form-control"
+                      type="tel"
+                      name="phone"
+                      onChange={changeHandler}
+                      value={account.phone}
+                    />
+                  </div>
+                </div>
+                <div className="row col-md-12">
+                  <div className="form-group col-md-6">
+                    <label>Password</label>
+                    <input
+                      className="form-control"
+                      type="password"
+                      name="password"
+                      onChange={changeHandler}
+                      value={account.password}
+                    />
+                  </div>
+                  <div className="form-group col-md-6">
+                    <label>Confirm Password</label>
+                    <input
+                      className="form-control"
+                      type="password"
+                      name="confirmPassword"
+                      onChange={changeHandler}
+                      value={account.confirmPassword}
+                    />
+                  </div>
+                </div>
+                <div className="m-5">
+                  <button className="btn btn-primary btn-block" type="submit">
+                    Add Account
+                  </button>
+                </div>
+              </form>
             </div>
-            <hr />
           </div>
-          <form method="" onSubmit={submitHandler}>
-            <div className="row col-md-12">
-              <div className="form-group col-md-6">
-                <label>First name</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="fname"
-                  onChange={changeHandler}
-                  value={account.fname}
-                  autoFocus
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <label>Last name</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="lname"
-                  onChange={changeHandler}
-                  value={account.lname}
-                  autoFocus
-                />
-              </div>
-            </div>
-            <div className="row col-md-12">
-              <div className="form-group col-md-6">
-                <label>Address</label>
-                <input
-                  className="form-control"
-                  type="address"
-                  name="address"
-                  onChange={changeHandler}
-                  value={account.address}
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <label>Phone</label>
-                <input
-                  className="form-control"
-                  type="tel"
-                  name="phone"
-                  onChange={changeHandler}
-                  value={account.phone}
-                />
-              </div>
-            </div>
-            <div className="row col-md-12">
-              <div className="form-group col-md-6">
-                <label>Password</label>
-                <input
-                  className="form-control"
-                  type="password"
-                  name="password"
-                  onChange={changeHandler}
-                  value={account.password}
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <label>Confirm Password</label>
-                <input
-                  className="form-control"
-                  type="password"
-                  name="confirmPassword"
-                  onChange={changeHandler}
-                  value={account.confirmPassword}
-                />
-              </div>
-            </div>
-            <div className="m-5">
-              <button className="btn btn-primary btn-block" type="submit">
-                Add Account
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-</Modal>
+        </Modal>
       </div>
       <div className="row mt-2 mb-2 col-md-12">
         <div className="col-md-9">
           <h5>Number of Riders: {riders.length}</h5>
         </div>
         <div className="col-md-3">
-          <button className="btn btn-primary" onClick={openNewRider}>Add New Rider</button>
+          <button className="btn btn-primary" onClick={openNewRider}>
+            Add New Rider
+          </button>
         </div>
       </div>
       <div className="d-flex">

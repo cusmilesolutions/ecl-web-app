@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SearchPrint from '../SearchPrint';
+import { OrdersContext } from '../../contexts/OrdersContext';
 
-const CancelledOrders = ({ cancelledOrders }) => {
+const CancelledOrders = () => {
+  const { cancelledOrders } = useContext(OrdersContext);
   return (
     <div>
       <SearchPrint />

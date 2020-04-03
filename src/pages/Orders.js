@@ -15,10 +15,6 @@ import { OrdersContext } from '../contexts/OrdersContext';
 
 const Orders = () => {
   const {
-    newOrders,
-    cancelledOrders,
-    ordersOnDelivery,
-    deliveredOrders,
     totalNewOrders,
     totalDeliveredOrders,
     totalOrdersOnDelivery,
@@ -43,7 +39,7 @@ const Orders = () => {
         break;
 
       default:
-        return <NewOrders orders={newOrders} />;
+        return <NewOrders />;
     }
   };
   return (
@@ -103,15 +99,15 @@ const Orders = () => {
           <h6>{activity.title}</h6>
           <div>
             {activity.title === 'View new orders' ? (
-              <NewOrders orders={newOrders} />
+              <NewOrders />
             ) : activity.title === 'Orders on delivery' ? (
-              <OrdersOnDelivery ordersOnDelivery={ordersOnDelivery} />
+              <OrdersOnDelivery />
             ) : activity.title === 'Delivered Orders' ? (
-              <DeliveredOrders deliveredOrders={deliveredOrders} />
+              <DeliveredOrders />
             ) : activity.title === 'Cancelled Orders' ? (
-              <CancelledOrders cancelledOrders={cancelledOrders} />
+              <CancelledOrders />
             ) : (
-              <NewOrders orders={newOrders} />
+              <NewOrders />
             )}
           </div>
         </div>

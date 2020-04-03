@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import SearchPrint from '../SearchPrint';
+import { OrdersContext } from '../../contexts/OrdersContext';
 
-const OrdersOnDelivery = ({ ordersOnDelivery }) => {
+const OrdersOnDelivery = () => {
+  const { ordersOnDelivery } = useContext(OrdersContext);
   return (
     <div>
       <SearchPrint />

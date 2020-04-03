@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
 import SearchPrint from '../SearchPrint';
+import { OrdersContext } from '../../contexts/OrdersContext';
 
 const customStyles = {
   content: {
@@ -14,12 +15,15 @@ const customStyles = {
   }
 };
 
-const NewOrders = ({ orders }) => {
+const NewOrders = () => {
+  const { newOrders } = useContext(OrdersContext);
+
   const [viewOrder, setviewOrder] = useState(false);
   const closeViewOrder = () => setviewOrder(false);
   const openViewOrder = () => {
     setviewOrder(true);
   };
+
   return (
     <div className="mt-2">
       <Modal
@@ -69,11 +73,11 @@ const NewOrders = ({ orders }) => {
           </tr>
         </thead>
         <tbody>
-          {orders.map(order => (
+          {newOrders.map(order => (
             <tr key={order._id}>
               <td>{order.orderNo}</td>
-              <td>{order.customer.phone}</td>
-              <td>{order.type}</td>
+              <td>{order.customer}</td>
+              <td>{order.itemType}</td>
               <td>{order.itemName}</td>
               <td>{order.itemCount}</td>
               <td>{order.price}</td>
