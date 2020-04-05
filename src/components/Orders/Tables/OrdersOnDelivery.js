@@ -1,9 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SearchPrint from '../SearchPrint';
-import { OrdersContext } from '../../contexts/OrdersContext';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_ON_DELIVERY_ORDERS } from '../../Queries/order';
 
-const DeliveredOrders = () => {
-  const { deliveredOrders } = useContext(OrdersContext);
+const OrdersOnDelivery = () => {
+  const {
+    loading: ordersOnDeliveryLoading,
+    error: ordersOnDeliveryError,
+    data: ordersOnDeliveryData,
+  } = useQuery(GET_ON_DELIVERY_ORDERS);
+
+  if (ordersOnDeliveryLoading) return <p>Loading...</p>;
+  if (ordersOnDeliveryError) return <p>Error {ordersOnDeliveryError}</p>;
+  const ordersOnDelivery = ordersOnDeliveryData.subOrders;
+
   return (
     <div>
       <SearchPrint />
@@ -13,7 +23,6 @@ const DeliveredOrders = () => {
             <tr>
               <th scope="col">Order No.</th>
               <th scope="col">Pick up</th>
-              <th scope="col">Arrival</th>
               <th scope="col">Starting point</th>
               <th scope="col">Destination</th>
               <th scope="col">Price(GHC)</th>
@@ -22,11 +31,10 @@ const DeliveredOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {deliveredOrders.map(order => (
+            {ordersOnDelivery.map((order) => (
               <tr key={order._id}>
                 <td>{order.orderNo}</td>
                 <td>{order.pickUp}</td>
-                <td>{order.arrival}</td>
                 <td>{order.startPt}</td>
                 <td>{order.destination}</td>
                 <td>{order.price}</td>
@@ -43,4 +51,4 @@ const DeliveredOrders = () => {
   );
 };
 
-export default DeliveredOrders;
+export default OrdersOnDelivery;

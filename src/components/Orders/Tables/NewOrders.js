@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import SearchPrint from '../SearchPrint';
-import { OrdersContext } from '../../contexts/OrdersContext';
+import { GET_NEW_ORDERS } from '../../Queries/order';
+import { useQuery } from '@apollo/react-hooks';
 
 const customStyles = {
   content: {
@@ -11,14 +12,22 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-    width: 600
-  }
+    width: 600,
+  },
 };
 
 const NewOrders = () => {
-  const { newOrders } = useContext(OrdersContext);
-
   const [viewOrder, setviewOrder] = useState(false);
+  const {
+    loading: newOrdersLoading,
+    error: newOrdersError,
+    data: newOrdersData,
+  } = useQuery(GET_NEW_ORDERS);
+
+  if (newOrdersLoading) return <p>Loading...</p>;
+  if (newOrdersError) return <p>Error {newOrdersError}</p>;
+  const newOrders = newOrdersData.subOrders;
+
   const closeViewOrder = () => setviewOrder(false);
   const openViewOrder = () => {
     setviewOrder(true);
@@ -73,7 +82,7 @@ const NewOrders = () => {
           </tr>
         </thead>
         <tbody>
-          {newOrders.map(order => (
+          {newOrders.map((order) => (
             <tr key={order._id}>
               <td>{order.orderNo}</td>
               <td>{order.customer}</td>

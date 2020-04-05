@@ -2,12 +2,12 @@ import React, { useState, createContext, useEffect } from 'react';
 
 export const AuthContext = createContext();
 
-const AuthContextProvider = props => {
+const AuthContextProvider = (props) => {
   const [admin, setadmin] = useState({ email: '', password: '' });
   const [state, setstate] = useState({
-    isAuth: true,
+    isAuth: false,
     token: null,
-    userId: null
+    userId: null,
   });
 
   // built in authentication using jwt
@@ -18,14 +18,14 @@ const AuthContextProvider = props => {
     localStorage.removeItem('userId');
   };
 
-  const autoLogout = ms => {
+  const autoLogout = (ms) => {
     setTimeout(() => {
       logout();
     }, ms);
   };
 
   useEffect(() => {
-    const autoLogout = ms => {
+    const autoLogout = (ms) => {
       setTimeout(() => {
         logout();
       }, ms);

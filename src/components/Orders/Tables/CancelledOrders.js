@@ -1,9 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import SearchPrint from '../SearchPrint';
-import { OrdersContext } from '../../contexts/OrdersContext';
+import { useQuery } from '@apollo/react-hooks';
+import { GET_CANCELLED_ORDERS } from '../../Queries/order';
 
 const CancelledOrders = () => {
-  const { cancelledOrders } = useContext(OrdersContext);
+  const {
+    loading: cancelledOrdersLoading,
+    error: cancelledOrdersError,
+    data: cancelledOrdersData,
+  } = useQuery(GET_CANCELLED_ORDERS);
+
+  if (cancelledOrdersLoading) return <p>Loading...</p>;
+  if (cancelledOrdersError) return <p>Error {cancelledOrdersError}</p>;
+  const cancelledOrders = cancelledOrdersData.subOrders;
+
   return (
     <div>
       <SearchPrint />
@@ -23,7 +33,7 @@ const CancelledOrders = () => {
             </tr>
           </thead>
           <tbody>
-            {cancelledOrders.map(order => (
+            {cancelledOrders.map((order) => (
               <tr key={order._id}>
                 <td>{order.orderNo}</td>
                 <td>{order.customer.phone}</td>

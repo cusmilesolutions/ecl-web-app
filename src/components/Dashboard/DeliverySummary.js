@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCubes,
   faTruckLoading,
   faBan,
-  faShippingFast
+  faShippingFast,
 } from '@fortawesome/free-solid-svg-icons';
-import { OrdersContext } from '../../contexts/OrdersContext';
 
-const DeliverySummary = () => {
-  const {
-    totalDeliveredOrders,
-    totalOrdersOnDelivery,
-    totalCancelledOrders,
-    totalOrders
-  } = useContext(OrdersContext);
+const DeliverySummary = ({
+  totalDeliveredOrders,
+  totalOrdersOnDelivery,
+  totalCancelledOrders,
+  totalOrders,
+}) => {
   return (
     <div className="shadow p-3 m-2 row">
       <div className="col m-2 shadow-sm rounded summary_card_inner p-3  ">

@@ -6,27 +6,30 @@ const Updates = () => {
   const updates = [
     {
       orderNo: '1142',
-      status: 'new'
+      status: 'new',
     },
     {
       orderNo: '1352',
-      status: 'delivered'
+      status: 'delivered',
     },
     {
       orderNo: '1342',
-      status: 'in-progress'
+      status: 'in-progress',
     },
     {
       orderNo: '1042',
-      status: 'new'
-    }
+      status: 'new',
+    },
   ];
   return (
     <div className="col-md-2 pt-2 pb-2 h-auto border border-black">
       <h6>Updates</h6>
       <div>
-        {updates.map(order => (
-          <div className="shadow-sm mb-2 rounded p-2 card_div text-primary">
+        {updates.map((order) => (
+          <div
+            key={order.orderNo}
+            className="shadow-sm mb-2 rounded p-2 card_div text-primary"
+          >
             <FontAwesomeIcon icon={faShippingFast} />
             <span className="ml-2">Order #{order.orderNo}</span>
           </div>

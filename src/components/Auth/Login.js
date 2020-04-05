@@ -7,7 +7,7 @@ const Login = ({ changeHandler, submitHandler }) => {
   const { state, admin } = useContext(AuthContext);
   return (
     <React.Fragment>
-      {state.isAuth ? <Redirect to="/" /> : null}
+      {state.isAuth ? <Redirect to="/" /> : <Redirect to="/login" />}
       <div className="shadow w-50 mx-auto mt-5 bg-white p-5">
         <div>
           <div className="form_header">
