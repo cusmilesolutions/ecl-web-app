@@ -3,7 +3,6 @@ import React, { useState, createContext, useEffect } from 'react';
 export const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
-  const [admin, setadmin] = useState({ email: '', password: '' });
   const [state, setstate] = useState({
     isAuth: false,
     token: null,
@@ -46,9 +45,7 @@ const AuthContextProvider = (props) => {
     autoLogout(remainingMilliseconds);
   }, []);
   return (
-    <AuthContext.Provider
-      value={{ state, setstate, admin, setadmin, logout, autoLogout }}
-    >
+    <AuthContext.Provider value={{ state, setstate, logout, autoLogout }}>
       {props.children}
     </AuthContext.Provider>
   );

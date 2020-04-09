@@ -9,7 +9,7 @@ import {
   faUser,
   faCreditCard,
   faUsers,
-  faShippingFast
+  faShippingFast,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
@@ -19,26 +19,28 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg">
         <header>ECL ADMIN</header>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <Link to="/orders" className="nav-link">
-                <FontAwesomeIcon icon={faShippingFast} />
-                <span className="ml-2">Orders</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/payments" className="nav-link">
-                <FontAwesomeIcon icon={faCreditCard} />
-                <span className="ml-2">Payments</span>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/accounts" className="nav-link">
-                <FontAwesomeIcon icon={faUsers} />
-                <span className="ml-2">Accounts</span>
-              </Link>
-            </li>
-          </ul>
+          {state.isAuth ? (
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li className="nav-item">
+                <Link to="/orders" className="nav-link">
+                  <FontAwesomeIcon icon={faShippingFast} />
+                  <span className="ml-2">Orders</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/payments" className="nav-link">
+                  <FontAwesomeIcon icon={faCreditCard} />
+                  <span className="ml-2">Payments</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/accounts" className="nav-link">
+                  <FontAwesomeIcon icon={faUsers} />
+                  <span className="ml-2">Accounts</span>
+                </Link>
+              </li>
+            </ul>
+          ) : null}
           <div>
             {state.isAuth ? (
               <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
@@ -58,20 +60,7 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-            ) : (
-              <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-                <li className="nav-item">
-                  <Link to="/login" className="nav-link">
-                    Login
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/register" className="nav-link">
-                    Create an account
-                  </Link>
-                </li>
-              </ul>
-            )}
+            ) : null}
           </div>
         </div>
       </nav>

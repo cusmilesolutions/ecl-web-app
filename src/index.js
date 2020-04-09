@@ -8,7 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
-const client = new ApolloClient({ uri: 'http://localhost:5000/graphql' });
+const client = new ApolloClient({
+  uri: 'https://ecl-api.herokuapp.com/graphql',
+});
 
 ReactDOM.render(
   <BrowserRouter>
