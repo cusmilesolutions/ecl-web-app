@@ -30,3 +30,14 @@ export const ADMIN_SIGN_UP = gql`
     }
   }
 `;
+export const ADMIN_PWD_RESET = gql`
+  mutation AdminPwdReset(
+    $email: String!
+    $employeeID: String!
+    $position: String!
+  ) {
+    signUp(email: $email, employeeID: $employeeID, position: $position) {
+      _id
+    }
+  }
+`;
