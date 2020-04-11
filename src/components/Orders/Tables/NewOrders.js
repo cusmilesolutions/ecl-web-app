@@ -67,7 +67,7 @@ const NewOrders = () => {
         </div>
       </Modal>
       <SearchPrint />
-      <table className="table table-sm table-hover" id='new_orders_table'>
+      <table className="table table-sm table-hover table-responsive">
         <thead>
           <tr>
             <th scope="col">Order No.</th>

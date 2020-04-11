@@ -8,6 +8,7 @@ import Accounts from '../pages/Dashboard/Accounts';
 import RiderList from '../pages/Rider/RiderList';
 import CustomerList from '../pages/Customer';
 import PaymentPage from '../pages/Dashboard/Payment';
+import ResetPasswordPage from '../pages/Auth/ResetPasswordPage';
 import Reports from '../pages/Dashboard/Reports';
 import Shipping from '../pages/Dashboard/Shipping';
 
@@ -16,6 +17,11 @@ export let routes = (
     <Route path="/" exact render={(props) => <Dashboard {...props} />} />
     <Route path="/login" exact render={(props) => <LoginPage />} />
     <Route path="/register" exact render={(props) => <RegisterPage />} />
+    <Route
+      path="/reset-password"
+      exact
+      render={(props) => <ResetPasswordPage />}
+    />
     <Route path="/orders" exact render={(props) => <Orders {...props} />} />
     <Route
       path="/payments"

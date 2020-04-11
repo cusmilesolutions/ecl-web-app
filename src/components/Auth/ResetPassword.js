@@ -1,24 +1,26 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
 
-const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
+const ResetPassword = ({
+  changeHandler,
+  submitHandler,
+  loading,
+  errorMessage,
+}) => {
   const { state } = useContext(AuthContext);
+
   return (
     <React.Fragment>
-      {state.isAuth ? <Redirect to="/" /> : <Redirect to="/login" />}
+      {state.isAuth ? <Redirect to="/" /> : null}
       <div
         style={{ minWidth: 300, maxWidth: 480 }}
-        className="shadow mx-auto mt-5 bg-white p-4"
+        className="shadow mx-auto mt-3 mb-3 bg-white p-5"
       >
         <div>
           <div className="form_header">
             <div>
-              <h4>Log in as Administrator</h4>
-            </div>
-            <div className="text-center text-danger">
-              {errorMessage ? errorMessage.graphQLErrors[0].message : null}
+              <h4>Request for password reset</h4>
             </div>
             <hr />
           </div>
@@ -34,11 +36,20 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
               />
             </div>
             <div className="form-group">
-              <label>Password</label>
+              <label>Position</label>
               <input
                 className="form-control"
-                type="password"
-                name="password"
+                type="text"
+                name="positon"
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="form-group">
+              <label>Employee ID</label>
+              <input
+                className="form-control"
+                type="text"
+                name="employeeID"
                 onChange={changeHandler}
               />
             </div>
@@ -52,25 +63,12 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
                       role="status"
                       aria-hidden="true"
                     ></span>
-                    <span>Logging into account</span>
+                    <span>Sending Request</span>
                   </span>
                 ) : (
-                  'Login'
+                  'Reset Password'
                 )}
               </button>
-            </div>
-            <div className="row col-md-12">
-              <p className="text-center col-md-6">
-                <Link to="/reset-password">Request for new password</Link>
-              </p>
-              <p className="text-center col-md-6">
-                <Link
-                  className="p-3 border border-primary rounded-pill"
-                  to="/register"
-                >
-                  Create an account
-                </Link>
-              </p>
             </div>
           </form>
         </div>
@@ -79,4 +77,4 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
   );
 };
 
-export default Login;
+export default ResetPassword;

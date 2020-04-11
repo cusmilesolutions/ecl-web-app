@@ -18,7 +18,7 @@ const DeliveredOrders = () => {
     <div>
       <SearchPrint />
       <div>
-        <table className="table table-sm table-hover" id="delivered_orders_table">
+        <table className="table table-sm table-hover table-responsive">
           <thead>
             <tr>
               <th scope="col">Order No.</th>
