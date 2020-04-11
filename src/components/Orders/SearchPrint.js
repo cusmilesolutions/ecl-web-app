@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
+import GeneratePDF from "../../documents/PrintToPDF";
 const SearchPrint = () => {
   return (
     <div className="d-flex align-items-center">
@@ -17,7 +17,7 @@ const SearchPrint = () => {
         <button className="btn-primary m-2 btn btn-sm">Export to excel</button>
       </div>
       <div>
-        <button className="btn-primary m-2 btn btn-sm">Print PDF</button>
+          <GeneratePDF />
       </div>
       <div>
         <button className="btn-primary m-2 btn btn-sm">Email</button>
