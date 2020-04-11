@@ -13,7 +13,10 @@ const ResetPassword = ({
   return (
     <React.Fragment>
       {state.isAuth ? <Redirect to="/" /> : null}
-      <div className="shadow w-50 mx-auto mt-3 mb-3 bg-white p-5">
+      <div
+        style={{ minWidth: 300, maxWidth: 480 }}
+        className="shadow mx-auto mt-3 mb-3 bg-white p-5"
+      >
         <div>
           <div className="form_header">
             <div>

@@ -8,7 +8,10 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
   return (
     <React.Fragment>
       {state.isAuth ? <Redirect to="/" /> : <Redirect to="/login" />}
-      <div className="shadow w-50 mx-auto mt-5 bg-white p-5">
+      <div
+        style={{ minWidth: 300, maxWidth: 480 }}
+        className="shadow mx-auto mt-5 bg-white p-4"
+      >
         <div>
           <div className="form_header">
             <div>

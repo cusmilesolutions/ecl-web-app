@@ -8,7 +8,10 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
   return (
     <React.Fragment>
       {state.isAuth ? <Redirect to="/" /> : null}
-      <div className="shadow w-75 mx-auto mt-4 bg-white p-4">
+      <div
+        style={{ minWidth: 300, maxWidth: 650 }}
+        className="shadow mx-auto mt-4 mb-4 bg-white p-4"
+      >
         <div>
           <div className="form_header">
             <div>
