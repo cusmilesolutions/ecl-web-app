@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
+import { AuthContext } from '../../contexts/AuthContext';
 
-const Payments = () => {
+const Shipping = () => {
   const { state } = useContext(AuthContext);
+
   return (
     <React.Fragment>
-      {state.isAuth ? <div>Payments</div> : <Redirect to="/login" />}{' '}
+      {state.isAuth ? <div>Shipping</div> : <Redirect to="/login" />}
     </React.Fragment>
   );
 };
 
-export default Payments;
+export default Shipping;

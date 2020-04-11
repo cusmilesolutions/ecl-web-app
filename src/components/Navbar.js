@@ -10,6 +10,8 @@ import {
   faCreditCard,
   faUsers,
   faShippingFast,
+  faFileArchive,
+  faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
@@ -37,6 +39,18 @@ const Navbar = () => {
                 <Link to="/accounts" className="nav-link">
                   <FontAwesomeIcon icon={faUsers} />
                   <span className="ml-2">Accounts</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/reports" className="nav-link">
+                  <FontAwesomeIcon icon={faFileArchive} />
+                  <span className="ml-2">Reports</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/shipping" className="nav-link">
+                  <FontAwesomeIcon icon={faExchangeAlt} />
+                  <span className="ml-2">Shipping</span>
                 </Link>
               </li>
             </ul>
