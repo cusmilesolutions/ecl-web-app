@@ -6,9 +6,11 @@ import RegisterPage from '../pages/Auth/RegisterPage';
 import Orders from '../pages/Dashboard/Orders';
 import Accounts from '../pages/Dashboard/Accounts';
 import RiderList from '../pages/Rider/RiderList';
-import CustomerList from '../pages/Customer/CustomerList';
+import CustomerList from '../pages/Customer';
 import PaymentPage from '../pages/Dashboard/Payment';
 import ResetPasswordPage from '../pages/Auth/ResetPasswordPage';
+import Reports from '../pages/Dashboard/Reports';
+import Shipping from '../pages/Dashboard/Shipping';
 
 export let routes = (
   <Switch>
@@ -27,6 +29,8 @@ export let routes = (
       render={(props) => <PaymentPage {...props} />}
     />
     <Route path="/accounts" exact render={(props) => <Accounts {...props} />} />
+    <Route path="/reports" exact render={(props) => <Reports {...props} />} />
+    <Route path="/shipping" exact render={(props) => <Shipping {...props} />} />
     <Route
       path="/accounts/riders"
       exact
