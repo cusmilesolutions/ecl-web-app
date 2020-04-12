@@ -26,7 +26,9 @@ h5 {
 }
 
 nav {
-  background-color: rgb(187, 50, 0) !important;
+  background: #cb356b;
+  background: -webkit-linear-gradient(to right, #bd3f32, #cb356b);
+  background: linear-gradient(to right, #bd3f32, #cb356b);
 }
 
 nav a {
@@ -38,10 +40,14 @@ nav li {
   margin: 0px 5px;
 }
 nav a:hover {
-  border: 2px solid #fff;
   border-radius: 5px;
   color: white;
-  background-color: transparent;
+  background-color: #aa1808;
+}
+nav a:active {
+  border-radius: 5px;
+  color: white;
+  background-color: #aa1808;
 }
 
 .input {
@@ -130,7 +136,39 @@ input:focus {
   color: rgb(187, 50, 0);
 }
 
-.summary_card_inner {
-  background-color: rgba(220, 20, 60, 0.849);
+.summary_card_inner_1,
+.summary_card_inner_2,
+.summary_card_inner_3,
+.summary_card_inner_4 {
   color: #fff;
+}
+
+.summary_card_inner_1 {
+  background: #fc4a1a;
+  background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
+  background: linear-gradient(to right, #f7b733, #fc4a1a);
+}
+
+.summary_card_inner_2 {
+  background: #667db6;
+  background: -webkit-linear-gradient(
+    to right,
+    #667db6,
+    #0082c8,
+    #0082c8,
+    #667db6
+  );
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+}
+
+.summary_card_inner_3 {
+  background: #22c1c3;
+  background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);
+  background: linear-gradient(to right, #fdbb2d, #22c1c3);
+}
+
+.summary_card_inner_4 {
+  background: #7f00ff;
+  background: -webkit-linear-gradient(to right, #e100ff, #7f00ff);
+  background: linear-gradient(to right, #e100ff, #7f00ff);
 }

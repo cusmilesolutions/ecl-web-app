@@ -3,16 +3,34 @@ import { Redirect } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faFileExcel,
   faFileExport,
   faFilePdf,
   faEnvelope,
 } from '@fortawesome/free-solid-svg-icons';
+import { useLazyQuery } from '@apollo/react-hooks';
+import {
+  GET_CANCELLED_ORDERS,
+  GET_NEW_ORDERS,
+  GET_DELIVERED_ORDERS,
+  GET_ON_DELIVERY_ORDERS,
+} from '../../components/Queries/order';
+import { pdf } from '../../constants/PrintToPDF';
 
-const Reports = ({ loading }) => {
+const Reports = () => {
+  const [getNewOrders, { data: newOrdersData }] = useLazyQuery(GET_NEW_ORDERS);
+  const [getCancelled, { data: cancelledOrdersData }] = useLazyQuery(
+    GET_CANCELLED_ORDERS
+  );
+  const [getDelivered, { data: deliveredOrdersData }] = useLazyQuery(
+    GET_DELIVERED_ORDERS
+  );
+  const [getOnDelivery, { data: ordersOnDeliveryData }] = useLazyQuery(
+    GET_ON_DELIVERY_ORDERS
+  );
   const { state } = useContext(AuthContext);
   const [report, setreport] = useState({
     type: '',
+    orderType: '',
     dateFrom: null,
     dateTo: null,
   });
@@ -20,22 +38,55 @@ const Reports = ({ loading }) => {
     const value = e.target.value;
     setreport({ ...report, [e.target.name]: value });
   };
+  const generateData = (orderType) => {
+    let data;
+    if (orderType === 'New Orders') {
+      console.log(newOrdersData);
+      return getNewOrders();
+      // data = newOrdersData;
+    } else if (orderType === 'Approved Orders') {
+      data = ordersOnDeliveryData;
+    } else if (orderType === 'Cancelled Orders') {
+      data = cancelledOrdersData;
+    } else if (orderType === 'Delivered Orders') {
+      data = deliveredOrdersData;
+    }
+    return data;
+  };
+
+  const printReport = () => {
+    console.log(report);
+    console.log(generateData(report.orderType));
+    // pdf(generateData);
+  };
+
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div className="shadow w-50 mx-auto mt-5 bg-white p-5">
+        <div
+          style={{ minWidth: 300, maxWidth: 500 }}
+          className="shadow mx-auto mt-5 bg-white p-4"
+        >
           <div>
             <h4>Reports</h4>
           </div>
           <hr />
-          <form>
+          <div>
             <div className="form-group">
               <label>Report Type</label>
-              <select className="form-control">
-                <option>Orders</option>
-                <option>Shipping</option>
-                <option>Customers</option>
-                <option>Payment</option>
+              <select
+                onChange={(e) => setreport({ type: e.target.value })}
+                className="form-control"
+                defaultValue="Select one"
+                required
+              >
+                <option disabled value="Select one">
+                  Select one
+                </option>
+                <option value="Orders">Orders</option>
+                <option value="Shipping">Shipping</option>
+                <option value="Customers">Customers</option>
+                <option value="Payment">Payment</option>
               </select>
             </div>
             <div className="row col-md-12">
@@ -45,10 +96,11 @@ const Reports = ({ loading }) => {
                   onChange={changeHandler}
                   type="date"
                   className="form-control"
+                  // required
                 />
               </div>
               <div className="form-group col-md-6">
-                <label>Report Type</label>
+                <label>Date To</label>
                 <input
                   onChange={changeHandler}
                   type="date"
@@ -56,6 +108,24 @@ const Reports = ({ loading }) => {
                 />
               </div>
             </div>
+            {report.type === 'Orders' ? (
+              <div className="form-group">
+                <label>Select Order type</label>
+                <select
+                  onChange={(e) => setreport({ orderType: e.target.value })}
+                  defaultValue="Select one"
+                  className="form-control"
+                  required
+                >
+                  <option disabled value="Select one">
+                    Select one
+                  </option>
+                  <option>New Orders</option>
+                  <option>Approved Orders</option>
+                  <option>Delivered</option>
+                </select>
+              </div>
+            ) : null}
             <div className="form-group">
               <label>Email</label>
               <input
@@ -63,7 +133,7 @@ const Reports = ({ loading }) => {
                 type="email"
                 name="email"
                 onChange={changeHandler}
-                required
+                // required
               />
             </div>
             <div className="row col-md-12 mt-3">
@@ -73,38 +143,16 @@ const Reports = ({ loading }) => {
                   type="submit"
                 >
                   <FontAwesomeIcon icon={faFileExport} className="mr-2" />
-                  {loading ? (
-                    <span>
-                      <span
-                        className="spinner-border spinner-border-sm mr-3"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                      <span>Exporting to excel</span>
-                    </span>
-                  ) : (
-                    'Export'
-                  )}
+                  <span>Export</span>
                 </button>
               </div>
               <div className="col-md-4">
                 <button
                   className="btn btn-outline-danger btn-block rounded-pill"
-                  type="submit"
+                  onClick={printReport}
                 >
                   <FontAwesomeIcon icon={faFilePdf} className="mr-2" />
-                  {loading ? (
-                    <span>
-                      <span
-                        className="spinner-border spinner-border-sm mr-3"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                      <span>Generating PDF</span>
-                    </span>
-                  ) : (
-                    'Print'
-                  )}
+                  <span>Print</span>
                 </button>
               </div>
               <div className="col-md-4">
@@ -113,22 +161,11 @@ const Reports = ({ loading }) => {
                   type="submit"
                 >
                   <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
-                  {loading ? (
-                    <span>
-                      <span
-                        className="spinner-border spinner-border-sm mr-3"
-                        role="status"
-                        aria-hidden="true"
-                      ></span>
-                      <span>Sending</span>
-                    </span>
-                  ) : (
-                    'Email'
-                  )}
+                  <span>Email</span>
                 </button>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       ) : (
         <Redirect to="/login" />

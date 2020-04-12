@@ -55,6 +55,18 @@ const Navbar = () => {
                 <span className="ml-2">Accounts</span>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/reports" className="nav-link">
+                <FontAwesomeIcon icon={faFileArchive} />
+                <span className="ml-2">Reports</span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/shipping" className="nav-link">
+                <FontAwesomeIcon icon={faExchangeAlt} />
+                <span className="ml-2">Shipping</span>
+              </Link>
+            </li>
           </ul>
         ) : null}
         <div>
@@ -73,18 +85,6 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link to="/" onClick={logout} className="nav-link">
                   <FontAwesomeIcon icon={faUser} />
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/reports" className="nav-link">
-                  <FontAwesomeIcon icon={faFileArchive} />
-                  <span className="ml-2">Reports</span>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/shipping" className="nav-link">
-                  <FontAwesomeIcon icon={faExchangeAlt} />
-                  <span className="ml-2">Shipping</span>
                 </Link>
               </li>
             </ul>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import PrintToPDF from '../../documents/PrintToPDF';
-const SearchPrint = () => {
+
+const Search = () => {
   return (
     <div className="d-flex align-items-center">
       <div className="border d-flex align-items-center border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
@@ -13,17 +13,8 @@ const SearchPrint = () => {
           placeholder="Search by order code or phone"
         />
       </div>
-      {/* <div>
-        <button className="btn-primary m-2 btn btn-sm">Export to excel</button>
-      </div>
-      <div>
-        <PrintToPDF />
-      </div>
-      <div>
-        <button className="btn-primary m-2 btn btn-sm">Email</button>
-      </div> */}
     </div>
   );
 };
 
-export default SearchPrint;
+export default Search;
