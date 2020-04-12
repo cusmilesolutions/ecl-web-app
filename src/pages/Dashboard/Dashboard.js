@@ -9,7 +9,7 @@ const Dashboard = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div>
+        <div className="mx-auto">
           <div className="row col-md-12">
             <div className="col-md-7">
               <div>

@@ -46,8 +46,8 @@ const Reports = () => {
       data = cancelledOrdersData;
     } else if (orderType === 'Delivered Orders') {
       data = deliveredOrdersData;
+      return data;
     }
-    return data;
   };
 
   const printReport = () => {

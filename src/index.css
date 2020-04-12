@@ -8,6 +8,15 @@ body {
   /* background-color: #ddd; */
 }
 
+@media (max-width: 576px) {
+  span#delivered,
+  span#cancelled_orders,
+  span#on_delivery,
+  span#new_orders {
+    display: none;
+  }
+}
+
 h1,
 h5 {
   color: rgb(187, 50, 0);
@@ -48,6 +57,11 @@ nav a:active {
   border-radius: 5px;
   color: white;
   background-color: #aa1808;
+}
+
+.navbar-toggler-icon,
+.navbar-toggler {
+  color: #fff !important;
 }
 
 .input {

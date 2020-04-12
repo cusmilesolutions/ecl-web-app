@@ -5,6 +5,7 @@ import {
   faShippingFast,
   faClipboardCheck,
   faBan,
+  faTasks,
 } from '@fortawesome/free-solid-svg-icons';
 import NewOrders from '../../components/Orders/Tables/NewOrders';
 import DeliveredOrders from '../../components/Orders/Tables/DeliveredOrders';
@@ -70,7 +71,7 @@ const Orders = () => {
                   onClick={displayComponent}
                   className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
                 >
-                  <FontAwesomeIcon id="delivered" icon={faClipboardCheck} />
+                  <FontAwesomeIcon id="delivered" icon={faTasks} />
                   <span id="delivered" className="ml-2 mr-2">
                     Delivered Orders
                   </span>
@@ -88,24 +89,21 @@ const Orders = () => {
               </div>
             </div>
           </div>
-          <div className="row col-md-12">
-            <div className="col-md-10">
-              <h6>{activity.title}</h6>
-              <div>
-                {activity.title === 'View new orders' ? (
-                  <NewOrders />
-                ) : activity.title === 'Orders on delivery' ? (
-                  <OrdersOnDelivery />
-                ) : activity.title === 'Delivered Orders' ? (
-                  <DeliveredOrders />
-                ) : activity.title === 'Cancelled Orders' ? (
-                  <CancelledOrders />
-                ) : (
-                  <NewOrders />
-                )}
-              </div>
+          <div className="container-fluid">
+            <h6>{activity.title}</h6>
+            <div>
+              {activity.title === 'View new orders' ? (
+                <NewOrders />
+              ) : activity.title === 'Orders on delivery' ? (
+                <OrdersOnDelivery />
+              ) : activity.title === 'Delivered Orders' ? (
+                <DeliveredOrders />
+              ) : activity.title === 'Cancelled Orders' ? (
+                <CancelledOrders />
+              ) : (
+                <NewOrders />
+              )}
             </div>
-            <Updates />
           </div>
         </div>
       ) : (

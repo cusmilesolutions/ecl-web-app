@@ -18,7 +18,7 @@ const CancelledOrders = () => {
     <div>
       <SearchPrint />
       <div>
-        <table className="table table-sm table-hover table-responsive">
+        <table className="table table-sm table-hover table-responsive-md">
           <thead>
             <tr>
               <th scope="col">Order No.</th>

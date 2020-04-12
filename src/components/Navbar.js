@@ -12,6 +12,7 @@ import {
   faShippingFast,
   faFileArchive,
   faExchangeAlt,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
@@ -32,7 +33,9 @@ const Navbar = () => {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span className="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon">
+          <FontAwesomeIcon icon={faBars} size="lg" />
+        </span>
       </button>
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {state.isAuth ? (
