@@ -3,6 +3,7 @@ import DeliverySummary from '../../components/Dashboard/DeliverySummary';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
 import WeeklyRevenue from '../../components/Graphs/WeeklyRevenue';
+import todoList from '../../components/Dashboard/todo';
 
 const Dashboard = () => {
   const { state } = useContext(AuthContext);
@@ -30,6 +31,9 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className ="col-lg-6 card shadow mb-4">
+            <todoList/>
           </div>
         </div>
       ) : (

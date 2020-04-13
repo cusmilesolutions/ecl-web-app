@@ -9,8 +9,8 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  // uri: 'https://ecl-api.herokuapp.com/graphql',
-  uri: 'http://localhost:5000/graphql',
+   uri: 'https://ecl-api.herokuapp.com/graphql',
+  //uri: 'http://localhost:5000/graphql',
 });
 
 ReactDOM.render(
