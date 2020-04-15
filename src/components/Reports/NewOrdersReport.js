@@ -2,7 +2,10 @@ import React from 'react';
 
 const NewOrdersReport = ({ newOrdersData }) => {
   return (
-    <table className="table table-sm table-hover table-responsive" id="preview">
+    <table
+      className="table table-sm table-hover table-responsive-md"
+      id="preview"
+    >
       <thead>
         <tr>
           <th scope="col">Order No.</th>
@@ -16,7 +19,7 @@ const NewOrdersReport = ({ newOrdersData }) => {
         </tr>
       </thead>
       <tbody>
-        {newOrdersData.subOrders.map((order) => (
+        {newOrdersData.subOrders.orders.map((order) => (
           <tr key={order._id}>
             <td>{order.orderNo}</td>
             <td>{order.customer}</td>

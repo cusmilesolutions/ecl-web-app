@@ -69,13 +69,13 @@ const CustomerList = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div>
+        <div className="container-fluid">
           <div className="m-2">
             <h5>Number of Customers: {customers.length}</h5>
           </div>
           <div className="m-2">
             <SearchPrint />
-            <table className="table table-sm table-hover">
+            <table className="table table-sm table-hover table-responsive-md">
               <thead>
                 <tr>
                   <th scope="col">Full name</th>
@@ -94,13 +94,17 @@ const CustomerList = () => {
                     <td>{customer.address}</td>
                     <td>{customer.numOfOrders}</td>
                     <td>{customer.dateJoined}</td>
-                    <td className="row container">
-                      <button className="btn rounded-circle btn-primary btn-sm">
-                        <FontAwesomeIcon icon={faShoppingCart} />
-                      </button>
-                      <button className="btn rounded-circle btn-danger btn-sm ml-2">
-                        <FontAwesomeIcon icon={faTrashAlt} />
-                      </button>
+                    <td className="d-flex flex-row">
+                      <div className="">
+                        <button className="btn rounded btn-primary btn-sm">
+                          <FontAwesomeIcon icon={faShoppingCart} />
+                        </button>
+                      </div>
+                      <div className="">
+                        <button className="btn rounded btn-danger btn-sm ml-2">
+                          <FontAwesomeIcon icon={faTrashAlt} />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

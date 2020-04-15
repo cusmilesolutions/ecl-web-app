@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-color: #ddd; */
 }
 
 @media (max-width: 576px) {
@@ -185,4 +184,10 @@ input:focus {
   background: #7f00ff;
   background: -webkit-linear-gradient(to right, #e100ff, #7f00ff);
   background: linear-gradient(to right, #e100ff, #7f00ff);
+}
+
+/* account */
+.stats_card {
+  background-color: rgba(221, 96, 24, 0.184);
+  color: #a51201;
 }

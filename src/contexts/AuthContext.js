@@ -9,7 +9,6 @@ const AuthContextProvider = (props) => {
     userId: null,
   });
 
-  // built in authentication using jwt
   const logout = () => {
     setstate({ isAuth: false, token: null });
     localStorage.removeItem('token');
@@ -41,7 +40,7 @@ const AuthContextProvider = (props) => {
     const userId = localStorage.getItem('userId');
     const remainingMilliseconds =
       new Date(expiryDate).getTime() - new Date().getTime();
-    setstate({ isAuth: true, token: token, userId: userId });
+    setstate({ isAuth: true, token, userId });
     autoLogout(remainingMilliseconds);
   }, []);
   return (

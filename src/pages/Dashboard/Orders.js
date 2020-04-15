@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBoxOpen,
   faShippingFast,
-  faClipboardCheck,
   faBan,
   faTasks,
 } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +10,6 @@ import NewOrders from '../../components/Orders/Tables/NewOrders';
 import DeliveredOrders from '../../components/Orders/Tables/DeliveredOrders';
 import CancelledOrders from '../../components/Orders/Tables/CancelledOrders';
 import OrdersOnDelivery from '../../components/Orders/Tables/OrdersOnDelivery';
-import Updates from '../../components/Orders/Updates';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
 

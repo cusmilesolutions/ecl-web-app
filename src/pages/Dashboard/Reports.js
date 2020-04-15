@@ -139,7 +139,7 @@ const Reports = () => {
                   />
                 </div>
                 <div className="row col-md-12 mt-3">
-                  <div className="col-md-4">
+                  <div className="col-md-4 p-2">
                     <button
                       className="btn btn-outline-success btn-block rounded-pill"
                       type="submit"
@@ -148,7 +148,7 @@ const Reports = () => {
                       <span>Export</span>
                     </button>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 p-2">
                     <button
                       className="btn btn-outline-danger btn-block rounded-pill"
                       onClick={printReport}
@@ -157,7 +157,7 @@ const Reports = () => {
                       <span>Print</span>
                     </button>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-4 p-2">
                     <button
                       className="btn btn-outline-secondary btn-block rounded-pill"
                       type="submit"
