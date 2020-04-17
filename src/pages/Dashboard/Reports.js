@@ -19,6 +19,7 @@ import NewOrdersReport from '../../components/Reports/NewOrdersReport';
 import ApprovedOrdersReport from '../../components/Reports/ApprovedOrdersReport';
 import CancelledOrdersReport from '../../components/Reports/CancelledOrdersReport';
 import DeliveredOrdersReport from '../../components/Reports/DeliveredOrdersReport';
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const Reports = () => {
   const { data: newOrdersData } = useQuery(GET_NEW_ORDERS);
@@ -55,6 +56,7 @@ const Reports = () => {
     pdf('#preview');
   };
 
+  const date = new Date().toUTCString();
   return (
     <React.Fragment>
       {state.isAuth ? (
@@ -140,13 +142,7 @@ const Reports = () => {
                 </div>
                 <div className="row col-md-12 mt-3">
                   <div className="col-md-4 p-2">
-                    <button
-                      className="btn btn-outline-success btn-block rounded-pill"
-                      type="submit"
-                    >
-                      <FontAwesomeIcon icon={faFileExport} className="mr-2" />
-                      <span>Export</span>
-                    </button>
+                      <ReactHTMLTableToExcel table="preview" filename={`${date}`} sheet="sheet" buttonText="Export" className="btn btn-outline-success btn-block rounded-pill" />
                   </div>
                   <div className="col-md-4 p-2">
                     <button
