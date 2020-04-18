@@ -32,9 +32,9 @@ const DeliverySummary = () => {
   } = useQuery(GET_ON_DELIVERY_ORDERS);
 
   return (
-    <div className="shadow p-3 m-2 row">
+    <div className="shadow-sm p-2 mt-3 m-2 row bg-white">
       <div className="col m-2 shadow-sm rounded summary_card_inner_1 p-3  ">
-        <div className="row col-md-12">
+        <div className="row">
           <div className="col-md-9">
             <p>TOTAL ORDERS</p>
             <h4>
@@ -52,12 +52,12 @@ const DeliverySummary = () => {
             </h4>
           </div>
           <div className="col-md-3">
-            <FontAwesomeIcon size="5x" icon={faCubes} />
+            <FontAwesomeIcon size="3x" icon={faCubes} />
           </div>
         </div>
       </div>
       <div className="col m-2 shadow-sm rounded summary_card_inner_2 p-3  ">
-        <div className="row col-md-12">
+        <div className="row">
           <div className="col-md-9">
             <p>ORDERS COMPLETED</p>
             <h4>
@@ -75,13 +75,13 @@ const DeliverySummary = () => {
             </h4>
           </div>
           <div className="col-md-3">
-            <FontAwesomeIcon size="5x" icon={faTruckLoading} />
+            <FontAwesomeIcon size="3x" icon={faTruckLoading} />
           </div>
         </div>
       </div>
       <div className="w-100"></div>
       <div className="col m-2 shadow-sm rounded summary_card_inner_3 p-3  ">
-        <div className="row col-md-12">
+        <div className="row">
           <div className="col-md-9">
             <p>CANCELLED ORDERS</p>
             <h4>
@@ -99,12 +99,12 @@ const DeliverySummary = () => {
             </h4>
           </div>
           <div className="col-md-3">
-            <FontAwesomeIcon size="5x" icon={faBan} />
+            <FontAwesomeIcon size="3x" icon={faBan} />
           </div>
         </div>
       </div>
       <div className="col m-2 shadow-sm rounded summary_card_inner_4 p-3  ">
-        <div className="row col-md-12">
+        <div className="row">
           <div className="col-md-9">
             <p>ON DELIVERY</p>
             <h4>
@@ -122,7 +122,7 @@ const DeliverySummary = () => {
             </h4>
           </div>
           <div className="col-md-3">
-            <FontAwesomeIcon size="5x" icon={faShippingFast} />
+            <FontAwesomeIcon size="3x" icon={faShippingFast} />
           </div>
         </div>
       </div>

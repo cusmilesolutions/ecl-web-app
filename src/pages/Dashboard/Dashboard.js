@@ -3,31 +3,27 @@ import DeliverySummary from '../../components/Dashboard/DeliverySummary';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
 import WeeklyRevenue from '../../components/Graphs/WeeklyRevenue';
-import todoList from '../../components/Dashboard/todo';
+import Todo from '../../components/Dashboard/Todo';
 
 const Dashboard = () => {
   const { state } = useContext(AuthContext);
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div className="mx-auto">
-          <div className="row col-md-12">
+        <div style={{ backgroundColor: '#F7F7F7' }} className="container-fluid">
+          <div className="row">
             <div className="col-md-7">
               <div>
                 <DeliverySummary />
               </div>
             </div>
             <div className="col-md-5">
-              <div>
-                <div className="shadow m-2">
-                  <div className="p-2">
-                    <WeeklyRevenue />
-                  </div>
+              <div className="shadow-sm mt-3 bg-white">
+                <div className="p-2">
+                  <WeeklyRevenue />
                 </div>
               </div>
-              <div className="col-lg-6 card shadow mb-4">
-                <todoList />
-              </div>
+              <div className="shadow-sm mt-3 bg-white">{/* <Todo /> */}</div>
             </div>
           </div>
         </div>

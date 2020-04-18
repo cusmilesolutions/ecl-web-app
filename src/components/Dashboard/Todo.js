@@ -56,7 +56,7 @@ if (state.todoToShow === 'all') {
   todos = state.todos.filter((todo) => todo.complete);
 }
 
-const todo = () => {
+const Todo = () => {
   return (
     <div>
       <div onSubmit={addTodo} />
@@ -102,7 +102,7 @@ const todo = () => {
   );
 };
 
-export default todo;
+export default Todo;
 
 /*
 <div className ="col-lg-6 mb-4">
