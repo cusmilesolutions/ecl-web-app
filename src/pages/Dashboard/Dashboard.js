@@ -23,8 +23,10 @@ const Dashboard = () => {
                   <WeeklyRevenue />
                 </div>
               </div>
-              <div className="shadow-sm mt-3 bg-white">{/* <Todo /> */}</div>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-md-7 shadow-sm mt-3 bg-white"> <Todo /> </div>
           </div>
         </div>
       ) : (
