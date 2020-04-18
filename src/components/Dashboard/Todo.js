@@ -3,8 +3,8 @@ import React from 'react';
 const Todo = () => {
   
     return (
-     <div className="row col-md-12">
-        <div className="col-md-4">
+     <div className="row shadow">
+        <div className="col-md-4 shadow">
             <div className="card-header py-3">
                 <h6 className="text-primary font-weight-bold m-0">Add A New Item</h6>
             </div>
