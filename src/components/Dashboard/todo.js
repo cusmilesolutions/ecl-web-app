@@ -1,115 +1,108 @@
-import React, {setState} from 'react';
+import React, { setState } from 'react';
 
 let state = {
-    todos: [],
-    todoToShow: "all",
-    toggleAllComplete: true
-  };
+  todos: [],
+  todoToShow: 'all',
+  toggleAllComplete: true,
+};
 
- let addTodo = todo => {
-    this.setState(state => ({
-      todos: [todo, ...state.todos]
-    }));
-  };
+let addTodo = (todo) => {
+  this.setState((state) => ({
+    todos: [todo, ...state.todos],
+  }));
+};
 
- let toggleComplete = id => {
-    setState(state => ({
-      todos: state.todos.map(todo => {
-        if (todo.id === id) {
-          // suppose to update
-          return {
-            ...todo,
-            complete: !todo.complete
-          };
-        } else {
-          return todo;
-        }
-      })
-    }));
-  };
+let toggleComplete = (id) => {
+  setState((state) => ({
+    todos: state.todos.map((todo) => {
+      if (todo.id === id) {
+        // suppose to update
+        return {
+          ...todo,
+          complete: !todo.complete,
+        };
+      } else {
+        return todo;
+      }
+    }),
+  }));
+};
 
- let updateTodoToShow = s => {
-    setState({
-      todoToShow: s
-    });
-  };
+let updateTodoToShow = (s) => {
+  setState({
+    todoToShow: s,
+  });
+};
 
- let handleDeleteTodo = id => {
-    setState(state => ({
-      todos: state.todos.filter(todo => todo.id !== id)
-    }));
-  };
+let handleDeleteTodo = (id) => {
+  setState((state) => ({
+    todos: state.todos.filter((todo) => todo.id !== id),
+  }));
+};
 
-  let removeAllTodosThatAreComplete = () => {
-    setState(state => ({
-      todos: state.todos.filter(todo => !todo.complete)
-    }));
-  };
+let removeAllTodosThatAreComplete = () => {
+  setState((state) => ({
+    todos: state.todos.filter((todo) => !todo.complete),
+  }));
+};
 
-    let todos = [];
+let todos = [];
 
-    if (state.todoToShow === "all") {
-      todos = state.todos;
-    } else if (state.todoToShow === "active") {
-      todos = state.todos.filter(todo => !todo.complete);
-    } else if (state.todoToShow === "complete") {
-      todos = state.todos.filter(todo => todo.complete);
-    }
-
+if (state.todoToShow === 'all') {
+  todos = state.todos;
+} else if (state.todoToShow === 'active') {
+  todos = state.todos.filter((todo) => !todo.complete);
+} else if (state.todoToShow === 'complete') {
+  todos = state.todos.filter((todo) => todo.complete);
+}
 
 const todo = () => {
-
-        return (
-          <div>
-            <div onSubmit={addTodo} />
-            {todos.map(todo => (
-              <div
-                key={todo.id}
-                toggleComplete={() => toggleComplete(todo.id)}
-                onDelete={() => handleDeleteTodo(todo.id)}
-                todo={todo}
-              />
-            ))}
-            <div >
-              todos left: {state.todos.filter(todo => !todo.complete).length}
-            </div>
-            <div>
-              <button onClick={() => updateTodoToShow("all")}>all</button>
-              <button onClick={() => updateTodoToShow("active")}>
-                active
-              </button>
-              <button onClick={() => updateTodoToShow("complete")}>
-                complete
-              </button>
-            </div>
-            {state.todos.some(todo => todo.complete) ? (
-              <div>
-                <button onClick={removeAllTodosThatAreComplete}>
-                  remove all complete todos
-                </button>
-              </div>
-            ) : null}
-            <div>
-              <button
-                onClick={() =>
-                  this.setState(state => ({
-                    todos: state.todos.map(todo => ({
-                      ...todo,
-                      complete: state.toggleAllComplete
-                    })),
-                    toggleAllComplete: !state.toggleAllComplete
-                  }))
-                }
-              >
-                toggle all complete: {`${state.toggleAllComplete}`}
-              </button>
-            </div>
-          </div>
-        );
-      }
+  return (
+    <div>
+      <div onSubmit={addTodo} />
+      {todos.map((todo) => (
+        <div
+          key={todo.id}
+          toggleComplete={() => toggleComplete(todo.id)}
+          onDelete={() => handleDeleteTodo(todo.id)}
+          todo={todo}
+        />
+      ))}
+      <div>
+        todos left: {state.todos.filter((todo) => !todo.complete).length}
+      </div>
+      <div>
+        <button onClick={() => updateTodoToShow('all')}>all</button>
+        <button onClick={() => updateTodoToShow('active')}>active</button>
+        <button onClick={() => updateTodoToShow('complete')}>complete</button>
+      </div>
+      {state.todos.some((todo) => todo.complete) ? (
+        <div>
+          <button onClick={removeAllTodosThatAreComplete}>
+            remove all complete todos
+          </button>
+        </div>
+      ) : null}
+      <div>
+        <button
+          onClick={() =>
+            this.setState((state) => ({
+              todos: state.todos.map((todo) => ({
+                ...todo,
+                complete: state.toggleAllComplete,
+              })),
+              toggleAllComplete: !state.toggleAllComplete,
+            }))
+          }
+        >
+          toggle all complete: {`${state.toggleAllComplete}`}
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default todo;
-
 
 /*
 <div className ="col-lg-6 mb-4">

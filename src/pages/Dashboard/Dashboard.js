@@ -14,12 +14,7 @@ const Dashboard = () => {
           <div className="row col-md-12">
             <div className="col-md-7">
               <div>
-                <DeliverySummary
-                // totalCancelledOrders={totalCancelledOrders}
-                // totalDeliveredOrders={totalDeliveredOrders}
-                // totalOrders={totalOrders}
-                // totalOrdersOnDelivery={totalOrdersOnDelivery}
-                />
+                <DeliverySummary />
               </div>
             </div>
             <div className="col-md-5">
@@ -30,10 +25,10 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
+              <div className="col-lg-6 card shadow mb-4">
+                <todoList />
+              </div>
             </div>
-          </div>
-          <div className ="col-lg-6 card shadow mb-4">
-            <todoList/>
           </div>
         </div>
       ) : (
