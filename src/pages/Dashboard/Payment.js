@@ -34,19 +34,19 @@ const Payments = () => {
           <h1 className="m-4"> PAYMENT HISTORY</h1>
         </div>
         <div className="row col-md-12 ml-2">
-                <div id="all_payment" onClick={displayComponent} className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm">
+                <div id="all_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
                   <FontAwesomeIcon id="all_payment" icon={faWallet} />
                   <span id="all_payment" className="ml-2 mr-2">
                     All Payment
                   </span>
                 </div>
-                <div id="received_payment" onClick={displayComponent} className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm">
+                <div id="received_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
                   <FontAwesomeIcon id="received_payment" icon={faHandHoldingUsd} />
                   <span id="received_payment" className="ml-2 mr-2">
                     Received Payment
                   </span>
                 </div>
-                <div className="border d-flex align-items-center card_div border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
+                <div className="border d-flex align-items-center  border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
                     <FontAwesomeIcon icon={faSearch} />
                     <input type="text" name="search" placeholder="Search by name "/>
                 </div>
