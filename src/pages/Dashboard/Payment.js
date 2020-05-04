@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {AuthContext} from '../../contexts/AuthContext';
 import {Redirect} from 'react-router';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faAngleLeft, faAngleRight, faFilePdf, faSearch} from "@fortawesome/free-solid-svg-icons";
 
 function displayValue() {
     let filter_by_value = document.getElementById("filter_by");
@@ -73,14 +73,22 @@ const Payments = () => {
                 </tr>
               </tbody>
           </table>
-            <div className="row col">
-            <button type="button" className="btn btn-primary btn-sm mr-2">Print</button>
-           <button type="button" className="btn btn-primary btn-sm mr-5">Export</button>
-            <ul className="pagination ml-5">
-                <li className="page-item mr-4"><a className="page-link" href="#">Prev</a></li>
+          <div className="row col-md-12">
+            <div className="col-md-4  p-2">
+              <button className="btn btn-outline-primary mr-2">
+                  <span>Print</span>
+              </button>
+              <button className="btn btn-outline-primary">
+                  <span>Export</span>
+              </button>
+            </div>
+            <div className="col-md-8  p-2">
+                <ul className="pagination ml-5">
+                <li className="page-item mr-4"><a className="page-link" href="#"><FontAwesomeIcon icon={faAngleLeft} /> Prev</a></li>
                 <li className="page-item mr-4"><a className="page-link" href="#">1 of 3</a></li>
-                <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                <li className="page-item"><a className="page-link" href="#">Next <FontAwesomeIcon icon={faAngleRight} /></a></li>
             </ul>
+            </div>
         </div>
         </div>
       </div> : <Redirect to="/login" />}{' '}
