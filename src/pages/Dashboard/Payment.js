@@ -1,96 +1,68 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {AuthContext} from '../../contexts/AuthContext';
 import {Redirect} from 'react-router';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleLeft, faAngleRight, faFilePdf, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {
+  faHandHoldingUsd,
+  faSearch,
+  faWallet
+} from "@fortawesome/free-solid-svg-icons";
+import AllPayment from "../../components/Payment/AllPayment";
+import ReceivedPayment from "../../components/Payment/ReceivedPayment";
 
-function displayValue() {
-    let filter_by_value = document.getElementById("filter_by");
-    document.getElementById("filter_by_label").innerHTML = filter_by_value.options[filter_by_value.selectedIndex].text;
-}
 const Payments = () => {
   const { state } = useContext(AuthContext);
+  const [activity, setactivity] = useState({ title: 'All Payment' });
+
+  const displayComponent = (e) => {
+    let comp = e.target.id;
+    switch (comp) {
+      case 'all_payment':
+        setactivity({ title: 'All Payment' });
+        break;
+      case 'received_payment':
+        setactivity({ title: 'Received Payment' });
+        break;
+      default:
+        return <AllPayment />;
+    }
+  };
   return (
     <React.Fragment>
       {state.isAuth ? <div>
         <div className="row col-md-12">
           <h1 className="m-4"> PAYMENT HISTORY</h1>
         </div>
-        <div className="row col-md-12 col-lg-12">
-            <div className="col-md-3">
-                <label id="filter_by_label" className="border">All Payment </label>
-            </div>
-            <div className="form-group col-md-4">
-                  <select className="form-control" name="filter" defaultValue="Filter by" id="filter_by" onChange={displayValue}>
-                    <option disabled value="Filter by">Filter by</option>
-                    <option value="All Payment">All Payment</option>
-                    <option value="Status">Status</option>
-                    <option value="Date">Date</option>
-                  </select>
-            </div>
-            <div className="col-md-3 border d-flex align-items-center border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
-              <FontAwesomeIcon icon={faSearch} />
-              <input type="text" name="search" placeholder="Search by name "/>
-          </div>
-        </div>
-
         <div className="row col-md-12 ml-2">
-          <table className="table table-sm table-hover table-responsive-md table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">Name</th>
-                  <th scope="col">ID</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Amount</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">No. of trips</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="text-primary">Kwame</td>
-                  <td>3</td>
-                  <td>02/05/20</td>
-                  <td>Ghc 15.00</td>
-                  <td>Paid</td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td className="text-primary">Samuel</td>
-                  <td>2</td>
-                  <td>03/05/20</td>
-                  <td>Ghc 13.00</td>
-                  <td>Pending</td>
-                  <td>24</td>
-                </tr>
-                <tr>
-                  <td className="text-primary">Appaw</td>
-                  <td>5</td>
-                  <td>04/05/20</td>
-                  <td>Ghc 15.00</td>
-                  <td>Paid</td>
-                  <td>13</td>
-                </tr>
-              </tbody>
-          </table>
-          <div className="row col-md-12">
-            <div className="col-md-4  p-2">
-              <button className="btn btn-outline-primary mr-2">
-                  <span>Print</span>
-              </button>
-              <button className="btn btn-outline-primary">
-                  <span>Export</span>
-              </button>
-            </div>
-            <div className="col-md-8  p-2">
-                <ul className="pagination ml-5">
-                <li className="page-item mr-4"><button className="btn btn-outline-primary" ><FontAwesomeIcon icon={faAngleLeft} /> Prev</button></li>
-                <li className="page-item mr-4"><button className="btn btn-outline-primary disabled">1 of 3</button></li>
-                <li className="page-item"><button className="btn btn-outline-primary">Next <FontAwesomeIcon icon={faAngleRight} /></button></li>
-            </ul>
-            </div>
+                <div id="all_payment" onClick={displayComponent} className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm">
+                  <FontAwesomeIcon id="all_payment" icon={faWallet} />
+                  <span id="all_payment" className="ml-2 mr-2">
+                    All Payment
+                  </span>
+                </div>
+                <div id="received_payment" onClick={displayComponent} className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm">
+                  <FontAwesomeIcon id="received_payment" icon={faHandHoldingUsd} />
+                  <span id="received_payment" className="ml-2 mr-2">
+                    Received Payment
+                  </span>
+                </div>
+                <div className="border d-flex align-items-center card_div border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
+                    <FontAwesomeIcon icon={faSearch} />
+                    <input type="text" name="search" placeholder="Search by name "/>
+                </div>
         </div>
-        </div>
+        <div style={{ height: 500 }} className="shadow-sm bg-white p-3">
+          <span className="badge badge-pill badge-primary ml-3">{activity.title}</span>
+            <div>
+              {activity.title === 'All Payment' ? (
+                <AllPayment />
+              ) : activity.title === 'Received Payment' ? (
+                <ReceivedPayment />
+              ) : (
+                <AllPayment />
+              )}
+            </div>
+          </div>
       </div> : <Redirect to="/login" />}{' '}
     </React.Fragment>
   );
