@@ -84,9 +84,9 @@ const Payments = () => {
             </div>
             <div className="col-md-8  p-2">
                 <ul className="pagination ml-5">
-                <li className="page-item mr-4"><a className="page-link" href="#"><FontAwesomeIcon icon={faAngleLeft} /> Prev</a></li>
-                <li className="page-item mr-4"><a className="page-link" href="#">1 of 3</a></li>
-                <li className="page-item"><a className="page-link" href="#">Next <FontAwesomeIcon icon={faAngleRight} /></a></li>
+                <li className="page-item mr-4"><button className="btn btn-outline-primary" ><FontAwesomeIcon icon={faAngleLeft} /> Prev</button></li>
+                <li className="page-item mr-4"><button className="btn btn-outline-primary disabled">1 of 3</button></li>
+                <li className="page-item"><button className="btn btn-outline-primary">Next <FontAwesomeIcon icon={faAngleRight} /></button></li>
             </ul>
             </div>
         </div>
