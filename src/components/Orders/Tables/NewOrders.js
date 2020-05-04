@@ -1,67 +1,17 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+import React from 'react';
 import SearchPrint from '../SearchPrint';
 import { GET_NEW_ORDERS } from '../../Queries/order';
 import { useQuery } from '@apollo/react-hooks';
 
-const customStyles = {
-  content: {
-    top: '40%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: 600,
-  },
-};
-
 const NewOrders = () => {
-  const [viewOrder, setviewOrder] = useState(false);
   const {
     loading: newOrdersLoading,
     error: newOrdersError,
     data: newOrdersData,
   } = useQuery(GET_NEW_ORDERS);
 
-  const closeViewOrder = () => setviewOrder(false);
-  const openViewOrder = () => {
-    setviewOrder(true);
-  };
-
   return (
     <div className="mt-2">
-      <Modal
-        isOpen={viewOrder}
-        style={customStyles}
-        onRequestClose={closeViewOrder}
-      >
-        <div>
-          <h4>Order: </h4>
-          <hr />
-        </div>
-        <div>
-          <h6>
-            Customer: <span></span>
-          </h6>
-          <h6>Item Name: </h6>
-          <h6>Item Type: </h6>
-          <h6>Item Count: </h6>
-          <h6>Price: </h6>
-          <h6>Starting point: </h6>
-          <h6>Delivery point: </h6>
-          <h6>Item description: </h6>
-        </div>
-        <hr />
-        <div className="row col-md-12">
-          <div className="col-md-6">
-            <button className="btn btn-block btn-success">Approve</button>
-          </div>
-          <div className="col-md-6">
-            <button className="btn btn-block btn-danger">Reject</button>
-          </div>
-        </div>
-      </Modal>
       <SearchPrint />
       <div>
         {newOrdersLoading ? (
@@ -83,7 +33,8 @@ const NewOrders = () => {
             <thead>
               <tr>
                 <th scope="col">Order No.</th>
-                <th scope="col">Customer</th>
+                <th scope="col">Customer name</th>
+                <th scope="col">Customer phone</th>
                 <th scope="col">Item type</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Item count</th>
@@ -97,7 +48,8 @@ const NewOrders = () => {
               {newOrdersData.subOrders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
-                  <td>{order.customer}</td>
+                  <td>{order.customerName}</td>
+                  <td>{order.customerPhone}</td>
                   <td>{order.itemType}</td>
                   <td>{order.itemName}</td>
                   <td>{order.itemCount}</td>
@@ -105,12 +57,12 @@ const NewOrders = () => {
                   <td>{order.startPt}</td>
                   <td>{order.deliveryPt}</td>
                   <td>
-                    <button
-                      onClick={openViewOrder}
-                      className="btn btn-primary btn-sm"
-                    >
-                      View
-                    </button>
+                    <div className="d-flex flex-row">
+                      <button className="btn btn-primary btn-sm mr-2">
+                        View
+                      </button>
+                      <button className="btn btn-danger btn-sm">Remove</button>
+                    </div>
                   </td>
                 </tr>
               ))}

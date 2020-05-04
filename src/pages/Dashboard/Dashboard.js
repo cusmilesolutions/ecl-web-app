@@ -11,10 +11,13 @@ const Dashboard = () => {
     <React.Fragment>
       {state.isAuth ? (
         <div style={{ backgroundColor: '#F7F7F7' }} className="container-fluid">
+          <div>
+            <DeliverySummary />
+          </div>
           <div className="row">
             <div className="col-md-7">
               <div>
-                <DeliverySummary />
+                <Todo />
               </div>
             </div>
             <div className="col-md-5">
@@ -24,9 +27,6 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-md-7 shadow-sm mt-3 bg-white"> <Todo /> </div>
           </div>
         </div>
       ) : (

@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-// import $ from 'jquery';
-// import Popper from 'popper.js';
+import './fonts/Muli-VariableFont_wght.ttf';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -12,8 +11,10 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'https://ecl-api.herokuapp.com/graphql',
-  //   uri: 'http://localhost:5000/graphql',
+  uri: 'http://localhost:5000/graphql',
+  headers: {
+    authorization: 'Bearer ' + localStorage.getItem('token'),
+  },
 });
 
 ReactDOM.render(

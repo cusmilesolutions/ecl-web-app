@@ -40,7 +40,7 @@ const Orders = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div>
+        <div style={{ backgroundColor: '#F7F7F7' }} className="container-fluid">
           <div className="container">
             <div className="mt-1 w-auto">
               <div className="d-flex justify-content-center">
@@ -87,7 +87,7 @@ const Orders = () => {
               </div>
             </div>
           </div>
-          <div className="container-fluid">
+          <div style={{ height: 500 }} className="shadow-sm bg-white p-3">
             <h6>{activity.title}</h6>
             <div>
               {activity.title === 'View new orders' ? (

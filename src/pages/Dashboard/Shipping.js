@@ -39,7 +39,7 @@ const Shipping = () => {
             </div>
             <div className="col-md-8">
               <div className="shadow-sm p-4 bg-white mt-3 mb-3">
-                <h4>Shipping Details</h4>
+                <h5>Shipping Details</h5>
                 <hr />
                 <div className="row">
                   <div className="col-md-4">
@@ -90,7 +90,8 @@ const Shipping = () => {
                     </div>
                   </div>
                 </div>
-                <h4 className="pt-5">Order Details</h4>
+                <h5>Order Details</h5>
+                <hr />
                 <div className="row">
                   <div className="col-md-4">
                     <label>Date Booked:</label>
