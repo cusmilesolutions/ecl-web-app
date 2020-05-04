@@ -13,13 +13,16 @@ const Accounts = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div>
-          <div className="container row col-md-12">
+        <div
+          style={{ backgroundColor: '#F7F7F7', height: '100vh' }}
+          className="container-fluid"
+        >
+          <div className="row">
             <div className="col-md-6">
-              <div className="w-100 mx-auto mt-5 p-3 shadow-sm">
+              <div className="mt-3 p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Riders</h3>
-                  <div className="col-md-8 m-md-auto">
+                  <div className="col-md-8">
                     <div className="d-flex flex-row">
                       <div className="mr-3 p-2 rounded stats_card">
                         <FontAwesomeIcon size="lg" icon={faMoneyBill} />
@@ -47,7 +50,7 @@ const Accounts = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <div className="w-100 mx-auto mt-5 p-3 shadow-sm">
+              <div className="mt-3 p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Customers</h3>
                   <div className="col-md-8">
