@@ -191,3 +191,9 @@ input:focus {
   background-color: rgba(221, 96, 24, 0.184);
   color: #a51201;
 }
+
+/* striped table in payment.js */
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #ecf3f6;
+ }
