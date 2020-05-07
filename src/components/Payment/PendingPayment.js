@@ -2,11 +2,14 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {pdf} from "../../constants/PrintToPDF";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 
 const printPaymentPDF = ()=>{
       pdf('#table_pending')
     };
+
+const date = new Date().toUTCString();
 
 const PendingPayment = ()=>{
     return(
@@ -55,9 +58,7 @@ const PendingPayment = ()=>{
               <button className="btn btn-outline-primary mr-2" onClick={printPaymentPDF}>
                   <span>Print</span>
               </button>
-              <button className="btn btn-outline-primary">
-                  <span>Export</span>
-              </button>
+              <ReactHTMLTableToExcel table="table_pending" filename={`${date}`} sheet="sheet" buttonText="Export" className="btn btn-outline-primary" />
             </div>
             <div className="col-md-8  p-2">
                 <ul className="pagination ml-5">
