@@ -4,11 +4,12 @@ import {Redirect} from 'react-router';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
   faHandHoldingUsd,
-  faSearch,
+  faSearch, faSpinner,
   faWallet
 } from "@fortawesome/free-solid-svg-icons";
 import AllPayment from "../../components/Payment/AllPayment";
 import ReceivedPayment from "../../components/Payment/ReceivedPayment";
+import PendingPayment from "../../components/Payment/PendingPayment";
 
 const Payments = () => {
   const { state } = useContext(AuthContext);
@@ -22,6 +23,9 @@ const Payments = () => {
         break;
       case 'received_payment':
         setactivity({ title: 'Received Payment' });
+        break;
+      case 'pending_payment':
+        setactivity({ title: 'Pending Payment'});
         break;
       default:
         return <AllPayment />;
@@ -46,6 +50,12 @@ const Payments = () => {
                     Received Payment
                   </span>
                 </div>
+                <div id="pending_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
+                  <FontAwesomeIcon id="pending_payment" icon={faSpinner} />
+                  <span id="pending_payment" className="ml-2 mr-2">
+                    Pending Payment
+                  </span>
+                </div>
                 <div className="border d-flex align-items-center  border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
                     <FontAwesomeIcon icon={faSearch} />
                     <input type="text" name="search" placeholder="Search by name "/>
@@ -58,6 +68,8 @@ const Payments = () => {
                 <AllPayment />
               ) : activity.title === 'Received Payment' ? (
                 <ReceivedPayment />
+              ) : activity.title === 'Pending Payment' ? (
+                <PendingPayment />
               ) : (
                 <AllPayment />
               )}
