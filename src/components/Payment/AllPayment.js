@@ -1,14 +1,18 @@
 import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
+import {pdf} from "../../constants/PrintToPDF";
 
 
+const printPaymentPDF = ()=>{
+      pdf('#table_all_payment')
+    };
 
 const AllPayment = ()=>{
     return(
         <div>
             <div className="row col-md-12 ml-2">
-          <table className="table table-sm table-hover table-responsive-md table-striped">
+          <table className="table table-sm table-hover table-responsive-md table-striped" id="table_all_payment">
               <thead>
                 <tr>
                   <th scope="col">Name</th>
@@ -48,7 +52,7 @@ const AllPayment = ()=>{
           </table>
           <div className="row col-md-12">
             <div className="col-md-4  p-2">
-              <button className="btn btn-outline-primary mr-2">
+              <button className="btn btn-outline-primary mr-2" onClick={printPaymentPDF}>
                   <span>Print</span>
               </button>
               <button className="btn btn-outline-primary">
