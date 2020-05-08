@@ -4,15 +4,34 @@ import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
 import WeeklyRevenue from '../../components/Graphs/WeeklyRevenue';
 import Todo from '../../components/Dashboard/Todo';
+import RiderDaily from '../../components/Graphs/RidersDaily';
+import TodayRevenue from '../../components/Graphs/TodayRevenue';
 
 const Dashboard = () => {
   const { state } = useContext(AuthContext);
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div style={{ backgroundColor: '#F7F7F7' }} className="container-fluid">
+        <div>
           <div>
             <DeliverySummary />
+          </div>
+          <div className="row">
+            <div className="col-md-4">
+              <div className="p-2 shadow-sm mt-3 bg-white">
+                <TodayRevenue />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="p-2 shadow-sm mt-3 bg-white">
+                <RiderDaily />
+              </div>
+            </div>
+            <div className="col-md-4">
+              <div className="p-2 shadow-sm mt-3 bg-white">
+                <WeeklyRevenue />
+              </div>
+            </div>
           </div>
           <div className="row">
             <div className="col-md-7">
@@ -21,11 +40,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="col-md-5">
-              <div className="shadow-sm mt-3 bg-white">
-                <div className="p-2">
-                  <WeeklyRevenue />
-                </div>
-              </div>
+              <div className="shadow-sm mt-3 bg-white"></div>
             </div>
           </div>
         </div>

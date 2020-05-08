@@ -2,13 +2,13 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 const data = {
-  labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  labels: ['James', 'Prince', 'Emmanuel'],
   datasets: [
     {
-      label: 'Daily Revenue',
+      label: 'Riders(Today)',
       fill: false,
       lineTension: 0.1,
-      backgroundColor: 'rgba(220, 20, 60, 0.849)',
+      backgroundColor: '#50C2C3',
       borderColor: 'rgb(220, 20, 60)',
       borderCapStyle: 'butt',
       borderDash: [],
@@ -23,13 +23,13 @@ const data = {
       pointHoverBorderWidth: 2,
       pointRadius: 1,
       pointHitRadius: 10,
-      data: [65, 59, 58, 71, 56, 55],
+      data: [4, 3, 6, 8, 9, 15],
     },
   ],
 };
 
-const WeeklyRevenue = () => {
+const RiderDaily = () => {
   return <Bar height={200} data={data} />;
 };
 
-export default WeeklyRevenue;
+export default RiderDaily;

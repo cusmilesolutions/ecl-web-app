@@ -60,15 +60,15 @@ const Reports = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div
-          className="container-fluid"
-          style={{ backgroundColor: '#F7F7F7', height: 'auto' }}
-        >
-          <div className="row">
+        <div>
+          <div className="page_header rounded shadow-sm bg-secondary">
+            <span>REPORT GENERATION</span>
+          </div>
+          <div className="row mt-2">
             <div className="col-md-5">
               <div
                 style={{ minWidth: 300, maxWidth: 500 }}
-                className="shadow-sm mx-auto mt-3 bg-white p-4"
+                className="shadow-sm bg-white p-4"
               >
                 <div>
                   <h4>Reports</h4>
@@ -181,7 +181,7 @@ const Reports = () => {
               </div>
             </div>
             <div className="col-md-7">
-              <div className="m-3 bg-white shadow-sm p-4">
+              <div className="bg-white shadow-sm p-4">
                 <h4>Preview</h4>
                 <hr />
                 <div>

@@ -45,10 +45,10 @@ const CreateOrder = ({ closeModal }) => {
   };
   return (
     <div>
-      <div>
-        <h5>Create new order</h5>
-        <hr />
+      <div className="badge badge-primary p-2">
+        <span style={{ color: '#fff', fontSize: 15 }}>Create new order</span>
       </div>
+      <hr />
       {loading ? (
         <div className="d-flex justify-content-center">
           <div

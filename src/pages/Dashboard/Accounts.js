@@ -13,13 +13,13 @@ const Accounts = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div
-          style={{ backgroundColor: '#F7F7F7', height: '100vh' }}
-          className="container-fluid"
-        >
-          <div className="row">
+        <div>
+          <div className="page_header bg-secondary rounded shadow-sm">
+            <span>ACCOUNTS</span>
+          </div>
+          <div className="row mt-2">
             <div className="col-md-6">
-              <div className="mt-3 p-3 shadow-sm bg-white">
+              <div className="p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Riders</h3>
                   <div className="col-md-8">
@@ -44,13 +44,13 @@ const Accounts = () => {
 
                 <Link to="accounts/riders">
                   <button className="btn btn-block btn-primary">
-                    View riders
+                    Add New Rider
                   </button>
                 </Link>
               </div>
             </div>
             <div className="col-md-6">
-              <div className="mt-3 p-3 shadow-sm bg-white">
+              <div className="p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Customers</h3>
                   <div className="col-md-8">
@@ -81,7 +81,7 @@ const Accounts = () => {
                 </div>
                 <Link to="accounts/customers">
                   <button className="btn btn-block btn-primary">
-                    View customers
+                    Add Customer
                   </button>
                 </Link>
               </div>

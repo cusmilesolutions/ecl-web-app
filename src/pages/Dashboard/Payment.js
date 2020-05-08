@@ -1,15 +1,16 @@
-import React, {useContext, useState} from 'react';
-import {AuthContext} from '../../contexts/AuthContext';
-import {Redirect} from 'react-router';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import { Redirect } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHandHoldingUsd,
-  faSearch, faSpinner,
-  faWallet
-} from "@fortawesome/free-solid-svg-icons";
-import AllPayment from "../../components/Payment/AllPayment";
-import ReceivedPayment from "../../components/Payment/ReceivedPayment";
-import PendingPayment from "../../components/Payment/PendingPayment";
+  faSearch,
+  faSpinner,
+  faWallet,
+} from '@fortawesome/free-solid-svg-icons';
+import AllPayment from '../../components/Payment/AllPayment';
+import ReceivedPayment from '../../components/Payment/ReceivedPayment';
+import PendingPayment from '../../components/Payment/PendingPayment';
 
 const Payments = () => {
   const { state } = useContext(AuthContext);
@@ -25,7 +26,7 @@ const Payments = () => {
         setactivity({ title: 'Received Payment' });
         break;
       case 'pending_payment':
-        setactivity({ title: 'Pending Payment'});
+        setactivity({ title: 'Pending Payment' });
         break;
       default:
         return <AllPayment />;
@@ -33,36 +34,55 @@ const Payments = () => {
   };
   return (
     <React.Fragment>
-      {state.isAuth ? <div>
-        <div className="row col-md-12">
-          <h1 className="m-4"> PAYMENT HISTORY</h1>
-        </div>
-        <div className="row col-md-12 ml-2">
-                <div id="all_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
-                  <FontAwesomeIcon id="all_payment" icon={faWallet} />
-                  <span id="all_payment" className="ml-2 mr-2">
-                    All Payment
-                  </span>
-                </div>
-                <div id="received_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
-                  <FontAwesomeIcon id="received_payment" icon={faHandHoldingUsd} />
-                  <span id="received_payment" className="ml-2 mr-2">
-                    Received Payment
-                  </span>
-                </div>
-                <div id="pending_payment" onClick={displayComponent} className="border border-2 pt-2 pl-2 pr-2 selector  bg-blue m-2 rounded-pill shadow-sm">
-                  <FontAwesomeIcon id="pending_payment" icon={faSpinner} />
-                  <span id="pending_payment" className="ml-2 mr-2">
-                    Pending Payment
-                  </span>
-                </div>
-                <div className="border d-flex align-items-center  border-2 p-1 pl-2 pr-2 bg-blue m-2 rounded shadow-sm">
-                    <FontAwesomeIcon icon={faSearch} />
-                    <input type="text" name="search" placeholder="Search by name "/>
-                </div>
-        </div>
-        <div style={{ height: 500 }} className="shadow-sm bg-white p-3">
-          <span className="badge badge-pill badge-primary ml-3">{activity.title}</span>
+      {state.isAuth ? (
+        <div>
+          <div className="page_header bg-secondary rounded shadow-sm">
+            <span>PAYMENT HISTORY</span>
+          </div>
+          <div>
+            <div className="d-flex justify-content-start">
+              <div
+                id="all_payment"
+                onClick={displayComponent}
+                className="btn btn-info p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+              >
+                <FontAwesomeIcon
+                  style={{ marginRight: 5 }}
+                  id="all_payment"
+                  icon={faWallet}
+                />
+                <span id="all_payment">All Payment</span>
+              </div>
+              <div
+                id="received_payment"
+                onClick={displayComponent}
+                className="btn btn-success p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+              >
+                <FontAwesomeIcon
+                  style={{ marginRight: 5 }}
+                  id="received_payment"
+                  icon={faHandHoldingUsd}
+                />
+                <span id="received_payment">Received Payment</span>
+              </div>
+              <div
+                id="pending_payment"
+                onClick={displayComponent}
+                className="btn btn-warning p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+              >
+                <FontAwesomeIcon
+                  style={{ marginRight: 5 }}
+                  id="pending_payment"
+                  icon={faSpinner}
+                />
+                <span id="pending_payment">Pending Payment</span>
+              </div>
+            </div>
+          </div>
+          <div style={{ height: 500 }} className="shadow-sm bg-white p-3">
+            <span className="badge badge-primary p-2 mb-2">
+              {activity.title}
+            </span>
             <div>
               {activity.title === 'All Payment' ? (
                 <AllPayment />
@@ -75,7 +95,10 @@ const Payments = () => {
               )}
             </div>
           </div>
-      </div> : <Redirect to="/login" />}{' '}
+        </div>
+      ) : (
+        <Redirect to="/login" />
+      )}
     </React.Fragment>
   );
 };

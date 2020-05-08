@@ -11,7 +11,7 @@ const NewOrders = () => {
   } = useQuery(GET_NEW_ORDERS);
 
   return (
-    <div className="mt-2">
+    <div>
       <SearchPrint />
       <div>
         {newOrdersLoading ? (

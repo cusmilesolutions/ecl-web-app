@@ -33,7 +33,7 @@ const DeliverySummary = () => {
 
   return (
     <div className="shadow-sm p-2 mt-3 m-2 row bg-white">
-      <div className="col m-2 shadow-sm rounded summary_card_inner_1 p-2">
+      <div className="col m-2 shadow-sm rounded bg-warning text-white p-2">
         <div className="row">
           <div className="col-md-9">
             <p>TOTAL ORDERS</p>
@@ -56,7 +56,7 @@ const DeliverySummary = () => {
           </div>
         </div>
       </div>
-      <div className="col m-2 shadow-sm rounded summary_card_inner_2 p-2">
+      <div className="col m-2 shadow-sm rounded bg-success text-white p-2">
         <div className="row">
           <div className="col-md-9">
             <p>ORDERS COMPLETED</p>
@@ -79,7 +79,7 @@ const DeliverySummary = () => {
           </div>
         </div>
       </div>
-      <div className="col m-2 shadow-sm rounded summary_card_inner_3 p-2">
+      <div className="col m-2 shadow-sm rounded bg-danger text-white p-2">
         <div className="row">
           <div className="col-md-9">
             <p>CANCELLED ORDERS</p>
@@ -102,7 +102,7 @@ const DeliverySummary = () => {
           </div>
         </div>
       </div>
-      <div className="col m-2 shadow-sm rounded summary_card_inner_4 p-2">
+      <div className="col m-2 shadow-sm rounded bg-info text-white p-2">
         <div className="row">
           <div className="col-md-9">
             <p>ON DELIVERY</p>

@@ -8,10 +8,13 @@ const Shipping = () => {
   return (
     <React.Fragment>
       {state.isAuth ? (
-        <div className="container-fluid" style={{ backgroundColor: '#F7F7F7' }}>
-          <div className="row">
+        <div>
+          <div className="page_header rounded shadow-sm bg-secondary">
+            <span>SHIPPING DETAILS</span>
+          </div>
+          <div className="row mt-2">
             <div className="col-md-4">
-              <div className="shadow-sm p-4 bg-white mt-3">
+              <div className="shadow-sm p-4 bg-white">
                 <h5>Location</h5>
                 <hr />
                 <div style={{ height: 200 }} className="shadow-sm p-2">
@@ -38,7 +41,7 @@ const Shipping = () => {
               </div>
             </div>
             <div className="col-md-8">
-              <div className="shadow-sm p-4 bg-white mt-3 mb-3">
+              <div className="shadow-sm p-4 bg-white mb-3">
                 <h5>Shipping Details</h5>
                 <hr />
                 <div className="row">

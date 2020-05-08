@@ -85,20 +85,22 @@ input:focus {
   border: none;
 }
 
+.page_header {
+  /* height: 40px; */
+  display: flex;
+  padding: 15px;
+  color: #fff;
+}
+
 .selector {
   background-color: #fff;
   cursor: pointer;
   color: #0069d9;
 }
 
-.selector:hover,
-.selector:focus {
+.selector:hover {
   background-color: #0069d9;
   color: #fff;
-}
-
-.card_div {
-  background-color: rgba(13, 94, 216, 0.089);
 }
 
 .customer_card_div {
@@ -153,36 +155,6 @@ input:focus {
   color: #fff;
 }
 
-.summary_card_inner_1 {
-  background: #fc4a1a;
-  background: -webkit-linear-gradient(to right, #f7b733, #fc4a1a);
-  background: linear-gradient(to right, #f7b733, #fc4a1a);
-}
-
-.summary_card_inner_2 {
-  background: #667db6;
-  background: -webkit-linear-gradient(
-    to right,
-    #667db6,
-    #0082c8,
-    #0082c8,
-    #667db6
-  );
-  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
-}
-
-.summary_card_inner_3 {
-  background: #22c1c3;
-  background: -webkit-linear-gradient(to right, #fdbb2d, #22c1c3);
-  background: linear-gradient(to right, #fdbb2d, #22c1c3);
-}
-
-.summary_card_inner_4 {
-  background: #7f00ff;
-  background: -webkit-linear-gradient(to right, #e100ff, #7f00ff);
-  background: linear-gradient(to right, #e100ff, #7f00ff);
-}
-
 /* account */
 .stats_card {
   background-color: rgba(221, 96, 24, 0.184);
@@ -190,7 +162,7 @@ input:focus {
 }
 
 /* striped table in payment.js */
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-   background-color: #ecf3f6;
- }
+.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > th {
+  background-color: #ecf3f6;
+}
