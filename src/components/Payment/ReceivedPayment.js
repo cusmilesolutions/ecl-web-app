@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faAngleLeft, faAngleRight} from "@fortawesome/free-solid-svg-icons";
 import {pdf} from "../../constants/PrintToPDF";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import data from "./MOCK_DATA";
 
 const printPaymentPDF = ()=>{
       pdf('#table_received')
@@ -26,30 +27,18 @@ const ReceivedPayment = ()=>{
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="text-primary">Ernest</td>
-                  <td>3</td>
-                  <td>02/05/20</td>
-                  <td>Ghc 15.00</td>
-                  <td>Paid</td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td className="text-primary">Samuel</td>
-                  <td>2</td>
-                  <td>03/05/20</td>
-                  <td>Ghc 13.00</td>
-                  <td>Pending</td>
-                  <td>24</td>
-                </tr>
-                <tr>
-                  <td className="text-primary">Appaw</td>
-                  <td>5</td>
-                  <td>04/05/20</td>
-                  <td>Ghc 15.00</td>
-                  <td>Paid</td>
-                  <td>13</td>
-                </tr>
+               {data.map(el => {
+                    return(
+                    <tr key={el.id}>
+                      <td>{el.name}</td>
+                      <td>{el.id}</td>
+                      <td>{el.date}</td>
+                      <td>$ {el.amount}</td>
+                      <td>{el.status}</td>
+                      <td>{el.trips}</td>
+                    </tr>
+                        );
+                    })}
               </tbody>
           </table>
           <div className="row col-md-12">
