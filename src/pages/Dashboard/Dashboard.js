@@ -35,7 +35,9 @@ const Dashboard = () => {
           </div>
           <div className="row">
             <div className="col-md-7">
-              <div>{/* <Todo /> */}</div>
+              <div>
+                <Todo />
+              </div>
             </div>
             <div className="col-md-5">
               <div className="shadow-sm mt-3 bg-white"></div>
