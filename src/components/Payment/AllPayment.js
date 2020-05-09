@@ -71,23 +71,6 @@ const AllPayment = () => {
               className="btn btn-outline-primary"
             />
           </div>
-          <div className="col-md-8  p-2">
-            <ul className="pagination ml-5">
-              <li className="page-item mr-4">
-                <button className="btn btn-sm btn-outline-primary">
-                  <FontAwesomeIcon icon={faAngleLeft} /> Prev
-                </button>
-              </li>
-              <li className="page-item mr-4">
-                <p className="text-primary">1 of 3</p>
-              </li>
-              <li className="page-item">
-                <button className="btn btn-sm btn-outline-primary">
-                  Next <FontAwesomeIcon icon={faAngleRight} />
-                </button>
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </div>

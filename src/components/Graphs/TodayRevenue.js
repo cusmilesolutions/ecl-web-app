@@ -13,9 +13,13 @@ const TodayRevenue = () => {
       data={{
         labels: ['Delivered', 'On Delivery', 'Cancelled'],
         datasets: [
-          { backgroundColor: '#1983C8', data: 10 },
-          { backgroundColor: '#886CFD', data: 6 },
-          { backgroundColor: '#50C2C3', data: 8 },
+          {
+            label: "Today's Revenue",
+            backgroundColor: ['#51A846', '#3DA3B9', '#DD4145'],
+            borderWidth: 1,
+            borderColor: ['#51A846', '#3DA3B9', '#DD4145'],
+            data: [13, 43, 23],
+          },
         ],
       }}
       height={200}

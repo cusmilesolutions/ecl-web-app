@@ -10,7 +10,7 @@ function App() {
   return (
     <AuthContextProvider>
       <div
-        style={{ backgroundColor: '#EEEEEE', height: '100vh' }}
+        style={{ backgroundColor: '#EEEEEE', minHeight: 700 }}
         className="App"
       >
         <Navbar />
