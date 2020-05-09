@@ -9,9 +9,14 @@ import AuthContextProvider from './contexts/AuthContext';
 function App() {
   return (
     <AuthContextProvider>
-      <div className="App">
+      <div
+        style={{ backgroundColor: '#EEEEEE', height: '100vh' }}
+        className="App"
+      >
         <Navbar />
-        {routes}
+        <div className="container-fluid" style={{ paddingTop: 10 }}>
+          {routes}
+        </div>
       </div>
     </AuthContextProvider>
   );

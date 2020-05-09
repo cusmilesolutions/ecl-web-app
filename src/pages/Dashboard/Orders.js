@@ -41,13 +41,16 @@ const Orders = () => {
     <React.Fragment>
       {state.isAuth ? (
         <div>
-          <div className="container">
-            <div className="mt-1 w-auto">
-              <div className="d-flex justify-content-center">
+          <div className="page_header rounded shadow-sm bg-secondary">
+            <span>ORDERS DETAILS</span>
+          </div>
+          <div>
+            <div>
+              <div className="d-flex justify-content-start">
                 <div
                   id="new_orders"
                   onClick={displayComponent}
-                  className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
+                  className="btn btn-warning p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
                 >
                   <FontAwesomeIcon id="new_orders" icon={faBoxOpen} />
                   <span id="new_orders" className="ml-2 mr-2">
@@ -57,7 +60,7 @@ const Orders = () => {
                 <div
                   id="on_delivery"
                   onClick={displayComponent}
-                  className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
+                  className="btn btn-secondary p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
                 >
                   <FontAwesomeIcon id="on_delivery" icon={faShippingFast} />
                   <span id="on_delivery" className="ml-2 mr-2">
@@ -67,7 +70,7 @@ const Orders = () => {
                 <div
                   id="delivered"
                   onClick={displayComponent}
-                  className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
+                  className="btn btn-success p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
                 >
                   <FontAwesomeIcon id="delivered" icon={faTasks} />
                   <span id="delivered" className="ml-2 mr-2">
@@ -77,7 +80,7 @@ const Orders = () => {
                 <div
                   id="cancelled_orders"
                   onClick={displayComponent}
-                  className="border border-2 p-1 pl-2 pr-2 selector card_div bg-blue m-2 rounded-pill shadow-sm"
+                  className="btn btn-danger p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
                 >
                   <FontAwesomeIcon id="cancelled_orders" icon={faBan} />
                   <span id="cancelled_orders" className="ml-2 mr-2">
@@ -87,8 +90,10 @@ const Orders = () => {
               </div>
             </div>
           </div>
-          <div className="container-fluid">
-            <h6>{activity.title}</h6>
+          <div style={{ height: 500 }} className="shadow-sm bg-white p-3">
+            <span className="badge badge-primary p-2 mb-2">
+              {activity.title}
+            </span>
             <div>
               {activity.title === 'View new orders' ? (
                 <NewOrders />

@@ -14,12 +14,15 @@ const Accounts = () => {
     <React.Fragment>
       {state.isAuth ? (
         <div>
-          <div className="container row col-md-12">
+          <div className="page_header bg-secondary rounded shadow-sm">
+            <span>ACCOUNTS</span>
+          </div>
+          <div className="row mt-2">
             <div className="col-md-6">
-              <div className="w-100 mx-auto mt-5 p-3 shadow-sm">
+              <div className="p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Riders</h3>
-                  <div className="col-md-8 m-md-auto">
+                  <div className="col-md-8">
                     <div className="d-flex flex-row">
                       <div className="mr-3 p-2 rounded stats_card">
                         <FontAwesomeIcon size="lg" icon={faMoneyBill} />
@@ -41,13 +44,13 @@ const Accounts = () => {
 
                 <Link to="accounts/riders">
                   <button className="btn btn-block btn-primary">
-                    View riders
+                    Add New Rider
                   </button>
                 </Link>
               </div>
             </div>
             <div className="col-md-6">
-              <div className="w-100 mx-auto mt-5 p-3 shadow-sm">
+              <div className="p-3 shadow-sm bg-white">
                 <div className="row">
                   <h3 className="col-md-4">Customers</h3>
                   <div className="col-md-8">
@@ -78,7 +81,7 @@ const Accounts = () => {
                 </div>
                 <Link to="accounts/customers">
                   <button className="btn btn-block btn-primary">
-                    View customers
+                    Add Customer
                   </button>
                 </Link>
               </div>

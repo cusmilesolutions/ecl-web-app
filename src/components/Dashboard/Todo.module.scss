@@ -1,0 +1,14 @@
+.tasks {
+  list-style: none;
+  padding: 0;
+}
+
+.list {
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+  border-left: 5px solid #aa1808;
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
