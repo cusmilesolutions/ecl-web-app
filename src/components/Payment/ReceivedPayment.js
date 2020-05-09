@@ -27,7 +27,7 @@ const ReceivedPayment = ()=>{
                 </tr>
               </thead>
               <tbody>
-               {data.map(el => {
+               {data.filter(status =>{return status.status ==="Paid"}).map(el => {
                     return(
                     <tr key={el.id}>
                       <td>{el.name}</td>

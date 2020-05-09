@@ -28,7 +28,7 @@ const PendingPayment = ()=>{
                 </tr>
               </thead>
               <tbody>
-                {data.map(el => {
+                {data.filter(status=>{ return status.status==="Pending"}).map(el => {
                     return(
                     <tr key={el.id}>
                       <td>{el.name}</td>
