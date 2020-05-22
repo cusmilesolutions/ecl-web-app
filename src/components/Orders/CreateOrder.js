@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { CREATE_ORDER } from '../Queries/order';
 
 const CreateOrder = ({ closeModal }) => {
-  const [addOrder, { loading, error, data }] = useMutation(CREATE_ORDER, {
+  const [addOrder, { loading, data }] = useMutation(CREATE_ORDER, {
     errorPolicy: 'all',
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });

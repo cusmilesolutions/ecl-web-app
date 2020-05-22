@@ -1,10 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
+import AllShippings from '../../components/Shipping/AllShippings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBan,
+  faTruck,
+  faCheckCircle,
+} from '@fortawesome/free-solid-svg-icons';
+import Shipped from '../../components/Shipping/Shipped';
+import CancelledShippings from '../../components/Shipping/CancelledShippings';
 
 const Shipping = () => {
   const { state } = useContext(AuthContext);
+  const [activity, setactivity] = useState({ title: 'All Payment' });
 
+  const displayComponent = (e) => {
+    let comp = e.target.id;
+    switch (comp) {
+      case 'all_shippings':
+        setactivity({ title: 'All Shippings' });
+        break;
+      case 'shipped_orders':
+        setactivity({ title: 'Shipped Orders' });
+        break;
+      case 'cancelled_shipping':
+        setactivity({ title: 'Cancelled Shippings' });
+        break;
+      default:
+        return <AllShippings />;
+    }
+  };
   return (
     <React.Fragment>
       {state.isAuth ? (
@@ -14,6 +40,62 @@ const Shipping = () => {
           </div>
           <div className="row mt-2">
             <div className="col-md-4">
+              <div className="d-flex justify-content-start">
+                <div
+                  id="all_shippings"
+                  onClick={displayComponent}
+                  className="btn btn-info p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+                >
+                  <FontAwesomeIcon
+                    style={{ marginRight: 5 }}
+                    id="all_shippings"
+                    icon={faTruck}
+                  />
+                  <span id="all_shippings">All Shippings</span>
+                </div>
+                <div
+                  id="shipped_orders"
+                  onClick={displayComponent}
+                  className="btn btn-success p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+                >
+                  <FontAwesomeIcon
+                    style={{ marginRight: 5 }}
+                    id="shipped_orders"
+                    icon={faCheckCircle}
+                  />
+                  <span id="shipped_orders">Shipped</span>
+                </div>
+                <div
+                  id="cancelled_shipping"
+                  onClick={displayComponent}
+                  className="btn btn-danger p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+                >
+                  <FontAwesomeIcon
+                    style={{ marginRight: 5 }}
+                    id="cancelled_shipping"
+                    icon={faBan}
+                  />
+                  <span id="cancelled_shipping">Cancelled</span>
+                </div>
+              </div>
+              <div className="shadow-sm p-4 bg-white">
+                <span className="badge badge-primary p-2 mb-2">
+                  {activity.title}
+                </span>
+                <div>
+                  {activity.title === 'All Shippings' ? (
+                    <AllShippings />
+                  ) : activity.title === 'Shipped Orders' ? (
+                    <Shipped />
+                  ) : activity.title === 'Cancelled Shippings' ? (
+                    <CancelledShippings />
+                  ) : (
+                    <AllShippings />
+                  )}
+                </div>
+              </div>
+            </div>
+            <div className="col-md-3">
               <div className="shadow-sm p-4 bg-white">
                 <h5>Location</h5>
                 <hr />
@@ -40,7 +122,7 @@ const Shipping = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-5">
               <div className="shadow-sm p-4 bg-white mb-3">
                 <h5>Shipping Details</h5>
                 <hr />

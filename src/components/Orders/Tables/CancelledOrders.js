@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchPrint from '../SearchPrint';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_CANCELLED_ORDERS } from '../../Queries/order';
 
@@ -12,7 +11,6 @@ const CancelledOrders = () => {
 
   return (
     <div>
-      <SearchPrint />
       <div>
         {cancelledOrdersLoading ? (
           <div className="d-flex justify-content-center">

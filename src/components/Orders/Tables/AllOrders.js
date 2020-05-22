@@ -1,18 +1,25 @@
 import React from 'react';
-import { GET_NEW_ORDERS } from '../../Queries/order';
+import { GET_ALL_ORDERS } from '../../Queries/order';
 import { useQuery } from '@apollo/react-hooks';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBoxOpen,
+  faShippingFast,
+  faBan,
+  faCheckCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
-const NewOrders = () => {
+const AllOrders = () => {
   const {
-    loading: newOrdersLoading,
-    error: newOrdersError,
-    data: newOrdersData,
-  } = useQuery(GET_NEW_ORDERS);
+    loading: allOrdersLoading,
+    error: allOrdersError,
+    data: allOrdersData,
+  } = useQuery(GET_ALL_ORDERS);
 
   return (
     <div>
       <div>
-        {newOrdersLoading ? (
+        {allOrdersLoading ? (
           <div className="d-flex justify-content-center">
             <div
               style={{ width: 50, height: 50 }}
@@ -22,11 +29,11 @@ const NewOrders = () => {
               <span className="sr-only">Loading...</span>
             </div>
           </div>
-        ) : newOrdersError ? (
+        ) : allOrdersError ? (
           <div className="d-flex justify-content-center">
             <span>Data cannot be loaded</span>
           </div>
-        ) : newOrdersData ? (
+        ) : allOrdersData ? (
           <table className="table table-sm table-hover table-responsive-md">
             <thead>
               <tr>
@@ -39,11 +46,11 @@ const NewOrders = () => {
                 <th scope="col">Price(GHC)</th>
                 <th scope="col">Starting point</th>
                 <th scope="col">Delivery point</th>
-                <th scope="col">Action</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              {newOrdersData.subOrders.orders.map((order) => (
+              {allOrdersData.orders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
                   <td>{order.customerName}</td>
@@ -55,13 +62,33 @@ const NewOrders = () => {
                   <td>{order.startPt}</td>
                   <td>{order.deliveryPt}</td>
                   <td>
+                    {order.status === 'pending' ? (
+                      <FontAwesomeIcon
+                        icon={faBoxOpen}
+                        className="text-warning"
+                      />
+                    ) : order.status === 'approved' ? (
+                      <FontAwesomeIcon
+                        icon={faShippingFast}
+                        className="text-secondary"
+                      />
+                    ) : order.status === 'cancelled' ? (
+                      <FontAwesomeIcon icon={faBan} className="text-danger" />
+                    ) : order.status === 'delivered' ? (
+                      <FontAwesomeIcon
+                        icon={faCheckCircle}
+                        className="text-success"
+                      />
+                    ) : null}
+                  </td>
+                  {/* <td>
                     <div className="d-flex flex-row">
                       <button className="btn btn-success btn-sm mr-2">
                         Confirm
                       </button>
                       <button className="btn btn-danger btn-sm">Remove</button>
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
@@ -72,4 +99,4 @@ const NewOrders = () => {
   );
 };
 
-export default NewOrders;
+export default AllOrders;
