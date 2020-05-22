@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchPrint from '../SearchPrint';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ON_DELIVERY_ORDERS } from '../../Queries/order';
 
@@ -12,7 +11,6 @@ const OrdersOnDelivery = () => {
 
   return (
     <div>
-      <SearchPrint />
       <div>
         {ordersOnDeliveryLoading ? (
           <div className="d-flex justify-content-center">

@@ -53,6 +53,7 @@ export const GET_ALL_ORDERS = gql`
         price
         startPt
         deliveryPt
+        status
       }
       totalOrders
     }
