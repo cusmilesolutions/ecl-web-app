@@ -4,7 +4,6 @@ import { Redirect } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHandHoldingUsd,
-  faSearch,
   faSpinner,
   faWallet,
 } from '@fortawesome/free-solid-svg-icons';

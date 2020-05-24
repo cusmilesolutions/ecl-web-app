@@ -4,7 +4,7 @@ import {
   faBoxOpen,
   faShippingFast,
   faBan,
-  faTasks,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import NewOrders from '../../components/Orders/Tables/NewOrders';
 import DeliveredOrders from '../../components/Orders/Tables/DeliveredOrders';
@@ -12,19 +12,23 @@ import CancelledOrders from '../../components/Orders/Tables/CancelledOrders';
 import OrdersOnDelivery from '../../components/Orders/Tables/OrdersOnDelivery';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
+import AllOrders from '../../components/Orders/Tables/AllOrders';
 
 const Orders = () => {
   const { state } = useContext(AuthContext);
-  const [activity, setactivity] = useState({ title: 'View new orders' });
+  const [activity, setactivity] = useState({ title: 'All Orders' });
 
   const displayComponent = (e) => {
     let comp = e.target.id;
     switch (comp) {
+      case 'all_orders':
+        setactivity({ title: 'All Orders' });
+        break;
       case 'new_orders':
-        setactivity({ title: 'View new orders' });
+        setactivity({ title: 'New Orders' });
         break;
       case 'on_delivery':
-        setactivity({ title: 'Orders on delivery' });
+        setactivity({ title: 'Approved Orders' });
         break;
       case 'delivered':
         setactivity({ title: 'Delivered Orders' });
@@ -34,7 +38,7 @@ const Orders = () => {
         break;
 
       default:
-        return <NewOrders />;
+        return <AllOrders />;
     }
   };
   return (
@@ -47,6 +51,16 @@ const Orders = () => {
           <div>
             <div>
               <div className="d-flex justify-content-start">
+                <div
+                  id="all_orders"
+                  onClick={displayComponent}
+                  className="btn btn-info p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
+                >
+                  <FontAwesomeIcon id="all_orders" icon={faBoxOpen} />
+                  <span id="all_orders" className="ml-2 mr-2">
+                    All Orders
+                  </span>
+                </div>
                 <div
                   id="new_orders"
                   onClick={displayComponent}
@@ -72,7 +86,7 @@ const Orders = () => {
                   onClick={displayComponent}
                   className="btn btn-success p-2 mr-2 mt-2 mb-2 rounded shadow-sm"
                 >
-                  <FontAwesomeIcon id="delivered" icon={faTasks} />
+                  <FontAwesomeIcon id="delivered" icon={faCheckCircle} />
                   <span id="delivered" className="ml-2 mr-2">
                     Delivered Orders
                   </span>
@@ -95,16 +109,18 @@ const Orders = () => {
               {activity.title}
             </span>
             <div>
-              {activity.title === 'View new orders' ? (
+              {activity.title === 'All Orders' ? (
+                <AllOrders />
+              ) : activity.title === 'New Orders' ? (
                 <NewOrders />
-              ) : activity.title === 'Orders on delivery' ? (
+              ) : activity.title === 'Approved Orders' ? (
                 <OrdersOnDelivery />
               ) : activity.title === 'Delivered Orders' ? (
                 <DeliveredOrders />
               ) : activity.title === 'Cancelled Orders' ? (
                 <CancelledOrders />
               ) : (
-                <NewOrders />
+                <AllOrders />
               )}
             </div>
           </div>

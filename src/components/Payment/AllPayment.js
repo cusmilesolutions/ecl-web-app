@@ -1,6 +1,4 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { pdf } from '../../constants/PrintToPDF';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
