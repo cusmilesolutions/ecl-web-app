@@ -99,7 +99,7 @@ const Accounts = () => {
                         <span className="ml-2">
                           {riderData.reduce(
                             (acc, val) => acc + val.numOfTrips,
-                            0
+                            0,
                           )}
                         </span>
                       </div>
@@ -149,7 +149,7 @@ const Accounts = () => {
                           GH₵
                           {customerData.reduce(
                             (acc, val) => acc + val.amount,
-                            0
+                            0,
                           )}
                         </span>
                       </div>
@@ -162,7 +162,7 @@ const Accounts = () => {
                         <span className="ml-2">
                           {customerData.reduce(
                             (acc, val) => acc + val.numOfOrders,
-                            0
+                            0,
                           )}
                         </span>
                       </div>

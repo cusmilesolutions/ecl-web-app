@@ -24,7 +24,7 @@ const RiderList = ({ closeNewRider }) => {
         </div>
         <hr />
         <form onSubmit={submitHandler}>
-          <div className="row col-md-12">
+          <div className="row">
             <div className="form-group col-md-6">
               <label>First name</label>
               <input
@@ -47,9 +47,9 @@ const RiderList = ({ closeNewRider }) => {
               />
             </div>
           </div>
-          <div className="row col-md-12">
+          <div className="row">
             <div className="form-group col-md-6">
-              <label>Employee ID</label>
+              <label>Rider ID</label>
               <input
                 className="form-control"
                 type="text"
@@ -69,7 +69,7 @@ const RiderList = ({ closeNewRider }) => {
               />
             </div>
           </div>
-          <div className="row col-md-12">
+          <div className="row">
             <div className="form-group col-md-6">
               <label>Address</label>
               <input
@@ -91,7 +91,7 @@ const RiderList = ({ closeNewRider }) => {
               />
             </div>
           </div>
-          <div className="row col-md-12">
+          {/* <div className="row">
             <div className="form-group col-md-6">
               <label>Password</label>
               <input
@@ -112,7 +112,7 @@ const RiderList = ({ closeNewRider }) => {
                 value={account.confirmPassword}
               />
             </div>
-          </div>
+          </div> */}
           <div className="m-2 row">
             <div className="col">
               <button className="btn btn-success btn-block" type="submit">
