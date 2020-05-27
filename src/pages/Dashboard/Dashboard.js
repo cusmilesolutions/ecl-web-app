@@ -13,10 +13,10 @@ const Dashboard = () => {
     <React.Fragment>
       {state.isAuth ? (
         <div>
-          <Todo />
           <div>
             <DeliverySummary />
           </div>
+          <Todo />
           <div className="row">
             <div className="col-md-4">
               <div className="p-2 shadow-sm mt-3 bg-white">

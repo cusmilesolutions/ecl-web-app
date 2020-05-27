@@ -1,42 +1,18 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import TodoList from './TodoList';
-
-const todo = [
-  { 
-    id: 1, 
-    title: 'Meet with a client', 
-    date: '03/04/2020', 
-    time: '11:00 AM' },
-  { 
-    id: 2, 
-    title: 'Have a cup of coffee', 
-    date: '13/04/2020', 
-    time: '2:00 PM' },
-  {
-    id: 3,
-    title: 'Plan the monthly budget',
-    date: '25/04/2020',
-    time: '5:00 PM',
-  },
-  {
-    id: 4,
-    title: 'Pay monthlly allowance and bills',
-    date: '29/04/2020',
-    time: '11:30 AM',
-  },
-];
+import TodoList from './TodoList/TodoList';
 
 const customStyles = {
-    content: {
-        top: '50%',
-        left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
-        transform: 'translate(-50%, -50%)',
-    }
-  };
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    width: 500,
+  },
+};
 
 /*const setTodo = useState([
     state = {
@@ -103,7 +79,6 @@ if (state.show === 'all'){
 */
 
 const Todo = () => {
-
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -113,49 +88,71 @@ const Todo = () => {
       <Modal isOpen={isOpen} style={customStyles} onRequestClose={closeModal}>
         <TodoList closeNewRider={closeModal} />
       </Modal>
-        <div className="shadow-sm p-2 m-2 bg-white">
-            <div className="card-header">
-                <h6 className="text-primary font-weight-bold m-0">
-                    To do List
-                </h6>
+      <div className="row">
+        <div className="col-md-6">
+          <div className="shadow-sm p-2 m-2 bg-white">
+            <div className="p-2">
+              <div className="page_header bg-secondary rounded shadow-sm">
+                <span>Task Management</span>
+              </div>
             </div>
-            <div className="form row">
-                <div className="form-group col-md-4 p-4">
-                    <input
-                        type="email"
-                        className="form-control"
-                        placeholder="Add A New Item"
-                        id="todoItem"
-                    />
+            <div className="row p-2">
+              <div className="col-md-6">
+                <div className="form-group">
+                  <input
+                    className="form-control"
+                    placeholder="Title"
+                    id="title"
+                    type="text"
+                  />
                 </div>
-                <div className="col-md-4">
-                    <div className="row">
-                        <div className="col-md-6 p-4">
-                            <input type="date" className="form-control" id="taskDate" />
-                        </div>
-                        <div className="col-md-6 p-4">
-                            <input type="time" className="form-control" id="taskTime" />
-                        </div>
-                    </div>
+                <div className="form-group">
+                  <textarea
+                    rows="3"
+                    className="form-control"
+                    placeholder="Description"
+                    id="title"
+                    type="text"
+                  ></textarea>
                 </div>
-                <div className="col-md-4">
-                    <div className="row">
-                        <div className="col-md-6 p-4">
-                            <button
-                                type="button"
-                                className="btn btn-outline-primary btn-sm btn-block">Add</button>
-                        </div>
-                        <div className="col-md-6 p-4">
-                            <button
-                                type="button"
-                                className="btn btn-outline-danger btn-sm btn-block" onClick={openModal}
-                                 >View List</button>
-                        </div>
-                    </div>
+              </div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label>Due date</label>
+                  <input type="date" className="form-control" id="taskDate" />
                 </div>
+                <div className="form-group">
+                  <label>Due time</label>
+                  <input type="time" className="form-control" id="taskTime" />
+                </div>
+              </div>
             </div>
+            <div className="d-flex justify-content-between p-2">
+              <div>
+                <button
+                  type="button"
+                  className="btn btn-info"
+                  onClick={openModal}
+                >
+                  View Tasks
+                </button>
+              </div>
+              <div>
+                <div className="d-flex flex-row justify-content-end">
+                  <button type="button" className="btn btn-success mr-2">
+                    Create
+                  </button>
+                  <button type="button" className="btn btn-danger">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <div className="col-md-3"></div>
       </div>
+    </div>
   );
 };
 
