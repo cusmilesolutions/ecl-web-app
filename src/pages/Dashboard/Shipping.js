@@ -13,7 +13,7 @@ import CancelledShippings from '../../components/Shipping/CancelledShippings';
 
 const Shipping = () => {
   const { state } = useContext(AuthContext);
-  const [activity, setactivity] = useState({ title: 'All Payment' });
+  const [activity, setactivity] = useState({ title: 'All Shippings' });
 
   const displayComponent = (e) => {
     let comp = e.target.id;
