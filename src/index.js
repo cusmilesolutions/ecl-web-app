@@ -11,8 +11,8 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
-  // uri: 'https://ecl-api.herokuapp.com/graphql',
+  //uri: 'http://localhost:5000/graphql',
+   uri: 'https://ecl-api.herokuapp.com/graphql',
   headers: {
     authorization: 'Bearer ' + localStorage.getItem('token'),
   },
