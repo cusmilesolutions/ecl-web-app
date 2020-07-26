@@ -10,9 +10,9 @@ const DeliveredOrdersReport = ({ deliveredOrders }) => {
         <tr>
           <th scope="col">Order No.</th>
           <th scope="col">Pick up</th>
-          <th scope="col">Arrival</th>
-          <th scope="col">Starting point</th>
           <th scope="col">Destination</th>
+          <th scope="col">Delivery date</th>
+          <th scope="col">Delivery time</th>
           <th scope="col">Price(GHC)</th>
           <th scope="col">Rider</th>
         </tr>
@@ -21,11 +21,11 @@ const DeliveredOrdersReport = ({ deliveredOrders }) => {
         {deliveredOrders.subOrders.orders.map((order) => (
           <tr key={order._id}>
             <td>{order.orderNo}</td>
-            <td>{order.pickUp}</td>
-            <td>{order.arrival}</td>
-            <td>{order.startPt}</td>
-            <td>{order.destination}</td>
-            <td>{order.price}</td>
+            <td>{order.shipping.startPt}</td>
+            <td>{order.shipping.deliveryPt}</td>
+            <td>{order.shipping.dateDelivered}</td>
+            <td>{order.shipping.timeDelivered}</td>
+            <td>{order.payment.price}</td>
             <td>{order.rider}</td>
           </tr>
         ))}

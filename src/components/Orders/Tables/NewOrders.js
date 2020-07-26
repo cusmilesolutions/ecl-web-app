@@ -1,27 +1,41 @@
-import React from 'react';
-import { GET_NEW_ORDERS } from '../../Queries/order';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from 'react';
+import {
+  GET_NEW_ORDERS,
+  CANCEL_ORDER,
+  APPROVE_ORDER,
+} from '../../../services/queries/order';
+import { useQuery, useMutation } from '@apollo/client';
+import { Spinner } from '../../global/Spinner';
 
 const NewOrders = () => {
+  useEffect(() => {}, []);
   const {
     loading: newOrdersLoading,
     error: newOrdersError,
     data: newOrdersData,
   } = useQuery(GET_NEW_ORDERS);
 
+  const [
+    cancelOrder,
+    { loading: cancelOrderLoading, data: cancelOrderData },
+  ] = useMutation(CANCEL_ORDER, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
+
+  const [
+    approveOrder,
+    { loading: approveOrderloading, data: approveOrderData },
+  ] = useMutation(APPROVE_ORDER, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
+
   return (
     <div>
       <div>
         {newOrdersLoading ? (
-          <div className="d-flex justify-content-center">
-            <div
-              style={{ width: 50, height: 50 }}
-              className="spinner-border text-danger"
-              role="status"
-            >
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
+          <Spinner size={50} color="danger" />
         ) : newOrdersError ? (
           <div className="d-flex justify-content-center">
             <span>Data cannot be loaded</span>
@@ -31,8 +45,8 @@ const NewOrders = () => {
             <thead>
               <tr>
                 <th scope="col">Order No.</th>
-                <th scope="col">Customer name</th>
-                <th scope="col">Customer phone</th>
+                <th scope="col">Sender name</th>
+                <th scope="col">Sender phone</th>
                 <th scope="col">Item type</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Item count</th>
@@ -46,20 +60,38 @@ const NewOrders = () => {
               {newOrdersData.subOrders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
-                  <td>{order.customerName}</td>
-                  <td>{order.customerPhone}</td>
-                  <td>{order.itemType}</td>
-                  <td>{order.itemName}</td>
-                  <td>{order.itemCount}</td>
-                  <td>{order.price}</td>
-                  <td>{order.startPt}</td>
-                  <td>{order.deliveryPt}</td>
+                  <td>{order.sender.senderName}</td>
+                  <td>{order.sender.senderPhone}</td>
+                  <td>{order.item.itemType}</td>
+                  <td>{order.item.itemName}</td>
+                  <td>{order.item.itemCount}</td>
+                  <td>{order.payment.price}</td>
+                  <td>{order.shipping.startPt}</td>
+                  <td>{order.shipping.deliveryPt}</td>
                   <td>
                     <div className="d-flex flex-row">
-                      <button className="btn btn-success btn-sm mr-2">
+                      <button
+                        onClick={() => {
+                          approveOrder({
+                            variables: { id: order._id },
+                          }).then(() => console.log('Order approved'));
+                        }}
+                        type="submit"
+                        formAction="/orders"
+                        className="btn btn-success btn-sm mr-2"
+                      >
                         Confirm
                       </button>
-                      <button className="btn btn-danger btn-sm">Remove</button>
+                      <button
+                        onClick={() => {
+                          cancelOrder({
+                            variables: { id: order._id },
+                          }).then(() => console.log('Cancelled order'));
+                        }}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Remove
+                      </button>
                     </div>
                   </td>
                 </tr>

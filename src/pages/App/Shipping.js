@@ -39,7 +39,7 @@ const Shipping = () => {
             <span>SHIPPING DETAILS</span>
           </div>
           <div className="row mt-2">
-            <div className="col-md-4">
+            <div className="col-md-6">
               <div className="d-flex justify-content-start">
                 <div
                   id="all_shippings"
@@ -95,36 +95,12 @@ const Shipping = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
-              <div className="shadow-sm p-4 bg-white">
-                <h5>Location</h5>
-                <hr />
-                <div style={{ height: 200 }} className="shadow-sm p-2">
-                  <h5>Google Map Api Link</h5>
-                </div>
-                <div className="row mt-2">
-                  <div className="col-md-6 p-2">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-sm btn-block"
-                    >
-                      Edit
-                    </button>
-                  </div>
-                  <div className="col-md-6 p-2">
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm btn-block"
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-5">
+            <div className="col-md-6">
               <div className="shadow-sm p-4 bg-white mb-3">
-                <h5>Shipping Details</h5>
+                <h5>
+                  Shipping Details
+                  <span> ID: 12345</span>
+                </h5>
                 <hr />
                 <div className="row">
                   <div className="col-md-4">
@@ -175,65 +151,74 @@ const Shipping = () => {
                     </div>
                   </div>
                 </div>
-                <h5>Order Details</h5>
-                <hr />
                 <div className="row">
                   <div className="col-md-4">
-                    <label>Date Booked:</label>
-                    <input
-                      type="date"
-                      className="form-control"
-                      id="bookedDate"
-                    ></input>
-                    <label>Shipping Status:</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="shipStatus"
-                    ></input>
+                    <div className="form-group">
+                      <label>Date Booked:</label>
+                      <input
+                        type="date"
+                        className="form-control"
+                        id="bookedDate"
+                      ></input>
+                    </div>
+                    <div className="form-group">
+                      <label>Shipping Status:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="shipStatus"
+                      ></input>
+                    </div>
                   </div>
                   <div className="col-md-4">
-                    <label>Time Booked:</label>
-                    <input
-                      type="time"
-                      className="form-control"
-                      id="bookedTime"
-                    ></input>
-                    <label>Payment Type/Method:</label>
-                    <select className="form-control" id="paymentMethod">
-                      <option>Select Method</option>
-                      <option>Mobile Money</option>
-                      <option>Cash on Delivery</option>
-                      <option>Add payment methods</option>
-                    </select>
+                    <div className="form-group">
+                      <label>Time Booked:</label>
+                      <input
+                        type="time"
+                        className="form-control"
+                        id="bookedTime"
+                      ></input>
+                    </div>
+                    <div className="form-group">
+                      <label>Payment Method:</label>
+                      <select className="form-control" id="paymentMethod">
+                        <option>Select Method</option>
+                        <option>Mobile Money</option>
+                        <option>Cash on Delivery</option>
+                        <option>Add payment methods</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="col-md-4">
-                    <label>Payment Status:</label>
-                    <select className="form-control" id="paymentStatus">
-                      <option>Select Status</option>
-                      <option>Rider 2</option>
-                      <option>Rider 3</option>
-                      <option>Add payment values</option>
-                    </select>
-                    <label>Payment Status:</label>
-                    <input
-                      type="range"
-                      className="form-control-range"
-                      id="statusRange"
-                    ></input>
+                    <div className="form-group">
+                      <label>Rider:</label>
+                      <select className="form-control" id="paymentStatus">
+                        <option selected defaultValue>
+                          Select rider
+                        </option>
+                        <option>Rider 2</option>
+                        <option>Rider 3</option>
+                        <option>Add payment values</option>
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Payment Status:</label>
+                      <select className="form-control" id="paymentStatus">
+                        <option>Select Status</option>
+                        <option>Rider 2</option>
+                        <option>Rider 3</option>
+                        <option>Add payment values</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col">
-                    <strong>
-                      <label>Comment:</label>
-                    </strong>
-                    <textarea
-                      className="form-control"
-                      rows="5"
-                      id="comment"
-                    ></textarea>
-                  </div>
+                <div className="form-group">
+                  <label>Comment:</label>
+                  <textarea
+                    className="form-control"
+                    rows="3"
+                    id="comment"
+                  ></textarea>
                 </div>
               </div>
             </div>

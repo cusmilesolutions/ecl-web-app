@@ -1,6 +1,7 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_DELIVERED_ORDERS } from '../../Queries/order';
+import { useQuery } from '@apollo/client';
+import { GET_DELIVERED_ORDERS } from '../../../services/queries/order';
+import { Spinner } from '../../global/Spinner';
 
 const DeliveredOrders = () => {
   const {
@@ -13,13 +14,7 @@ const DeliveredOrders = () => {
       <div>
         {deliveredOrdersLoading ? (
           <div className="d-flex justify-content-center">
-            <div
-              style={{ width: 50, height: 50 }}
-              className="spinner-border text-danger"
-              role="status"
-            >
-              <span className="sr-only">Loading...</span>
-            </div>
+            <Spinner size={50} color="danger" />
           </div>
         ) : deliveredOrdersError ? (
           <div className="d-flex justify-content-center">
@@ -31,9 +26,9 @@ const DeliveredOrders = () => {
               <tr>
                 <th scope="col">Order No.</th>
                 <th scope="col">Pick up</th>
-                <th scope="col">Arrival</th>
-                <th scope="col">Starting point</th>
                 <th scope="col">Destination</th>
+                <th scope="col">Delivery date</th>
+                <th scope="col">Delivery time</th>
                 <th scope="col">Price(GHC)</th>
                 <th scope="col">Rider</th>
                 <th scope="col">Action</th>
@@ -43,11 +38,11 @@ const DeliveredOrders = () => {
               {deliveredOrdersData.subOrders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
-                  <td>{order.pickUp}</td>
-                  <td>{order.arrival}</td>
-                  <td>{order.startPt}</td>
-                  <td>{order.destination}</td>
-                  <td>{order.price}</td>
+                  <td>{order.shipping.startPt}</td>
+                  <td>{order.shipping.deliveryPt}</td>
+                  <td>{order.shipping.dateDelivered}</td>
+                  <td>{order.shipping.timeDelivered}</td>
+                  <td>{order.payment.price}</td>
                   <td>{order.rider}</td>
                   <td>
                     <button className="btn btn-primary btn-sm">View</button>

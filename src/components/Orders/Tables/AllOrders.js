@@ -1,6 +1,6 @@
 import React from 'react';
-import { GET_ALL_ORDERS } from '../../Queries/order';
-import { useQuery } from '@apollo/react-hooks';
+import { GET_ALL_ORDERS } from '../../../services/queries/order';
+import { useQuery } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBoxOpen,
@@ -8,6 +8,7 @@ import {
   faBan,
   faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import { Spinner } from '../../global/Spinner';
 
 const AllOrders = () => {
   const {
@@ -20,15 +21,7 @@ const AllOrders = () => {
     <div>
       <div>
         {allOrdersLoading ? (
-          <div className="d-flex justify-content-center">
-            <div
-              style={{ width: 50, height: 50 }}
-              className="spinner-border text-danger"
-              role="status"
-            >
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
+          <Spinner size={50} />
         ) : allOrdersError ? (
           <div className="d-flex justify-content-center">
             <span>Data cannot be loaded</span>
@@ -38,8 +31,8 @@ const AllOrders = () => {
             <thead>
               <tr>
                 <th scope="col">Order No.</th>
-                <th scope="col">Customer name</th>
-                <th scope="col">Customer phone</th>
+                <th scope="col">Sender name</th>
+                <th scope="col">Sender phone</th>
                 <th scope="col">Item type</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Item count</th>
@@ -53,42 +46,34 @@ const AllOrders = () => {
               {allOrdersData.orders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
-                  <td>{order.customerName}</td>
-                  <td>{order.customerPhone}</td>
-                  <td>{order.itemType}</td>
-                  <td>{order.itemName}</td>
-                  <td>{order.itemCount}</td>
-                  <td>{order.price}</td>
-                  <td>{order.startPt}</td>
-                  <td>{order.deliveryPt}</td>
+                  <td>{order.sender.senderName}</td>
+                  <td>{order.sender.senderPhone}</td>
+                  <td>{order.item.itemType}</td>
+                  <td>{order.item.itemName}</td>
+                  <td>{order.item.itemCount}</td>
+                  <td>{order.payment.price}</td>
+                  <td>{order.shipping.startPt}</td>
+                  <td>{order.shipping.deliveryPt}</td>
                   <td>
-                    {order.status === 'pending' ? (
+                    {order.orderStatus === 'pending' ? (
                       <FontAwesomeIcon
                         icon={faBoxOpen}
                         className="text-warning"
                       />
-                    ) : order.status === 'approved' ? (
+                    ) : order.orderStatus === 'approved' ? (
                       <FontAwesomeIcon
                         icon={faShippingFast}
                         className="text-secondary"
                       />
-                    ) : order.status === 'cancelled' ? (
+                    ) : order.orderStatus === 'cancelled' ? (
                       <FontAwesomeIcon icon={faBan} className="text-danger" />
-                    ) : order.status === 'delivered' ? (
+                    ) : order.orderStatus === 'delivered' ? (
                       <FontAwesomeIcon
                         icon={faCheckCircle}
                         className="text-success"
                       />
                     ) : null}
                   </td>
-                  {/* <td>
-                    <div className="d-flex flex-row">
-                      <button className="btn btn-success btn-sm mr-2">
-                        Confirm
-                      </button>
-                      <button className="btn btn-danger btn-sm">Remove</button>
-                    </div>
-                  </td> */}
                 </tr>
               ))}
             </tbody>

@@ -1,26 +1,48 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { ADD_RIDER } from '../../../services/queries/rider';
 
-const RiderList = ({ closeNewRider }) => {
+const AddRider = ({ closeNewRider }) => {
+  const [addRider, { loading }] = useMutation(ADD_RIDER, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
+
   const [account, setaccount] = useState({
-    riderId: '',
     fname: '',
     lname: '',
     address: '',
     phone: '',
-    password: '',
-    confirmPassword: '',
+    pin: '',
   });
+
   const changeHandler = (e) => {
     const value = e.target.value;
     setaccount({ ...account, [e.target.name]: value });
   };
-  const submitHandler = (e) => {};
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    addRider({
+      variables: {
+        firstName: account.fname,
+        lastName: account.lname,
+        address: account.address,
+        phone: account.phone,
+        pin: account.pin,
+      },
+    })
+      .then(() => {
+        closeNewRider();
+      })
+      .catch((err) => console.error(err));
+  };
 
   return (
     <div>
       <div>
         <div className="badge badge-primary p-2">
-          <span style={{ color: '#fff', fontSize: 15 }}>Create new order</span>
+          <span style={{ color: '#fff', fontSize: 15 }}>Add new rider</span>
         </div>
         <hr />
         <form onSubmit={submitHandler}>
@@ -47,17 +69,17 @@ const RiderList = ({ closeNewRider }) => {
               />
             </div>
           </div>
+          <div className="form-group">
+            <label>Address</label>
+            <input
+              className="form-control"
+              type="address"
+              name="address"
+              onChange={changeHandler}
+              value={account.address}
+            />
+          </div>
           <div className="row">
-            <div className="form-group col-md-6">
-              <label>Rider ID</label>
-              <input
-                className="form-control"
-                type="text"
-                name="riderId"
-                onChange={changeHandler}
-                value={account.riderId}
-              />
-            </div>
             <div className="form-group col-md-6">
               <label>PIN</label>
               <input
@@ -66,18 +88,6 @@ const RiderList = ({ closeNewRider }) => {
                 name="pin"
                 onChange={changeHandler}
                 value={account.pin}
-              />
-            </div>
-          </div>
-          <div className="row">
-            <div className="form-group col-md-6">
-              <label>Address</label>
-              <input
-                className="form-control"
-                type="address"
-                name="address"
-                onChange={changeHandler}
-                value={account.address}
               />
             </div>
             <div className="form-group col-md-6">
@@ -91,32 +101,21 @@ const RiderList = ({ closeNewRider }) => {
               />
             </div>
           </div>
-          {/* <div className="row">
-            <div className="form-group col-md-6">
-              <label>Password</label>
-              <input
-                className="form-control"
-                type="password"
-                name="password"
-                onChange={changeHandler}
-                value={account.password}
-              />
-            </div>
-            <div className="form-group col-md-6">
-              <label>Confirm Password</label>
-              <input
-                className="form-control"
-                type="password"
-                name="confirmPassword"
-                onChange={changeHandler}
-                value={account.confirmPassword}
-              />
-            </div>
-          </div> */}
           <div className="m-2 row">
             <div className="col">
               <button className="btn btn-success btn-block" type="submit">
-                Add Account
+                {loading ? (
+                  <span>
+                    <span
+                      className="spinner-border spinner-border-sm mr-3"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    <span>Creating account</span>
+                  </span>
+                ) : (
+                  'Add Account'
+                )}
               </button>
             </div>
             <div className="col">
@@ -134,4 +133,4 @@ const RiderList = ({ closeNewRider }) => {
   );
 };
 
-export default RiderList;
+export default AddRider;

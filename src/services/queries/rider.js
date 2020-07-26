@@ -1,24 +1,20 @@
-import { gql } from 'apollo-boost';
+import { gql } from '@apollo/client';
 
 export const GET_ALL_RIDERS = gql`
   {
     riders {
       _id
       firstName
-      lastName
-      address
-      address
       phone
       riderId
       orders {
         _id
-        orderNo
       }
     }
   }
 `;
 
-export const GET_RIDER = gql``;
+// export const GET_RIDER = gql``;
 
 export const ADD_RIDER = gql`
   mutation AddRider(

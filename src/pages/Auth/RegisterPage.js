@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Register from '../../components/Auth/Register';
-import { useMutation } from '@apollo/react-hooks';
-import { ADMIN_SIGN_UP } from '../../components/Queries/auth';
+import { useMutation } from '@apollo/client';
+import { ADMIN_SIGN_UP } from '../../services/queries/auth';
 import { withRouter } from 'react-router';
 
 const RegisterPage = (props) => {

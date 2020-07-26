@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/react-hooks';
-import { CREATE_ORDER } from '../Queries/order';
+import { useMutation } from '@apollo/client';
+import { CREATE_ORDER } from '../../services/queries/order';
+import { Spinner } from '../global/Spinner';
 
 const CreateOrder = ({ closeModal }) => {
   const [addOrder, { loading, data }] = useMutation(CREATE_ORDER, {
@@ -8,12 +9,15 @@ const CreateOrder = ({ closeModal }) => {
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });
   const [order, setorder] = useState({
-    customerName: '',
-    customerPhone: '',
+    senderName: '',
+    senderPhone: '',
+    recipientName: '',
+    recipientPhone: '',
     itemName: '',
     itemType: '',
     itemCount: '',
     price: '',
+    method: '',
     startPt: '',
     deliveryPt: '',
     description: '',
@@ -26,19 +30,21 @@ const CreateOrder = ({ closeModal }) => {
     e.preventDefault();
     addOrder({
       variables: {
-        customerName: order.customerName,
-        customerPhone: order.customerPhone,
+        senderName: order.senderName,
+        senderPhone: order.senderPhone,
+        recipientName: order.recipientName,
+        recipientPhone: order.recipientPhone,
         itemName: order.itemName,
         itemType: order.itemType,
         itemCount: order.itemCount,
         price: order.price,
+        method: order.method,
         startPt: order.startPt,
         deliveryPt: order.deliveryPt,
         description: order.description,
       },
     })
-      .then((res) => {
-        console.log(data);
+      .then(() => {
         closeModal();
       })
       .catch((err) => console.error(err));
@@ -50,32 +56,43 @@ const CreateOrder = ({ closeModal }) => {
       </div>
       <hr />
       {loading ? (
-        <div className="d-flex justify-content-center">
-          <div
-            style={{ width: 50, height: 50 }}
-            className="spinner-border text-danger"
-            role="status"
-          >
-            <span className="sr-only">Loading...</span>
-          </div>
-        </div>
+        <Spinner size={50} color="primary" />
       ) : (
-        <form className="container" onSubmit={submitHandler}>
+        <form onSubmit={submitHandler}>
           <div className="row">
             <div className="form-group col-md-6">
-              <label>Customer's name</label>
+              <label>Sender's name</label>
               <input
                 onChange={changeHandler}
-                name="customerName"
+                name="senderName"
                 className="form-control"
                 autoFocus
               />
             </div>
             <div className="form-group col-md-6">
-              <label>Customer's phone</label>
+              <label>Sender's phone</label>
               <input
                 onChange={changeHandler}
-                name="customerPhone"
+                name="senderPhone"
+                className="form-control"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="form-group col-md-6">
+              <label>Recipient's name</label>
+              <input
+                onChange={changeHandler}
+                name="recipientName"
+                className="form-control"
+                autoFocus
+              />
+            </div>
+            <div className="form-group col-md-6">
+              <label>Recipient's phone</label>
+              <input
+                onChange={changeHandler}
+                name="recipientPhone"
                 className="form-control"
               />
             </div>
@@ -108,7 +125,7 @@ const CreateOrder = ({ closeModal }) => {
             </div>
           </div>
           <div className="row">
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-3">
               <label>From</label>
               <input
                 onChange={changeHandler}
@@ -116,7 +133,7 @@ const CreateOrder = ({ closeModal }) => {
                 className="form-control"
               />
             </div>
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-3">
               <label>To</label>
               <input
                 onChange={changeHandler}
@@ -124,7 +141,7 @@ const CreateOrder = ({ closeModal }) => {
                 className="form-control"
               />
             </div>
-            <div className="form-group col-md-4">
+            <div className="form-group col-md-3">
               <label>Price</label>
               <input
                 onChange={changeHandler}
@@ -132,6 +149,20 @@ const CreateOrder = ({ closeModal }) => {
                 type="number"
                 className="form-control"
               />
+            </div>
+            <div className="form-group col-md-3">
+              <label>Payment method</label>
+              <select
+                onChange={changeHandler}
+                name="method"
+                className="form-control"
+              >
+                <option defaultValue disabled>
+                  Select payment
+                </option>
+                <option value="momo">Cash</option>
+                <option value="momo">MOMO</option>
+              </select>
             </div>
           </div>
           <div className="form-group">

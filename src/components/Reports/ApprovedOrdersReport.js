@@ -9,7 +9,6 @@ const ApprovedOrdersReport = ({ ordersOnDelivery }) => {
       <thead>
         <tr>
           <th scope="col">Order No.</th>
-          <th scope="col">Pick up</th>
           <th scope="col">Starting point</th>
           <th scope="col">Destination</th>
           <th scope="col">Price(GHC)</th>
@@ -20,10 +19,9 @@ const ApprovedOrdersReport = ({ ordersOnDelivery }) => {
         {ordersOnDelivery.subOrders.orders.map((order) => (
           <tr key={order._id}>
             <td>{order.orderNo}</td>
-            <td>{order.pickUp}</td>
-            <td>{order.startPt}</td>
-            <td>{order.destination}</td>
-            <td>{order.price}</td>
+            <td>{order.shipping.startPt}</td>
+            <td>{order.shipping.deliveryPt}</td>
+            <td>{order.payment.price}</td>
             <td>{order.rider}</td>
           </tr>
         ))}
