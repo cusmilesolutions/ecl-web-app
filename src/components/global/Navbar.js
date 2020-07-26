@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../index.css';
-import { AuthContext } from '../contexts/AuthContext';
+import '../../index.css';
+import { AuthContext } from '../../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBell,
-  faEnvelope,
   faUser,
   faCreditCard,
   faUsers,
@@ -16,7 +15,7 @@ import {
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
-import CreateOrder from './Orders/CreateOrder';
+import CreateOrder from '../Orders/CreateOrder';
 
 const customStyles = {
   content: {
@@ -90,12 +89,13 @@ const Navbar = () => {
                   <span className="ml-2">Reports</span>
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* Disabled route */}
+              {/* <li className="nav-item">
                 <Link to="/shipping" className="nav-link">
                   <FontAwesomeIcon icon={faExchangeAlt} />
                   <span className="ml-2">Shipping</span>
                 </Link>
-              </li>
+              </li> */}
             </ul>
           ) : null}
           <div>
@@ -111,19 +111,16 @@ const Navbar = () => {
                     <span className="ml-2">Create</span>
                   </Link>
                 </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                  </Link>
-                </li>
-                <li className="nav-item">
+                {/* Notification feature disabled */}
+                {/* <li className="nav-item">
                   <Link to="/" className="nav-link">
                     <FontAwesomeIcon icon={faBell} />
                   </Link>
-                </li>
-                <li className="nav-item">
+                </li> */}
+                <li className="nav-item bg-danger">
                   <Link to="/" onClick={logout} className="nav-link">
                     <FontAwesomeIcon icon={faUser} />
+                    <span className="ml-2">Logout</span>
                   </Link>
                 </li>
               </ul>

@@ -9,8 +9,8 @@ const CancelledOrdersReport = ({ cancelledOrders }) => {
       <thead>
         <tr>
           <th scope="col">Order No.</th>
-          <th scope="col">Customer Name</th>
-          <th scope="col">Customer Phone</th>
+          <th scope="col">Sender Name</th>
+          <th scope="col">Sender Phone</th>
           <th scope="col">Item type</th>
           <th scope="col">Item name</th>
           <th scope="col">Item count</th>
@@ -23,14 +23,14 @@ const CancelledOrdersReport = ({ cancelledOrders }) => {
         {cancelledOrders.subOrders.orders.map((order) => (
           <tr key={order._id}>
             <td>{order.orderNo}</td>
-            <td>{order.customerName}</td>
-            <td>{order.customerPhone}</td>
-            <td>{order.type}</td>
-            <td>{order.itemName}</td>
-            <td>{order.itemCount}</td>
-            <td>{order.price}</td>
-            <td>{order.startPt}</td>
-            <td>{order.deliveryPt}</td>
+            <td>{order.sender.senderName}</td>
+            <td>{order.sender.senderPhone}</td>
+            <td>{order.item.itemType}</td>
+            <td>{order.item.itemName}</td>
+            <td>{order.item.itemCount}</td>
+            <td>{order.payment.price}</td>
+            <td>{order.shipping.startPt}</td>
+            <td>{order.shipping.deliveryPt}</td>
           </tr>
         ))}
       </tbody>

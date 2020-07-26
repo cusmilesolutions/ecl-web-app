@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import DeliverySummary from '../../components/Dashboard/DeliverySummary';
-import { AuthContext } from '../../contexts/AuthContext';
 import { Redirect } from 'react-router';
-import WeeklyRevenue from '../../components/Graphs/WeeklyRevenue';
-import Todo from '../../components/Dashboard/Todo';
-import RiderDaily from '../../components/Graphs/RidersDaily';
-import TodayRevenue from '../../components/Graphs/TodayRevenue';
+import { AuthContext } from '../../contexts/AuthContext';
+
+import DeliverySummary from '../../components/Dashboard/DeliverySummary';
+import RiderDaily from '../../components/Dashboard/Graphs/RidersDaily';
+import TodayRevenue from '../../components/Dashboard/Graphs/TodayRevenue';
+import WeeklyRevenue from '../../components/Dashboard/Graphs/WeeklyRevenue';
+import TaskManagement from '../../components/Dashboard/TaskManager';
 
 const Dashboard = () => {
   const { state } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Dashboard = () => {
           <div>
             <DeliverySummary />
           </div>
-          <Todo />
+          <TaskManagement />
           <div className="row">
             <div className="col-md-4">
               <div className="p-2 shadow-sm mt-3 bg-white">

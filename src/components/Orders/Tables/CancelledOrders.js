@@ -1,6 +1,7 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_CANCELLED_ORDERS } from '../../Queries/order';
+import { useQuery } from '@apollo/client';
+import { GET_CANCELLED_ORDERS } from '../../../services/queries/order';
+import { Spinner } from '../../global/Spinner';
 
 const CancelledOrders = () => {
   const {
@@ -13,15 +14,7 @@ const CancelledOrders = () => {
     <div>
       <div>
         {cancelledOrdersLoading ? (
-          <div className="d-flex justify-content-center">
-            <div
-              style={{ width: 50, height: 50 }}
-              className="spinner-border text-danger"
-              role="status"
-            >
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
+          <Spinner size={50} color="danger" />
         ) : cancelledOrdersError ? (
           <div className="d-flex justify-content-center">
             <span>Data cannot be loaded</span>
@@ -31,8 +24,8 @@ const CancelledOrders = () => {
             <thead>
               <tr>
                 <th scope="col">Order No.</th>
-                <th scope="col">Customer Name</th>
-                <th scope="col">Customer Phone</th>
+                <th scope="col">Sender Name</th>
+                <th scope="col">Sender Phone</th>
                 <th scope="col">Item type</th>
                 <th scope="col">Item name</th>
                 <th scope="col">Item count</th>
@@ -46,14 +39,14 @@ const CancelledOrders = () => {
               {cancelledOrdersData.subOrders.orders.map((order) => (
                 <tr key={order._id}>
                   <td>{order.orderNo}</td>
-                  <td>{order.customerName}</td>
-                  <td>{order.customerPhone}</td>
-                  <td>{order.type}</td>
-                  <td>{order.itemName}</td>
-                  <td>{order.itemCount}</td>
-                  <td>{order.price}</td>
-                  <td>{order.startPt}</td>
-                  <td>{order.deliveryPt}</td>
+                  <td>{order.sender.senderName}</td>
+                  <td>{order.sender.senderPhone}</td>
+                  <td>{order.item.itemType}</td>
+                  <td>{order.item.itemName}</td>
+                  <td>{order.item.itemCount}</td>
+                  <td>{order.payment.price}</td>
+                  <td>{order.shipping.startPt}</td>
+                  <td>{order.shipping.deliveryPt}</td>
                   <td>
                     <button className="btn btn-primary btn-sm">View</button>
                   </td>

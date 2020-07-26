@@ -10,7 +10,7 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
       {state.isAuth ? <Redirect to="/" /> : null}
       <div
         style={{ minWidth: 300, maxWidth: 650 }}
-        className="shadow mx-auto mt-4 mb-4 bg-white p-4"
+        className="shadow mx-auto mt-4 mb-4 bg-white p-5"
       >
         <div>
           <div className="form_header">
@@ -23,7 +23,7 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
             <hr />
           </div>
           <form onSubmit={submitHandler}>
-            <div className="row col-md-12">
+            <div className="row">
               <div className="form-group col-md-6">
                 <label>First name</label>
                 <input
@@ -44,7 +44,7 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
                 />
               </div>
             </div>
-            <div className="row col-md-12">
+            <div className="row">
               <div className="form-group col-md-6">
                 <label>Email</label>
                 <input
@@ -64,7 +64,7 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
                 />
               </div>
             </div>
-            <div className="row col-md-12">
+            <div className="row">
               <div className="form-group col-md-6">
                 <label>Password</label>
                 <input
@@ -84,7 +84,7 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
                 />
               </div>
             </div>
-            <div className="m-5">
+            <div className="m-3">
               <button className="btn btn-primary btn-block" type="submit">
                 {loading ? (
                   <span>
@@ -100,14 +100,16 @@ const Register = ({ submitHandler, changeHandler, errorMessage, loading }) => {
                 )}
               </button>
             </div>
-            <p className="text-center">
-              <Link
-                className="p-3 border border-primary rounded-pill"
-                to="/login"
-              >
-                Log into admin account
-              </Link>
-            </p>
+            <div className="mt-2">
+              <p className="text-center">
+                <Link
+                  className="p-2 border border-primary rounded-pill"
+                  to="/login"
+                >
+                  Log into admin account
+                </Link>
+              </p>
+            </div>
           </form>
         </div>
       </div>

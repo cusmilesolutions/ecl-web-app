@@ -10,7 +10,7 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
       {state.isAuth ? <Redirect to="/" /> : <Redirect to="/login" />}
       <div
         style={{ minWidth: 300, maxWidth: 480 }}
-        className="shadow mx-auto mt-5 bg-white p-4"
+        className="shadow mx-auto mt-5 bg-white p-5"
       >
         <div>
           <div className="form_header">
@@ -43,7 +43,7 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
               />
             </div>
 
-            <div className="m-5">
+            <div className="m-3">
               <button className="btn btn-primary btn-block" type="submit">
                 {loading ? (
                   <span>
@@ -59,13 +59,13 @@ const Login = ({ changeHandler, submitHandler, loading, errorMessage }) => {
                 )}
               </button>
             </div>
-            <div className="row col-md-12">
+            <div className="row align-items-center">
               <p className="text-center col-md-6">
                 <Link to="/reset-password">Request for new password</Link>
               </p>
               <p className="text-center col-md-6">
                 <Link
-                  className="p-3 border border-primary rounded-pill"
+                  className="p-2 border border-primary rounded-pill"
                   to="/register"
                 >
                   Create an account

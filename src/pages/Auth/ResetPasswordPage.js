@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ResetPassword from '../../components/Auth/ResetPassword';
-import { useMutation } from '@apollo/react-hooks';
-import { ADMIN_PWD_RESET } from '../../components/Queries/auth';
+import { useMutation } from '@apollo/client';
+import { ADMIN_PWD_RESET } from '../../services/queries/auth';
 
 const ResetPasswordPage = () => {
   const [reset, setreset] = useState({
@@ -19,7 +19,7 @@ const ResetPasswordPage = () => {
     {
       errorPolicy: 'all',
       onError: (error) => console.log(error.graphQLErrors[0].message),
-    }
+    },
   );
   const submitHandler = (e) => {
     e.preventDefault();

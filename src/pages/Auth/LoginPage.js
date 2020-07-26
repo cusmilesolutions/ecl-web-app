@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import Login from '../../components/Auth/Login';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useMutation } from '@apollo/react-hooks';
-import { ADMIN_LOGIN } from '../../components/Queries/auth';
+import { useMutation } from '@apollo/client';
+import { ADMIN_LOGIN } from '../../services/queries/auth';
 
 const LoginPage = () => {
   const [admin, setadmin] = useState({ email: '', password: '' });
@@ -15,7 +15,7 @@ const LoginPage = () => {
 
   const [adminLogin, { loading, error }] = useMutation(ADMIN_LOGIN, {
     errorPolicy: 'all',
-    onError: (error) => console.log(error.graphQLErrors[0].message),
+    onError: (error) => console.log('This is the error', error),
   });
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ const LoginPage = () => {
         localStorage.setItem('userId', res.data.login.adminId);
         const remainingMilliseconds = 60 * 60 * 1000;
         const expiryDate = new Date(
-          new Date().getTime() + remainingMilliseconds
+          new Date().getTime() + remainingMilliseconds,
         );
         localStorage.setItem('expiryDate', expiryDate.toISOString());
         autoLogout(remainingMilliseconds);

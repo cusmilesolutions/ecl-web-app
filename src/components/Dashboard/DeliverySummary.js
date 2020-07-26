@@ -6,17 +6,18 @@ import {
   faBan,
   faShippingFast,
 } from '@fortawesome/free-solid-svg-icons';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import {
   GET_CANCELLED_ORDERS,
   GET_DELIVERED_ORDERS,
   GET_ON_DELIVERY_ORDERS,
   GET_ALL_ORDERS,
-} from '../Queries/order';
+} from '../../services/queries/order';
+import { Spinner } from '../global/Spinner';
 
 const DeliverySummary = () => {
   const { data: allOrders, loading: allOrdersLoading } = useQuery(
-    GET_ALL_ORDERS
+    GET_ALL_ORDERS,
   );
   const {
     data: totalCancelledOrders,
@@ -32,20 +33,14 @@ const DeliverySummary = () => {
   } = useQuery(GET_ON_DELIVERY_ORDERS);
 
   return (
-    <div className="shadow-sm p-2 mt-3 m-2 row bg-white">
+    <div className="shadow-sm p-2 m-2 row bg-white">
       <div className="col m-2 shadow-sm rounded bg-warning text-white p-2">
         <div className="row">
           <div className="col-md-9">
             <p>TOTAL ORDERS</p>
             <h4>
               {allOrdersLoading ? (
-                <div
-                  style={{ width: 30, height: 30 }}
-                  className="spinner-border text-white"
-                  role="status"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
+                <Spinner size={30} color="white" />
               ) : allOrders ? (
                 allOrders.orders.totalOrders
               ) : null}
@@ -62,13 +57,7 @@ const DeliverySummary = () => {
             <p>ORDERS COMPLETED</p>
             <h4>
               {totalDeliveredOrdersLoading ? (
-                <div
-                  style={{ width: 30, height: 30 }}
-                  className="spinner-border text-white"
-                  role="status"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
+                <Spinner size={30} color="white" />
               ) : totalDeliveredOrders ? (
                 totalDeliveredOrders.subOrders.totalOrders
               ) : null}
@@ -85,13 +74,7 @@ const DeliverySummary = () => {
             <p>CANCELLED ORDERS</p>
             <h4>
               {totalCancelledOrdersLoading ? (
-                <div
-                  style={{ width: 30, height: 30 }}
-                  className="spinner-border text-white"
-                  role="status"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
+                <Spinner size={30} color="white" />
               ) : totalCancelledOrders ? (
                 totalCancelledOrders.subOrders.totalOrders
               ) : null}
@@ -108,13 +91,7 @@ const DeliverySummary = () => {
             <p>ON DELIVERY</p>
             <h4>
               {totalOrdersOnDeliveryLoading ? (
-                <div
-                  style={{ width: 30, height: 30 }}
-                  className="spinner-border text-white"
-                  role="status"
-                >
-                  <span className="sr-only">Loading...</span>
-                </div>
+                <Spinner size={30} color="white" />
               ) : totalOrdersOnDelivery ? (
                 totalOrdersOnDelivery.subOrders.totalOrders
               ) : null}
