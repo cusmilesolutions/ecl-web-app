@@ -7,15 +7,48 @@ import RiderDaily from '../../components/Dashboard/Graphs/RidersDaily';
 import TodayRevenue from '../../components/Dashboard/Graphs/TodayRevenue';
 import WeeklyRevenue from '../../components/Dashboard/Graphs/WeeklyRevenue';
 import TaskManagement from '../../components/Dashboard/TaskManager';
+import { useQuery } from '@apollo/client';
+import {
+  GET_ALL_ORDERS,
+  GET_CANCELLED_ORDERS,
+  GET_DELIVERED_ORDERS,
+  GET_ON_DELIVERY_ORDERS,
+} from '../../services/queries/order';
 
 const Dashboard = () => {
   const { state } = useContext(AuthContext);
+
+  const { data: allOrders, loading: allOrdersLoading } = useQuery(
+    GET_ALL_ORDERS,
+  );
+  const {
+    data: totalCancelledOrders,
+    loading: totalCancelledOrdersLoading,
+  } = useQuery(GET_CANCELLED_ORDERS);
+  const {
+    data: totalDeliveredOrders,
+    loading: totalDeliveredOrdersLoading,
+  } = useQuery(GET_DELIVERED_ORDERS);
+  const {
+    data: totalOrdersOnDelivery,
+    loading: totalOrdersOnDeliveryLoading,
+  } = useQuery(GET_ON_DELIVERY_ORDERS);
+
   return (
     <React.Fragment>
       {state.isAuth ? (
         <div>
           <div>
-            <DeliverySummary />
+            <DeliverySummary
+              allOrders={allOrders}
+              allOrdersLoading={allOrdersLoading}
+              totalCancelledOrders={totalCancelledOrders}
+              totalCancelledOrdersLoading={totalCancelledOrdersLoading}
+              totalDeliveredOrders={totalDeliveredOrders}
+              totalDeliveredOrdersLoading={totalDeliveredOrdersLoading}
+              totalOrdersOnDelivery={totalOrdersOnDelivery}
+              totalOrdersOnDeliveryLoading={totalOrdersOnDeliveryLoading}
+            />
           </div>
           <TaskManagement />
           <div className="row">

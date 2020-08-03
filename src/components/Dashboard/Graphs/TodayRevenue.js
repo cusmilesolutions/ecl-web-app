@@ -8,6 +8,7 @@ const data = {
 };
 
 const TodayRevenue = () => {
+  
   return (
     <Doughnut
       data={{

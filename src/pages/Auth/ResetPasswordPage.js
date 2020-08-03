@@ -14,13 +14,10 @@ const ResetPasswordPage = () => {
     const value = e.target.value;
     setreset({ ...reset, [e.target.name]: value });
   };
-  const [adminPwdReset, { loading, error, data }] = useMutation(
-    ADMIN_PWD_RESET,
-    {
-      errorPolicy: 'all',
-      onError: (error) => console.log(error.graphQLErrors[0].message),
-    },
-  );
+  const [adminPwdReset, { loading, error }] = useMutation(ADMIN_PWD_RESET, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
   const submitHandler = (e) => {
     e.preventDefault();
   };

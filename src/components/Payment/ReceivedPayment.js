@@ -4,7 +4,9 @@ import { useQuery } from '@apollo/client';
 import { Spinner } from '../global/Spinner';
 
 const ReceivedPayment = () => {
-  const { loading, data, error } = useQuery(GET_RECEIVED_PAYMENT);
+  const { loading, data, error } = useQuery(GET_RECEIVED_PAYMENT, {
+    pollInterval: 500,
+  });
   return (
     <div>
       <div>
@@ -30,7 +32,7 @@ const ReceivedPayment = () => {
             </thead>
             <tbody>
               {data.paymentStatus.orders.map((payment) => (
-                <tr>
+                <tr key={payment._id}>
                   <td>{payment.sender.senderName}</td>
                   <td>{payment.orderNo}</td>
                   <td>{payment.payment.date}</td>

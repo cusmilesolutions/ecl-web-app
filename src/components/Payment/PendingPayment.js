@@ -4,7 +4,9 @@ import { GET_PENDING_PAYMENT } from '../../services/queries/order';
 import { Spinner } from '../global/Spinner';
 
 const PendingPayment = () => {
-  const { loading, data, error } = useQuery(GET_PENDING_PAYMENT);
+  const { loading, data, error } = useQuery(GET_PENDING_PAYMENT, {
+    pollInterval: 500,
+  });
   return (
     <div>
       <div>
@@ -30,7 +32,7 @@ const PendingPayment = () => {
             </thead>
             <tbody>
               {data.paymentStatus.orders.map((payment) => (
-                <tr>
+                <tr key={payment._id}>
                   <td>{payment.sender.senderName}</td>
                   <td>{payment.orderNo}</td>
                   <td>{payment.payment.date}</td>

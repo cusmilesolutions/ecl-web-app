@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   GET_NEW_ORDERS,
   CANCEL_ORDER,
@@ -8,25 +8,20 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Spinner } from '../../global/Spinner';
 
 const NewOrders = () => {
-  useEffect(() => {}, []);
   const {
     loading: newOrdersLoading,
     error: newOrdersError,
     data: newOrdersData,
-  } = useQuery(GET_NEW_ORDERS);
+  } = useQuery(GET_NEW_ORDERS, {
+    pollInterval: 500,
+  });
 
-  const [
-    cancelOrder,
-    { loading: cancelOrderLoading, data: cancelOrderData },
-  ] = useMutation(CANCEL_ORDER, {
+  const [cancelOrder] = useMutation(CANCEL_ORDER, {
     errorPolicy: 'all',
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });
 
-  const [
-    approveOrder,
-    { loading: approveOrderloading, data: approveOrderData },
-  ] = useMutation(APPROVE_ORDER, {
+  const [approveOrder] = useMutation(APPROVE_ORDER, {
     errorPolicy: 'all',
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });

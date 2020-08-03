@@ -4,13 +4,11 @@ import '../../index.css';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faBell,
   faUser,
   faCreditCard,
   faUsers,
   faShippingFast,
   faFileArchive,
-  faExchangeAlt,
   faBars,
   faPlusCircle,
 } from '@fortawesome/free-solid-svg-icons';
@@ -89,13 +87,6 @@ const Navbar = () => {
                   <span className="ml-2">Reports</span>
                 </Link>
               </li>
-              {/* Disabled route */}
-              {/* <li className="nav-item">
-                <Link to="/shipping" className="nav-link">
-                  <FontAwesomeIcon icon={faExchangeAlt} />
-                  <span className="ml-2">Shipping</span>
-                </Link>
-              </li> */}
             </ul>
           ) : null}
           <div>
@@ -103,7 +94,7 @@ const Navbar = () => {
               <ul className="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li className="nav-item">
                   <Link
-                    to="/"
+                    to="/orders"
                     onClick={() => setIsOpen(true)}
                     className="nav-link"
                   >
@@ -111,12 +102,6 @@ const Navbar = () => {
                     <span className="ml-2">Create</span>
                   </Link>
                 </li>
-                {/* Notification feature disabled */}
-                {/* <li className="nav-item">
-                  <Link to="/" className="nav-link">
-                    <FontAwesomeIcon icon={faBell} />
-                  </Link>
-                </li> */}
                 <li className="nav-item bg-danger">
                   <Link to="/" onClick={logout} className="nav-link">
                     <FontAwesomeIcon icon={faUser} />

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Redirect } from 'react-router';
 import { AuthContext } from '../../contexts/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import {
   GET_CANCELLED_ORDERS,
@@ -13,7 +13,6 @@ import {
   GET_ALL_PAYMENT,
   GET_PENDING_PAYMENT,
   GET_RECEIVED_PAYMENT,
-  GET_ALL_SHIPPINGS,
 } from '../../services/queries/order';
 import { pdf } from '../../utils/PrintToPDF';
 import NewOrdersReport from '../../components/Reports/NewOrdersReport';
@@ -98,7 +97,7 @@ const Reports = () => {
                         Select one
                       </option>
                       <option value="Orders">Orders</option>
-                      <option value="Shipping">Shipping</option>
+                      {/* <option value="Shipping">Shipping</option> */}
                       <option value="Customers">Customers</option>
                       <option value="Payment">Payment</option>
                     </select>
@@ -171,25 +170,26 @@ const Reports = () => {
                         </option>
                       </select>
                     </div>
-                  ) : report.type === 'Shipping' ? (
-                    <div className="form-group">
-                      <label>Select Shipping type</label>
-                      <select
-                        onChange={changeHandler}
-                        defaultValue="Select one"
-                        className="form-control"
-                        name="reportType"
-                        required
-                      >
-                        <option disabled value="Select one">
-                          Select one
-                        </option>
-                        <option value="All Shipping">All Shipping</option>
-                        <option value="Shipped">Shipped</option>
-                        <option value="Cancelled">Cancelled</option>
-                      </select>
-                    </div>
-                  ) : null}
+                  ) : //  : report.type === 'Shipping' ? (
+                  //   <div className="form-group">
+                  //     <label>Select Shipping type</label>
+                  //     <select
+                  //       onChange={changeHandler}
+                  //       defaultValue="Select one"
+                  //       className="form-control"
+                  //       name="reportType"
+                  //       required
+                  //     >
+                  //       <option disabled value="Select one">
+                  //         Select one
+                  //       </option>
+                  //       <option value="All Shipping">All Shipping</option>
+                  //       <option value="Shipped">Shipped</option>
+                  //       <option value="Cancelled">Cancelled</option>
+                  //     </select>
+                  //   </div>
+                  // )
+                  null}
                   {/* <div className="form-group">
                     <label>Email</label>
                     <input

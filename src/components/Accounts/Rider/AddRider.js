@@ -13,7 +13,6 @@ const AddRider = ({ closeNewRider }) => {
     lname: '',
     address: '',
     phone: '',
-    pin: '',
   });
 
   const changeHandler = (e) => {
@@ -29,7 +28,6 @@ const AddRider = ({ closeNewRider }) => {
         lastName: account.lname,
         address: account.address,
         phone: account.phone,
-        pin: account.pin,
       },
     })
       .then(() => {
@@ -80,16 +78,6 @@ const AddRider = ({ closeNewRider }) => {
             />
           </div>
           <div className="row">
-            <div className="form-group col-md-6">
-              <label>PIN</label>
-              <input
-                className="form-control"
-                type="password"
-                name="pin"
-                onChange={changeHandler}
-                value={account.pin}
-              />
-            </div>
             <div className="form-group col-md-6">
               <label>Phone</label>
               <input

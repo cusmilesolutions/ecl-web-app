@@ -2,12 +2,7 @@ import React, { useState, Fragment } from 'react';
 import Modal from 'react-modal';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faMoneyBill,
-  faUsers,
-  faExchangeAlt,
-  faArrowRight,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUsers, faExchangeAlt } from '@fortawesome/free-solid-svg-icons';
 import { useQuery } from '@apollo/client';
 import { Spinner } from '../../global/Spinner';
 import AddRider from './AddRider';
@@ -77,25 +72,23 @@ const Riders = () => {
             <table className="table table-sm table-hover table-responsive-md">
               <thead className="bg-secondary text-white">
                 <tr>
-                  <th scope="col">ID</th>
+                  <th scope="col">Rider ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Phone</th>
+                  <th scope="col">Address</th>
                   <th scope="col">Trips</th>
-                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
                 {ridersData.riders.map((rider) => (
                   <tr key={rider._id}>
                     <td>{rider.riderId}</td>
-                    <td>{rider.firstName}</td>
-                    <td>{rider.phone}</td>
-                    <td>{rider.orders.length}</td>
                     <td>
-                      <button className="btn btn-info btn-sm mr-2">
-                        <FontAwesomeIcon icon={faArrowRight} />
-                      </button>
+                      {rider.firstName} {rider.lastName}
                     </td>
+                    <td>{rider.phone}</td>
+                    <td>{rider.address}</td>
+                    <td>{rider.orders.length}</td>
                   </tr>
                 ))}
               </tbody>

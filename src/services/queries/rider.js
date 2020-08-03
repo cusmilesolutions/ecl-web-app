@@ -5,7 +5,9 @@ export const GET_ALL_RIDERS = gql`
     riders {
       _id
       firstName
+      lastName
       phone
+      address
       riderId
       orders {
         _id
@@ -13,8 +15,6 @@ export const GET_ALL_RIDERS = gql`
     }
   }
 `;
-
-// export const GET_RIDER = gql``;
 
 export const ADD_RIDER = gql`
   mutation AddRider(
@@ -32,15 +32,6 @@ export const ADD_RIDER = gql`
       pin: $pin
     ) {
       _id
-      firstName
-      lastName
-      address
-      phone
-      riderId
-      creator {
-        _id
-      }
-      createdAt
     }
   }
 `;

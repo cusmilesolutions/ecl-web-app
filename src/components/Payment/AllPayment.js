@@ -4,7 +4,9 @@ import { GET_ALL_PAYMENT } from '../../services/queries/order';
 import { Spinner } from '../global/Spinner';
 
 const AllPayment = () => {
-  const { loading, data, error } = useQuery(GET_ALL_PAYMENT);
+  const { loading, data, error } = useQuery(GET_ALL_PAYMENT, {
+    pollInterval: 500,
+  });
   return (
     <div>
       <div>
@@ -31,7 +33,7 @@ const AllPayment = () => {
             </thead>
             <tbody>
               {data.orders.orders.map((payment) => (
-                <tr>
+                <tr key={payment._id}>
                   <td>{payment.sender.senderName}</td>
                   <td>{payment.orderNo}</td>
                   <td>{payment.payment.date}</td>

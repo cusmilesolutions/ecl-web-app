@@ -8,7 +8,9 @@ const CancelledOrders = () => {
     loading: cancelledOrdersLoading,
     error: cancelledOrdersError,
     data: cancelledOrdersData,
-  } = useQuery(GET_CANCELLED_ORDERS);
+  } = useQuery(GET_CANCELLED_ORDERS, {
+    pollInterval: 500,
+  });
 
   return (
     <div>

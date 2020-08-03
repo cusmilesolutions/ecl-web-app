@@ -4,7 +4,7 @@ import { CREATE_ORDER } from '../../services/queries/order';
 import { Spinner } from '../global/Spinner';
 
 const CreateOrder = ({ closeModal }) => {
-  const [addOrder, { loading, data }] = useMutation(CREATE_ORDER, {
+  const [addOrder, { loading }] = useMutation(CREATE_ORDER, {
     errorPolicy: 'all',
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });
@@ -28,6 +28,7 @@ const CreateOrder = ({ closeModal }) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(order);
     addOrder({
       variables: {
         senderName: order.senderName,
@@ -43,11 +44,7 @@ const CreateOrder = ({ closeModal }) => {
         deliveryPt: order.deliveryPt,
         description: order.description,
       },
-    })
-      .then(() => {
-        closeModal();
-      })
-      .catch((err) => console.error(err));
+    });
   };
   return (
     <div>
@@ -85,7 +82,6 @@ const CreateOrder = ({ closeModal }) => {
                 onChange={changeHandler}
                 name="recipientName"
                 className="form-control"
-                autoFocus
               />
             </div>
             <div className="form-group col-md-6">

@@ -6,32 +6,18 @@ import {
   faBan,
   faShippingFast,
 } from '@fortawesome/free-solid-svg-icons';
-import { useQuery } from '@apollo/client';
-import {
-  GET_CANCELLED_ORDERS,
-  GET_DELIVERED_ORDERS,
-  GET_ON_DELIVERY_ORDERS,
-  GET_ALL_ORDERS,
-} from '../../services/queries/order';
 import { Spinner } from '../global/Spinner';
 
-const DeliverySummary = () => {
-  const { data: allOrders, loading: allOrdersLoading } = useQuery(
-    GET_ALL_ORDERS,
-  );
-  const {
-    data: totalCancelledOrders,
-    loading: totalCancelledOrdersLoading,
-  } = useQuery(GET_CANCELLED_ORDERS);
-  const {
-    data: totalDeliveredOrders,
-    loading: totalDeliveredOrdersLoading,
-  } = useQuery(GET_DELIVERED_ORDERS);
-  const {
-    data: totalOrdersOnDelivery,
-    loading: totalOrdersOnDeliveryLoading,
-  } = useQuery(GET_ON_DELIVERY_ORDERS);
-
+const DeliverySummary = ({
+  totalCancelledOrders,
+  totalCancelledOrdersLoading,
+  totalDeliveredOrders,
+  totalDeliveredOrdersLoading,
+  totalOrdersOnDelivery,
+  totalOrdersOnDeliveryLoading,
+  allOrders,
+  allOrdersLoading,
+}) => {
   return (
     <div className="shadow-sm p-2 m-2 row bg-white">
       <div className="col m-2 shadow-sm rounded bg-warning text-white p-2">

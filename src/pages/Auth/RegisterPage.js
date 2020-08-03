@@ -14,22 +14,13 @@ const RegisterPage = (props) => {
     employeeID: '',
     position: '',
   });
-  const [errorMsg, seterrorMsg] = useState('');
 
   const changeHandler = (e) => {
     const value = e.target.value;
     setadmin({ ...admin, [e.target.name]: value });
   };
 
-  const errorHandler = () => {
-    let errors = [];
-    if (admin.password !== admin.confirmPassword)
-      errors.push('Password do not match');
-    if (admin.password.length < 8)
-      errors.push('Password should not be less than 8 characters');
-    return errors;
-  };
-  const [adminSignUp, { loading, error, data }] = useMutation(ADMIN_SIGN_UP, {
+  const [adminSignUp, { loading, error }] = useMutation(ADMIN_SIGN_UP, {
     errorPolicy: 'all',
     onError: (error) => console.log(error.graphQLErrors[0].message),
   });
@@ -37,7 +28,6 @@ const RegisterPage = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     // error handler not working for now
-    seterrorMsg(errorHandler());
     adminSignUp({
       variables: {
         firstName: admin.firstName,

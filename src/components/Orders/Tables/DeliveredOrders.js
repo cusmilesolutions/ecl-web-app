@@ -8,7 +8,9 @@ const DeliveredOrders = () => {
     loading: deliveredOrdersLoading,
     error: deliveredOrdersError,
     data: deliveredOrdersData,
-  } = useQuery(GET_DELIVERED_ORDERS);
+  } = useQuery(GET_DELIVERED_ORDERS, {
+    pollInterval: 500,
+  });
   return (
     <div>
       <div>

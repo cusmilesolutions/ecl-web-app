@@ -15,7 +15,9 @@ const AllOrders = () => {
     loading: allOrdersLoading,
     error: allOrdersError,
     data: allOrdersData,
-  } = useQuery(GET_ALL_ORDERS);
+  } = useQuery(GET_ALL_ORDERS, {
+    pollInterval: 500,
+  });
 
   return (
     <div>
