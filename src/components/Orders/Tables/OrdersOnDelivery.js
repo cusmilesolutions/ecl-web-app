@@ -1,9 +1,15 @@
-import React from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_ON_DELIVERY_ORDERS } from '../../../services/queries/order';
+import React, { useState } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import {
+  GET_ON_DELIVERY_ORDERS,
+  CANCEL_ORDER,
+  ASSIGN_RIDER,
+} from '../../../services/queries/order';
 import { Spinner } from '../../global/Spinner';
+import { GET_ALL_RIDERS } from '../../../services/queries/rider';
 
 const OrdersOnDelivery = () => {
+  // Query to get the approved orders
   const {
     loading: ordersOnDeliveryLoading,
     error: ordersOnDeliveryError,
@@ -11,6 +17,28 @@ const OrdersOnDelivery = () => {
   } = useQuery(GET_ON_DELIVERY_ORDERS, {
     pollInterval: 500,
   });
+
+  // Query to get the riders
+  const {
+    loading: ridersLoading,
+    error: ridersError,
+    data: ridersData,
+  } = useQuery(GET_ALL_RIDERS, {
+    pollInterval: 500,
+  });
+
+  // Mutation to cancel an order
+  const [cancelOrder] = useMutation(CANCEL_ORDER, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
+
+  const [assignRider] = useMutation(ASSIGN_RIDER, {
+    errorPolicy: 'all',
+    onError: (error) => console.log(error.graphQLErrors[0].message),
+  });
+
+  const [rider, setrider] = useState('');
 
   return (
     <div>
@@ -40,13 +68,50 @@ const OrdersOnDelivery = () => {
                   <td>{order.shipping.startPt}</td>
                   <td>{order.shipping.deliveryPt}</td>
                   <td>{order.payment.price}</td>
-                  <td>{order.rider}</td>
+                  <td>
+                    <select
+                      className="form-control"
+                      value={rider}
+                      onChange={(e) => {
+                        setrider(e.target.value);
+                      }}
+                    >
+                      <option defaultValue>Choose...</option>
+                      {ridersData
+                        ? ridersData.riders.map((rider) => (
+                            <option key={rider.riderId} value={rider.riderId}>
+                              {rider.riderId}
+                            </option>
+                          ))
+                        : ridersLoading
+                        ? 'Loading riders'
+                        : null}
+                    </select>
+                  </td>
                   <td>
                     <div className="d-flex flex-row">
-                      <button className="btn btn-primary btn-sm mr-2">
+                      <button
+                        onClick={() => {
+                          assignRider({
+                            variables: { id: order._id, riderID: rider },
+                          }).then(() =>
+                            console.log(`Order has been assigned to ${rider}`),
+                          );
+                        }}
+                        className="btn btn-primary btn-sm mr-2"
+                      >
                         Assign Rider
                       </button>
-                      <button className="btn btn-danger btn-sm">Remove</button>
+                      <button
+                        onClick={() => {
+                          cancelOrder({
+                            variables: { id: order._id },
+                          }).then(() => console.log('Cancelled order'));
+                        }}
+                        className="btn btn-danger btn-sm"
+                      >
+                        Remove
+                      </button>
                     </div>
                   </td>
                 </tr>

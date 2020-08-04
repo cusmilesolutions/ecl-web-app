@@ -13,7 +13,7 @@ export const CREATE_ORDER = gql`
     $method: String!
     $startPt: String!
     $deliveryPt: String!
-    $description: String!
+    $description: String
   ) {
     addOrder(
       senderName: $senderName
@@ -167,6 +167,9 @@ export const GET_DELIVERED_ORDERS = gql`
       orders {
         _id
         orderNo
+        rider {
+          _id
+        }
         item {
           itemName
           itemType
@@ -189,8 +192,8 @@ export const GET_DELIVERED_ORDERS = gql`
         shipping {
           startPt
           deliveryPt
-          # dateDelivered
-          # timeDelivered
+          dateDeliverd
+          timeDelivered
         }
         orderStatus
         createdAt
@@ -310,6 +313,14 @@ export const GET_ALL_SHIPPINGS = gql`
         }
         orderStatus
       }
+    }
+  }
+`;
+
+export const ASSIGN_RIDER = gql`
+  mutation AssignRider($id: ID!, $riderID: String!) {
+    assignRider(id: $id, riderID: $riderID) {
+      orderNo
     }
   }
 `;

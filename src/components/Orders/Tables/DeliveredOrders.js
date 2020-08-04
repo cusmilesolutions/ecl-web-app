@@ -33,7 +33,6 @@ const DeliveredOrders = () => {
                 <th scope="col">Delivery time</th>
                 <th scope="col">Price(GHC)</th>
                 <th scope="col">Rider</th>
-                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -42,13 +41,10 @@ const DeliveredOrders = () => {
                   <td>{order.orderNo}</td>
                   <td>{order.shipping.startPt}</td>
                   <td>{order.shipping.deliveryPt}</td>
-                  <td>{order.shipping.dateDelivered}</td>
+                  <td>{order.shipping.dateDeliverd}</td>
                   <td>{order.shipping.timeDelivered}</td>
                   <td>{order.payment.price}</td>
-                  <td>{order.rider}</td>
-                  <td>
-                    <button className="btn btn-primary btn-sm">View</button>
-                  </td>
+                  <td>{order.rider._id}</td>
                 </tr>
               ))}
             </tbody>
