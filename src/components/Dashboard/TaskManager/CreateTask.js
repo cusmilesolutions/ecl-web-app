@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { CREATE_TASK } from '../../../services/queries/todo';
 import { Spinner } from '../../global/Spinner';
 
-const CreateTask = ({ closeModal }) => {
+const CreateTask = () => {
   const [createTask, { loading }] = useMutation(CREATE_TASK, {
     errorPolicy: 'all',
   });
@@ -24,7 +24,7 @@ const CreateTask = ({ closeModal }) => {
         description: task.description,
         deadline: task.deadline,
       },
-    }).then(() => closeModal());
+    })
   };
   return (
     <div className="shadow-sm p-2 bg-white">
