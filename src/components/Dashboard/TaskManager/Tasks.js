@@ -25,46 +25,52 @@ const AllTasks = () => {
   const [completeTask] = useMutation(COMPLETE_TASK);
   return (
     <ul style={{ listStyle: 'none', padding: 0 }}>
-      {todo.tasks.tasks.map((item) => (
-        <li key={item._id} className={styles.list}>
-          <div>
-            <p className="m-0">
-              <strong>{item.title}</strong>
-            </p>
-            <div className="d-flex flex-row justify-content-between">
-              <span>
-                <span
-                  className={
-                    item.status === 'completed'
-                      ? 'text-xs badge badge-success mr-1'
-                      : 'text-xs badge badge-warning mr-1'
-                  }
-                  id="date"
-                >
-                  {item.status}
-                </span>
-                <span className="text-xs badge badge-secondary" id="date">
-                  {item.deadline}
-                </span>
-              </span>
-              <span>
-                <button
-                  onClick={() => completeTask({ variables: { id: item._id } })}
-                  className="btn rounded-pill btn-outline-success btn-sm mr-1"
-                >
-                  <FontAwesomeIcon icon={faCheck} />
-                </button>
-                <button
-                  onClick={() => deleteTask({ variables: { id: item._id } })}
-                  className="btn rounded-pill btn-outline-danger btn-sm"
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-              </span>
-            </div>
-          </div>
-        </li>
-      ))}
+      {todo
+        ? todo.tasks.tasks.map((item) => (
+            <li key={item._id} className={styles.list}>
+              <div>
+                <p className="m-0">
+                  <strong>{item.title}</strong>
+                </p>
+                <div className="d-flex flex-row justify-content-between">
+                  <span>
+                    <span
+                      className={
+                        item.status === 'completed'
+                          ? 'text-xs badge badge-success mr-1'
+                          : 'text-xs badge badge-warning mr-1'
+                      }
+                      id="date"
+                    >
+                      {item.status}
+                    </span>
+                    <span className="text-xs badge badge-secondary" id="date">
+                      {item.deadline}
+                    </span>
+                  </span>
+                  <span>
+                    <button
+                      onClick={() =>
+                        completeTask({ variables: { id: item._id } })
+                      }
+                      className="btn rounded-pill btn-outline-success btn-sm mr-1"
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                    </button>
+                    <button
+                      onClick={() =>
+                        deleteTask({ variables: { id: item._id } })
+                      }
+                      className="btn rounded-pill btn-outline-danger btn-sm"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))
+        : null}
     </ul>
   );
 };
@@ -79,30 +85,34 @@ const CompletedTasks = () => {
 
   return (
     <ul className={styles.tasks}>
-      {todo.subTasks.tasks.map((item) => (
-        <li key={item._id} className={styles.list}>
-          <div>
-            <p className="m-0">
-              <strong>{item.title}</strong>
-            </p>
-            <div className="d-flex flex-row justify-content-between">
-              <span>
-                <span className="text-xs badge badge-secondary" id="date">
-                  {item.deadline}
-                </span>
-              </span>
-              <span>
-                <button
-                  onClick={() => deleteTask({ variables: { id: item._id } })}
-                  className="btn rounded-pill btn-outline-danger btn-sm"
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-              </span>
-            </div>
-          </div>
-        </li>
-      ))}
+      {todo
+        ? todo.subTasks.tasks.map((item) => (
+            <li key={item._id} className={styles.list}>
+              <div>
+                <p className="m-0">
+                  <strong>{item.title}</strong>
+                </p>
+                <div className="d-flex flex-row justify-content-between">
+                  <span>
+                    <span className="text-xs badge badge-secondary" id="date">
+                      {item.deadline}
+                    </span>
+                  </span>
+                  <span>
+                    <button
+                      onClick={() =>
+                        deleteTask({ variables: { id: item._id } })
+                      }
+                      className="btn rounded-pill btn-outline-danger btn-sm"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))
+        : null}
     </ul>
   );
 };
@@ -119,36 +129,42 @@ const UncompletedTasks = () => {
 
   return (
     <ul className={styles.tasks}>
-      {todo.subTasks.tasks.map((item) => (
-        <li key={item._id} className={styles.list}>
-          <div>
-            <p className="m-0">
-              <strong>{item.title}</strong>
-            </p>
-            <div className="d-flex flex-row justify-content-between">
-              <span>
-                <span className="text-xs badge badge-secondary" id="date">
-                  {item.deadline}
-                </span>
-              </span>
-              <span>
-                <button
-                  onClick={() => completeTask({ variables: { id: item._id } })}
-                  className="btn rounded-pill btn-outline-success btn-sm mr-1"
-                >
-                  <FontAwesomeIcon icon={faCheck} />
-                </button>
-                <button
-                  onClick={() => deleteTask({ variables: { id: item._id } })}
-                  className="btn rounded-pill btn-outline-danger btn-sm"
-                >
-                  <FontAwesomeIcon icon={faTrash} />
-                </button>
-              </span>
-            </div>
-          </div>
-        </li>
-      ))}
+      {todo
+        ? todo.subTasks.tasks.map((item) => (
+            <li key={item._id} className={styles.list}>
+              <div>
+                <p className="m-0">
+                  <strong>{item.title}</strong>
+                </p>
+                <div className="d-flex flex-row justify-content-between">
+                  <span>
+                    <span className="text-xs badge badge-secondary" id="date">
+                      {item.deadline}
+                    </span>
+                  </span>
+                  <span>
+                    <button
+                      onClick={() =>
+                        completeTask({ variables: { id: item._id } })
+                      }
+                      className="btn rounded-pill btn-outline-success btn-sm mr-1"
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                    </button>
+                    <button
+                      onClick={() =>
+                        deleteTask({ variables: { id: item._id } })
+                      }
+                      className="btn rounded-pill btn-outline-danger btn-sm"
+                    >
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </li>
+          ))
+        : null}
     </ul>
   );
 };

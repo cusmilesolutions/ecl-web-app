@@ -48,12 +48,12 @@ const Riders = () => {
               <div className="mr-3 p-2 rounded stats_card">
                 <FontAwesomeIcon size="lg" icon={faExchangeAlt} />
                 <span className="ml-2">
-                  {ridersData
+                  {/* {ridersData
                     ? ridersData.riders.reduce(
                         (acc, val) => acc + val.orders,
                         0,
                       )
-                    : null}
+                    : null} */}
                 </span>
               </div>
               <div>
