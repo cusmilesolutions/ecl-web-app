@@ -24,7 +24,7 @@ const AllTasks = () => {
   // Mutation to complete a task
   const [completeTask] = useMutation(COMPLETE_TASK);
   return (
-    <ul className={styles.tasks}>
+    <ul style={{ listStyle: 'none', padding: 0 }}>
       {todo.tasks.tasks.map((item) => (
         <li key={item._id} className={styles.list}>
           <div>
